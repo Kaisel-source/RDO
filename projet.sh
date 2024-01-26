@@ -1,3 +1,5 @@
+user="$1"
+email="$2"
 
 #Installation de Nala
 sudo apt get install nala
@@ -5,8 +7,8 @@ sudo apt update
 
 #GIT
 sudo apt-get install git
-git config --global user.name $1
-git config --global user.email $2
+git config --global user.name $user
+git config --global user.email $email
 
 #ajout de github desktop a apt
 wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
