@@ -12,11 +12,11 @@
 
 ### Français
 
-Ce projet dans le cadre de notre formation de L2 informatique à l'Université Du Mans. <br>
+Ce projet est réalisé dans le cadre de notre formation de L2 informatique à l'Université Du Mans. <br>
 Date de création: 19 Janvier 2024.<br>
-Projet : Royaume des Ombres : L'Éveil des Ténèbres
-
-Nous avons de la semaine trois à la semaine dix-sept de l'année 2024 pour faire ce travail, à une cadence d'environ 9 heures par semaines.<br><br>
+Projet : Royaume des Ombres : L'Éveil des Ténèbres<br>
+Durée: 14 semaines à raison d'une moyenne de 6H/Semaine
+<br><br>
 
 
 
@@ -35,14 +35,11 @@ La Documentation est disponible [ici](...).
 ### English
 
 
-This project as part of our L2 computer training at the University of Le Mans. <br>
+This project is carried out as part of our L2 computer training at the University of Le Mans. <br>
 Creation date: 19 January 2024.<br>
-Project: Kingdom of Shadows: The Awakening of Darkness
-
-
-We have week three to week seventeen of the year 2024 to do this work. 
-At a rate of about 9 hours per week. 
-
+Project: Kingdom of Shadows: The Awakening of Darkness<br>
+Duration: 14 weeks with an average of 6H/Week
+<br><br>
 
 The project consists of a role-playing video game (RPG) set in an open-zone fantasy medieval world.<br>
 Players are invited to explore this universe, complete quests to reveal its mysteries and improve their character by managing its levels and statistics.<br>
