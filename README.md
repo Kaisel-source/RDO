@@ -25,7 +25,7 @@ https://docs.google.com/spreadsheets/d/1oraEitjXwUc6oYZVz5umQa5b7MFquI0YAICNxATr
 
 
 
-This Project is a scholar one where we mus make a videogame for our second year of college at Université du Mans 
+This Project is a scholar one where we must make a videogame for our second year of college at Université du Mans 
 
 The project Start at the third week of 2024 and end at the seventeen one. We work five hours by week.
 
