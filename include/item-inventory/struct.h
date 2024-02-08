@@ -1,12 +1,9 @@
+#ifndef STRUCT_H
+#define STRUCT_H
+
 #include <stdio.h>
 #include <stdlib.h>
-/*
-typedef enum eqpmt_type;
-typedef enum dmg_type;
-typedef enum type_item;
-typedef struct stat;
-typedef struct eqpmt;
-typedef struct ressource;*/
+#include <string.h>
 
 typedef enum eqpmt_type {
     NONE, HEAD, BODY, LEGS, FOOT, RING, WEAPON, SHIELD
@@ -17,12 +14,17 @@ typedef enum dmg_type {
 } dmg_t;
 
 typedef enum type_item{
-    RESSOURCE,EQPMT
+    RESSOURCE,EQPMT,MODIF
 } type_it;
+
+typedef enum modif_type{
+    CONSUM,PERMANENT
+} modif_t;
 
 typedef struct stat {
     int damage;
     int defence;
+    
     int str;
     int agi;
     int end;
@@ -37,7 +39,7 @@ typedef struct item_eqpmt {
     dmg_t dmg_type;
     stat_item item_stat;
     int price;
-    int poids;
+    int poids; 
     char* desc;
 
 } item_eqpmt;
@@ -60,6 +62,7 @@ typedef union item_inv{
 typedef struct inv_item{
     type_it type;
     it_iv *item_u;
+    int quantity;
 }inv_item_s;
 
 
@@ -73,28 +76,9 @@ typedef struct item_s{
 typedef struct item_list{
     unsigned int weight;
     item_t *head;
+    item_t *current;
     item_t *queue;
+    int nb_item;
 }item_list;
 
-
-
-
-item_list * create_inventory();
-int empty_inventory(item_list *list);
-void add_last(item_t *item, item_list *list);
-void add_first(item_t *item, item_list *list);
-void display_inventory(const item_list *list);
-void weight_calc(item_list *list);
-void destroy_inventory(item_list *list);
-void destroy_common(item_t *item);
-void display_common(const inv_item_s item);
-
-
-item_t* eqpmt_creator(int id, char* name, eqpmt_type type, dmg_t dmg_type, int damage, int defence, int str, int agi, int end, int luck, int intel, int price, int poids, char* desc);
-void display_eqpmt(const item_eqpmt eqpmt);
-char* name_eqpmt(int type);
-void item_destructor(inv_item_s* item);
-
-item_t* ress_creator(int id, char* name, int price, int poids, char* desc);
-void display_ress(const item_ress ress);
-void ress_destructor(inv_item_s* item);
+#endif

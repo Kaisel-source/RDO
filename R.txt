@@ -1,0 +1,429 @@
+Creation du perso 
+
+Creation des stats de l'item 
+
+Ajout des items dans l'inventaire 
+
+Ajout de l'item 1 
+
+Quantité: 1
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+Poids Total : 10
+
+
+----------------------------------
+
+
+
+----------------------------------
+
+Ajout de l'item 2 
+
+Quantité: 1
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+Poids Total : 20
+----------------------------------
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+
+
+----------------------------------
+
+
+
+----------------------------------
+
+Ajout de l'item 3 
+
+Quantité: 1
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+Quantité: 1
+Id : 3 
+Nom: Casque
+Type: Head
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un casque 
+
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+Poids Total : 30
+
+
+----------------------------------
+
+TAKE ITEM
+
+----------------------------------
+
+take item 1
+
+item deja dans l'inventaire
+
+take item 3
+
+item deja dans l'inventaire
+
+Quantité: 2
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+Quantité: 2
+Id : 3 
+Nom: Casque
+Type: Head
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un casque 
+
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+Poids Total : 30
+
+
+----------------------------------
+
+SUIV
+
+----------------------------------
+Quantité: 2
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+----------------------------------
+Quantité: 2
+Id : 3 
+Nom: Casque
+Type: Head
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un casque 
+
+----------------------------------
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+----------------------------------
+Quantité: 2
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+
+
+----------------------------------
+
+INVENTORY
+
+----------------------------------
+Quantité: 2
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+Quantité: 2
+Id : 3 
+Nom: Casque
+Type: Head
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un casque 
+
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+Poids Total : 30
+
+
+----------------------------------
+
+Current
+
+----------------------------------
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+
+
+----------------------------------
+
+PREC
+
+----------------------------------
+Prec: 0x559eea174400
+Way: 1
+
+Quantité: 2
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+----------------------------------
+Prec: (nil)
+Way: 2
+
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+----------------------------------
+Prec: 0x559eea174400
+Way: 1
+
+Quantité: 2
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+----------------------------------
+Prec: (nil)
+Way: 2
+
+Quantité: 1
+Id : 2 
+Nom: bouclier
+Type: Shield
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : un bouclier 
+
+
+Destruction du perso 
+
