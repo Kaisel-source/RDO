@@ -37,11 +37,11 @@ void add_first(item_t *item, item_list *list);
 
 /**
  * @brief Add an item to the current position of the list
- * 
+ * @warning Disable
  * @param item Item to add
  * @param list List to add the item
  */
-void add_current(item_t *item, item_list *list);
+//void add_current(item_t *item, item_list *list);
 
 
 

@@ -1,3 +1,5 @@
+#ifndef TEMP_H
+#define TEMP_H
 #include "common.h"
 #include "struct.h"
 
@@ -7,6 +9,8 @@ typedef struct stat_p{
     int luck;
     int agi;
     int end;
+
+    //int available;
 }stat_s;
 
 
@@ -84,3 +88,4 @@ int in_inventory(perso *p, int id,type_it type);
  */
 void destroy_perso(perso **p);
 
+#endif

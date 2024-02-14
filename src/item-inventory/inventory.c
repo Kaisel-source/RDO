@@ -33,25 +33,44 @@ void add_first(item_t *item, item_list *list)
     list->nb_item++;
     weight_calc(list);
 }
-
+/*
 void add_current(item_t *item, item_list *list)
 {
+    printf("1\n");
     if (empty_inventory(list))
     {
+        printf("2\n");
         add_first(item, list);
     }
     else{
-        item->prec = list->current;
-        item->suiv = list->current->suiv;
-        list->current->suiv = item;
-        
+        if(list->current==list->queue){
+            printf("3\n");
+            add_last(item,list);
+        }
+        else if(list->current==list->head){
+            printf("4\n");
+            add_first(item,list);
+        }
+        else{
+            printf("5\n");
+            item->prec = list->current;
+            printf("5-1\n");
+            item->suiv = list->current->suiv;
+            printf("5-2\n");
+            list->current->suiv = item;
+            
+            printf("5-3\n");
+            printf("%p\n",list->current->suiv->prec);
+            printf("%p\n",list->current);
+            list->current->suiv->suiv->prec = item;
+        }
         
         
     }
     list->nb_item++;
     weight_calc(list);
 }
-
+*/
 item_t *find_queue(item_list *list)
 {
     item_t *item = list->head;
@@ -68,10 +87,6 @@ void add_last(item_t *item, item_list *list)
     if (empty_inventory(list))
     {
         add_first(item, list);
-    }
-    else if (list->queue == NULL)
-    {
-        list->queue = find_queue(list);
     }
     else
     {

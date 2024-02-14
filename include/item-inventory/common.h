@@ -5,6 +5,7 @@
 #include "eqpmt.h"
 #include "ressource.h"
 #include "inventory.h"
+#include "temp.h"
 
 #define ERROR -1
 #define TRUE 1
@@ -26,6 +27,12 @@ void display_common(const inv_item_s item);
  */
 void destroy_common(item_t **item);
 
-
+/**
+ * @brief 
+ * 
+ * @param item 
+ * @param player 
+ */
+void use_common(item_t *item, perso *player);
 
 #endif

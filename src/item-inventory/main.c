@@ -27,7 +27,10 @@ int main(){
     printf("\n\n----------------------------------\n\n");
 
     printf("Ajout de l'item 2 \n\n");
-    add_current(item2, p->inventory);
+    //add_current(item2, p->inventory);
+    int id=item2->item_inv->type==EQPMT?item2->item_inv->item_u->eqpmt->id:item2->item_inv->item_u->ress->id;
+    printf("ID:%d  QUANT : %d \n",id,in_inventory(p,item2->item_inv->type,id));
+    take_item(p, item2); 
     display_inventory(p->inventory);
     printf("----------------------------------\n");
     suiv_current(p->inventory);
@@ -37,7 +40,8 @@ int main(){
     printf("\n\n----------------------------------\n\n");
     printf("Ajout de l'item 3 \n\n");
     suiv_current(p->inventory);
-    add_current(item3, p->inventory);
+    //add_current(item3, p->inventory);
+    take_item(p, item3); 
     display_inventory(p->inventory);
 
 
@@ -48,7 +52,8 @@ int main(){
     printf("take item 1\n\n");
     take_item(p, item);
     printf("take item 3\n\n");
-    take_item(p, item3);    
+    take_item(p, item3);
+    printf("Display\n");
     display_inventory(p->inventory);
 
 
