@@ -56,6 +56,17 @@ void add_last(item_t *item, item_list *list);
 
 
 /**
+ * @brief Add an item to the list
+ * 
+ * @param item 
+ * @param list 
+ */
+
+void add(item_t *item, item_list *list);
+
+
+
+/**
  * @brief Change the current item to the next one
  * 
  * @param list List to change the current item

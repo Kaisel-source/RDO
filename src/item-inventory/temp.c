@@ -34,7 +34,7 @@ void init_perso(perso *p, char *name,int end, int agi, int str, int luck,int int
 void take_item(perso *p,item_t *item){
     item_t *tmp = p->inventory->head;
     int id=item->item_inv->type==EQPMT?item->item_inv->item_u->eqpmt->id:item->item_inv->item_u->ress->id;
-    if(in_inventory(p,item->item_inv->type,id)>0){
+    if(in_inventory(p,id,item->item_inv->type)>0){
         printf("item deja dans l'inventaire\n\n");
         tmp = p->inventory->head;
         while(tmp->item_inv != item->item_inv){
@@ -44,7 +44,7 @@ void take_item(perso *p,item_t *item){
     }
     else{
         printf("Ajout de l'item\n\n");
-        add_last(item,p->inventory);
+        add(item,p->inventory);
 
     }
 }
@@ -53,18 +53,19 @@ void take_item(perso *p,item_t *item){
 
 int in_inventory(perso *p, int id, type_it type){
     item_t *tmp = p->inventory->head;
-    while(tmp != NULL){
+    for(int i=0;i<p->inventory->nb_item;i++){
         if(type==RESSOURCE){
             if(tmp->item_inv->item_u->ress->id == id)
                 return tmp->item_inv->quantity;
-        }
-        else if (type==EQPMT){
-            if(tmp->item_inv->item_u->eqpmt->id == id)
-                return TRUE;
-        }
-        else{
             tmp = tmp->suiv;
         }
+        else if (type==EQPMT){
+            printf("%d == %d\n",tmp->item_inv->item_u->eqpmt->id,id);
+            if(tmp->item_inv->item_u->eqpmt->id == id)
+                return tmp->item_inv->quantity;
+            tmp = tmp->suiv;
+        }
+        
         
     }
     return 0;

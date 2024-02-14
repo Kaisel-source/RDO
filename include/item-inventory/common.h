@@ -25,7 +25,7 @@ void display_common(const inv_item_s item);
  * 
  * @param item Item to destroy
  */
-void destroy_common(item_t **item);
+void destroy_common(item_t **item, int *nb_item);
 
 /**
  * @brief 

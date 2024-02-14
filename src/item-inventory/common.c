@@ -17,9 +17,9 @@ void display_common(const inv_item_s item){
     }
 }
 
+ 
 
-
-void destroy_common(item_t **item){
+void destroy_common(item_t **item, int *nb_item){
     switch ((*item)->item_inv->type){
         case EQPMT:
             eqpmt_destructor(&(*item)->item_inv);
@@ -36,5 +36,6 @@ void destroy_common(item_t **item){
     (*item)->suiv=NULL;
     free(*item);
     *item=NULL;
+    nb_item--;
 }
 

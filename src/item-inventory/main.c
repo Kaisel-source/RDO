@@ -11,23 +11,23 @@ int main(){
     item_t *item ;
     item_t *item2 ;
     item_t *item3 ;
+    item_t *item4 ;
     item = eqpmt_creator(1,"epee", WEAPON, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "une epee");
     item2 = eqpmt_creator(2,"bouclier", SHIELD, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "un bouclier");
     item3 = eqpmt_creator(3,"Casque", HEAD, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "un casque");
-
+    item4 = eqpmt_creator(4,"Armure", BODY, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "une armure");
     
     printf("Ajout des items dans l'inventaire \n\n");
     printf("Ajout de l'item 1 \n\n");
-    add_first(item, p->inventory);
+    add(item, p->inventory);
     display_inventory(p->inventory);
-
+    printf("nb_elm : %d\n",p->inventory->nb_item);
     
 
     printf("\n\n----------------------------------\n\n");
     printf("\n\n----------------------------------\n\n");
 
     printf("Ajout de l'item 2 \n\n");
-    //add_current(item2, p->inventory);
     int id=item2->item_inv->type==EQPMT?item2->item_inv->item_u->eqpmt->id:item2->item_inv->item_u->ress->id;
     printf("ID:%d  QUANT : %d \n",id,in_inventory(p,item2->item_inv->type,id));
     take_item(p, item2); 
@@ -35,15 +35,16 @@ int main(){
     printf("----------------------------------\n");
     suiv_current(p->inventory);
     display_current(p->inventory);
+    printf("nb_elm : %d\n",p->inventory->nb_item);
 
     printf("\n\n----------------------------------\n\n");
     printf("\n\n----------------------------------\n\n");
     printf("Ajout de l'item 3 \n\n");
     suiv_current(p->inventory);
-    //add_current(item3, p->inventory);
     take_item(p, item3); 
+    
     display_inventory(p->inventory);
-
+    printf("nb_elm : %d\n",p->inventory->nb_item);
 
 
     printf("\n\n----------------------------------\n\n");
@@ -51,11 +52,14 @@ int main(){
     printf("\n\n----------------------------------\n\n");
     printf("take item 1\n\n");
     take_item(p, item);
-    printf("take item 3\n\n");
+    printf("nb_elm : %d\n",p->inventory->nb_item);
     take_item(p, item3);
     printf("Display\n");
-    display_inventory(p->inventory);
 
+    printf("take item 4\n\n");
+    take_item(p, item4);
+  
+    display_inventory(p->inventory);
 
 
     printf("\n\n----------------------------------\n\n");
@@ -72,18 +76,25 @@ int main(){
     printf("----------------------------------\n");
     display_current(p->inventory);
     suiv_current(p->inventory);
-
+    printf("nb_elm : %d\n",p->inventory->nb_item);
     printf("\n\n----------------------------------\n\n");
+
+
+
     printf("INVENTORY");
     printf("\n\n----------------------------------\n");
     display_inventory(p->inventory);
-
+    printf("nb_elm : %d\n",p->inventory->nb_item);
     printf("\n\n----------------------------------\n\n");
+
+
     printf("Current");
     printf("\n\n----------------------------------\n");
-
+    printf("nb_elm : %d\n",p->inventory->nb_item);  
     p->inventory->current=find_queue(p->inventory);
     display_current(p->inventory);
+
+
     printf("\n\n----------------------------------\n\n");
     printf("PREC");
     printf("\n\n----------------------------------\n");
