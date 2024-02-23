@@ -9,7 +9,7 @@
 
 
 // Dimensions de la fenêtre
-const int SCREEN_WIDTH = 1820;
+const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
 // Dimensions et position des boutons
@@ -38,7 +38,7 @@ bool init_SDL(SDL_Window** window, SDL_Renderer** renderer) {
 
 
     // Création de la fenêtre
-    *window = SDL_CreateWindow("Menu SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    *window = SDL_CreateWindow("Menu SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_BORDERLESS);
     if (*window == NULL) {
         printf("La fenêtre n'a pas pu être créée! SDL_Error: %s\n", SDL_GetError());
         return false;
@@ -53,6 +53,14 @@ bool init_SDL(SDL_Window** window, SDL_Renderer** renderer) {
     }
 
 
+    //Mettre une image comme icone
+    SDL_Surface* icon = IMG_Load("wall.jpg");
+        
+
+    //Icone de la fenêtre
+    void SDL_SetWindowIcon(SDL_Window * window, SDL_Surface * icon);
+    SDL_SetWindowIcon(*window, icon);
+    
     return true;
 }
 
@@ -87,65 +95,97 @@ bool load_Media(SDL_Renderer* renderer, SDL_Texture** textureBackground, SDL_Tex
     // Libérer la surface chargée
     SDL_FreeSurface(loadedSurface);
 
+   
+        // Charger les images des boutons JPEG
+        loadedSurface = IMG_Load("Quit.jpg"); //Boutton Pour Quitter le jeu
+        if (loadedSurface == NULL) {
+            printf("Impossible de charger l'image du bouton Quit JPG! SDL_image Error: %s\n", IMG_GetError());
+            return false;
+        }
 
-    // Charger les images des boutons JPEG
-    loadedSurface = IMG_Load("Quit.jpg"); //Boutton Pour Quitter le jeu
-    if (loadedSurface == NULL) {
-        printf("Impossible de charger l'image du bouton Quit JPG! SDL_image Error: %s\n", IMG_GetError());
-        return false;
-    }
-
-    *textureButton1 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-    if (*textureButton1 == NULL) {
-        printf("Impossible de créer la texture du bouton Quit à partir de la surface! SDL_Error: %s\n", SDL_GetError());
-        return false;
-    }
-    SDL_FreeSurface(loadedSurface);
-
-
-
-    loadedSurface = IMG_Load("Play.jpg"); //Boutton pour lance le jeu
-    if (loadedSurface == NULL) {
-        printf("Impossible de charger l'image du bouton Play JPG! SDL_image Error: %s\n", IMG_GetError());
-        return false;
-    }
-
-    *textureButton2 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-    if (*textureButton2 == NULL) {
-        printf("Impossible de créer la texture du bouton play à partir de la surface! SDL_Error: %s\n", SDL_GetError());
-        return false;
-    }
-    SDL_FreeSurface(loadedSurface);
+        *textureButton1 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+        if (*textureButton1 == NULL) {
+            printf("Impossible de créer la texture du bouton Quit à partir de la surface! SDL_Error: %s\n", SDL_GetError());
+            return false;
+        }
+        SDL_FreeSurface(loadedSurface);
 
 
 
-    loadedSurface = IMG_Load("Engrenage.jpg"); //Boutton pour les paramètres
-    if (loadedSurface == NULL) {
-        printf("Impossible de charger l'image du bouton Engrenage JPG! SDL_image Error: %s\n", IMG_GetError());
-        return false;
-    }
+        loadedSurface = IMG_Load("Play.jpg"); //Boutton pour lance le jeu
+        if (loadedSurface == NULL) {
+            printf("Impossible de charger l'image du bouton Play JPG! SDL_image Error: %s\n", IMG_GetError());
+            return false;
+        }
 
-    *textureButton3 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-    if (*textureButton3 == NULL) {
-        printf("Impossible de créer la texture du bouton Engrenage à partir de la surface! SDL_Error: %s\n", SDL_GetError());
-        return false;
-    }
-    SDL_FreeSurface(loadedSurface);
+        *textureButton2 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+        if (*textureButton2 == NULL) {
+            printf("Impossible de créer la texture du bouton play à partir de la surface! SDL_Error: %s\n", SDL_GetError());
+            return false;
+        }
+        SDL_FreeSurface(loadedSurface);
 
 
 
-    loadedSurface = IMG_Load("Credit.jpg"); //Boutton pour
-    if (loadedSurface == NULL) {
-        printf("Impossible de charger l'image du bouton Crédit JPG! SDL_image Error: %s\n", IMG_GetError());
-        return false;
-    }
+        loadedSurface = IMG_Load("Engrenage.jpg"); //Boutton pour les paramètres
+        if (loadedSurface == NULL) {
+            printf("Impossible de charger l'image du bouton Engrenage JPG! SDL_image Error: %s\n", IMG_GetError());
+            return false;
+        }
 
-    *textureButton4 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-    if (*textureButton4 == NULL) {
-        printf("Impossible de créer la texture du bouton de crédit à partir de la surface! SDL_Error: %s\n", SDL_GetError());
-        return false;
-    }
-    SDL_FreeSurface(loadedSurface);
+        *textureButton3 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+        if (*textureButton3 == NULL) {
+            printf("Impossible de créer la texture du bouton Engrenage à partir de la surface! SDL_Error: %s\n", SDL_GetError());
+            return false;
+        }
+        SDL_FreeSurface(loadedSurface);
+
+
+
+        loadedSurface = IMG_Load("Credit.jpg"); //Boutton pour
+        if (loadedSurface == NULL) {
+            printf("Impossible de charger l'image du bouton Crédit JPG! SDL_image Error: %s\n", IMG_GetError());
+            return false;
+        }
+
+        *textureButton4 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+        if (*textureButton4 == NULL) {
+            printf("Impossible de créer la texture du bouton de crédit à partir de la surface! SDL_Error: %s\n", SDL_GetError());
+            return false;
+        }
+        SDL_FreeSurface(loadedSurface);
+
+    
+
+
+        // Charger les images des boutons JPEG
+        loadedSurface = IMG_Load("Quit.jpg"); //Boutton Pour Quitter le jeu
+        if (loadedSurface == NULL) {
+            printf("Impossible de charger l'image du bouton Quit JPG! SDL_image Error: %s\n", IMG_GetError());
+            return false;
+        }
+
+        *textureButton1 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+        if (*textureButton1 == NULL) {
+            printf("Impossible de créer la texture du bouton Quit à partir de la surface! SDL_Error: %s\n", SDL_GetError());
+            return false;
+        }
+        SDL_FreeSurface(loadedSurface);
+
+
+
+        loadedSurface = IMG_Load("Play.jpg"); //Boutton pour lance le jeu
+        if (loadedSurface == NULL) {
+            printf("Impossible de charger l'image du bouton Play JPG! SDL_image Error: %s\n", IMG_GetError());
+            return false;
+        }
+
+        *textureButton2 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+        if (*textureButton2 == NULL) {
+            printf("Impossible de créer la texture du bouton play à partir de la surface! SDL_Error: %s\n", SDL_GetError());
+            return false;
+        }
+        SDL_FreeSurface(loadedSurface);
 
 
 
@@ -173,11 +213,9 @@ void handle_Click(SDL_Event* event, bool* quit) {
         // Vérifier si le clic se trouve dans la zone du boutton paramètre et créer la fenêtre de paramètre
         if((mouseX >= BUTTON_QUIT_X && mouseX <= BUTTON_QUIT_X + BUTTON_WIDTH) && (mouseY >= BUTTON_QUIT_Y - (2 * (BUTTON_HEIGHT + BUTTON_MARGIN)) && mouseY <= BUTTON_QUIT_Y - (2 * (BUTTON_HEIGHT + BUTTON_MARGIN)) + BUTTON_HEIGHT)){
             
-            *quit = true;
-
-
+            SDL_CreateWindow("Paramètre", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_BORDERLESS);
+            
         }
-
 
     }
 }
@@ -193,18 +231,11 @@ void close_SDL(SDL_Window* window, SDL_Renderer* renderer) {
 
     // Libérer la fenêtre
     SDL_DestroyWindow(window);
-
+    
 
     // Quitter SDL
     SDL_Quit();
 }
-
-
-
-
-
-
-
 
 
 
@@ -218,7 +249,8 @@ int main(int argc, char* args[]) {
     SDL_Texture* textureButton3 = NULL;
     SDL_Texture* textureButton4 = NULL;
     bool quit = false;
-
+    int secu = 0;
+    
 
     // Initialiser SDL
     if (!init_SDL(&window, &renderer)) {
@@ -237,17 +269,7 @@ int main(int argc, char* args[]) {
     SDL_Event e;
     while (!quit) {
 
-        // Gestion des événements
-        while (SDL_PollEvent(&e) != 0) {
-            // Si l'utilisateur veut quitter
-            if (e.type == SDL_QUIT) {
-                quit = true;
-            }
-
-            // Gérer les clics de souris
-            handle_Click(&e, &quit);
-        }
-
+           
 
         // Effacer l'écran
         SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -283,8 +305,22 @@ int main(int argc, char* args[]) {
         }
 
 
+        // Gestion des événements
+        while (SDL_PollEvent(&e) != 0) {
+            // Si l'utilisateur veut quitter
+            if (e.type == SDL_QUIT) {
+                quit = true;
+            }
+
+            // Gérer les clics de souris
+            handle_Click(&e, &quit);
+        }
+
+
         // Mettre à jour l'écran
         SDL_RenderPresent(renderer);
+        
+        
     }
 
 
