@@ -38,19 +38,15 @@ int main(int argc, char** argv){
         pWindow = SDL_CreateWindow("Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
         if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
-            fprintf(stderr, "Erreur Init: %s\n", IMG_GetError());
-            SDL_Quit();
-            return 1;
-        }
-
-        if (pWindow) {
+            fprintf(stderr, "Erreur Init: %s\n", IMG_GetError());#include "mat.h"
             SDL_Renderer *pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
 
             if (pRenderer) {
                 SDL_Texture* Walktest = NULL;
+                SDL_Texture* background=NULL;
 
                 Walktest = loadTexture("../img/test(1).png", pRenderer);
-                SDL_Texture* background = loadTexture("../img/Wallhaven.png", pRenderer);
+                background = loadTexture("../img/Wallhaven.png", pRenderer);
                 SDL_RenderPresent(pRenderer);
 
                 if (Walktest != NULL && background != NULL) {
@@ -68,9 +64,8 @@ int main(int argc, char** argv){
                             x+=32;
                         }
                         x=0;
-
-                        SDL_RenderCopy(pRenderer, background, NULL, &dest);
-                        SDL_RenderCopy(pRenderer,Walktest,src+0,&dest); //copie du personnage dans sa position de base
+                        SDL_RenderCopy(pRenderer, background,0,&destBackground);
+                        SDL_RenderCopy(pRenderer,Walktest,src+0,&destWalktest); //copie du personnage dans sa position de base
                         SDL_RenderPresent(pRenderer); // Affichage
 
                         SDL_Event event;
@@ -85,7 +80,7 @@ int main(int argc, char** argv){
 /* ----------------------------------------------------- Detection des frappes ----------------------------------------------------- */
 
                         while (!quit) {
-                        
+                            
                             // recuperation du clique sur le bouton de fermeture et met fin a la boucle
                             while (SDL_PollEvent(&event) != 0) {
                                 if (event.type == SDL_QUIT) {
@@ -148,16 +143,16 @@ int main(int argc, char** argv){
                             /*------------------------------ Run -------------------------------*/
 
                             if (KeyIsPressed==1) {
-                                dest.x+=10;
+                                destWalktest.x+=10;
                                 SDL_RenderClear(pRenderer);
-                                SDL_RenderCopy(pRenderer,Walktest,src+((++i)%11),&dest);
+                                SDL_RenderCopy(pRenderer,Walktest,src+((++i)%11),&destWalktest);
                                 SDL_Delay(50);
                                 SDL_RenderPresent(pRenderer); // Affichage run à droite
                             }
                             else if(KeyIsPressed==2){
-                                dest.x-=10;
+                                destWalktest.x-=10;
                                 SDL_RenderClear(pRenderer);
-                                SDL_RenderCopyEx(pRenderer,Walktest,src+((++i)%11),&dest, 0, NULL, SDL_FLIP_HORIZONTAL);
+                                SDL_RenderCopyEx(pRenderer,Walktest,src+((++i)%11),&destWalktest, 0, NULL, SDL_FLIP_HORIZONTAL);
                                 SDL_Delay(50);
                                 SDL_RenderPresent(pRenderer); // Affichage run à gauche
                             }
@@ -166,12 +161,12 @@ int main(int argc, char** argv){
 
                             else if(KeyIsPressed==0 && lastDirection == 1){
                                 SDL_RenderClear(pRenderer);
-                                SDL_RenderCopy(pRenderer,Walktest,src+0,&dest);
+                                SDL_RenderCopy(pRenderer,Walktest,src+0,&destWalktest);
                                 SDL_RenderPresent(pRenderer); // Affichage statique
                             }
                             else if(KeyIsPressed==0 && lastDirection == 2){
                                 SDL_RenderClear(pRenderer);
-                                SDL_RenderCopyEx(pRenderer,Walktest,src+0,&dest, 0, NULL, SDL_FLIP_HORIZONTAL);
+                                SDL_RenderCopyEx(pRenderer,Walktest,src+0,&destWalktest, 0, NULL, SDL_FLIP_HORIZONTAL);
                                 SDL_RenderPresent(pRenderer); // Affichage statique
                             }
 
