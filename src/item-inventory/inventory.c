@@ -46,44 +46,7 @@ void add(item_t *item, item_list *list)
     list->nb_item++;
     weight_calc(list);
 }
-/*
-void add_current(item_t *item, item_list *list)
-{
-    printf("1\n");
-    if (empty_inventory(list))
-    {
-        printf("2\n");
-        add_first(item, list);
-    }
-    else{
-        if(list->current==list->queue){
-            printf("3\n");
-            add_last(item,list);
-        }
-        else if(list->current==list->head){
-            printf("4\n");
-            add_first(item,list);
-        }
-        else{
-            printf("5\n");
-            item->prec = list->current;
-            printf("5-1\n");
-            item->suiv = list->current->suiv;
-            printf("5-2\n");
-            list->current->suiv = item;
-            
-            printf("5-3\n");
-            printf("%p\n",list->current->suiv->prec);
-            printf("%p\n",list->current);
-            list->current->suiv->suiv->prec = item;
-        }
-        
-        
-    }
-    list->nb_item++;
-    weight_calc(list);
-}
-*/
+
 
 item_t *find_queue(item_list *list)
 {
@@ -127,55 +90,27 @@ void display_inventory(const item_list *list)
     printf("Poids Total : %d\n", list->weight);
 }
 
-void destroy_current(item_list *list)
+void destroy_inventory(perso *p)
 {
-    item_t *item = list->current;
-    if (item == list->head)
-    {
-        list->head = item->suiv;
-        list->head->prec = NULL;
-        list->queue->suiv = NULL;
-        list->current = list->head;
-        destroy_common(&item,&list->nb_item);
-    }
-    else if (item == list->queue)
-    {
-        list->queue = item->prec;
-        list->queue->suiv = NULL;
-        list->head->prec = NULL;
-        list->current = list->queue;
-        destroy_common(&item,&list->nb_item);
-    }
-    else
-    {
-        item->prec->suiv = item->suiv;
-        item->suiv->prec = item->prec;
-        list->current = item->prec;
-       destroy_common(&item,&list->nb_item);
-    }
-    if (list->nb_item == 0)
-    {
-        destroy_inventory(&list);
-    }
-}
-
-void destroy_inventory(item_list **list)
-{
-    item_t *item = (*list)->head;
+    int nb_item = p->inventory->nb_item;
     item_t *suiv;
-    printf("Nombre d'item : %d\n",(*list)->nb_item);
-    for(int i=0;i<(*list)->nb_item;i++)
-    {
-        
-        suiv = item->suiv;
-        destroy_common(&item,&(*list)->nb_item);
-        item = suiv;
+    p->inventory->current=p->inventory->head;
+    printf("Nombre d'item : %d\n",nb_item);
+    for(int i=0;i<nb_item;i++)
+    {   
+        suiv=p->inventory->current->suiv;
+        printf("Item: %p\n", p->inventory->current);
+        printf("Item->suiv: %p\n", p->inventory->current->suiv);
+        printf("Destruction...\n");
+        destroy_common(p);
+        printf("End of destruction...\n");
+        p->inventory->current=suiv;
     }
-    (*list)->head = NULL;
-    (*list)->queue = NULL;
-    (*list)->current = NULL;
-    free(*list);
-    *list = NULL;
+    p->inventory->current=NULL;
+    p->inventory->head=NULL;
+    p->inventory->queue=NULL;
+    free(p->inventory);
+    p->inventory = NULL;
 }
 
 void suiv_current(item_list *list)
@@ -254,3 +189,16 @@ void display_queue(const item_list *list)
 {
     display_common(*list->queue->item_inv);
 }
+
+void check_inventory(perso *p){
+    p->inventory->current=p->inventory->head;
+    for(int i=0;i<p->inventory->nb_item;i++){
+        if(p->inventory->current->item_inv->quantity<=0){
+            destroy_common(p);
+        }
+        else{
+            suiv_current(p->inventory);
+        }
+    }
+    weight_calc(p->inventory);
+} 

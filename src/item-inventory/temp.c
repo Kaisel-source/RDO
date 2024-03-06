@@ -11,7 +11,7 @@ void init_perso(perso *p, char *name,int end, int agi, int str, int luck,int int
     p->stat->luck = luck;
     p->stat->agi = agi;
     p->stat->end = end;
-
+    p->stat->available=0;
 
     p->hp_max = p->stat->end*10;
     p->mp_max = p->stat->intel*10;
@@ -24,6 +24,8 @@ void init_perso(perso *p, char *name,int end, int agi, int str, int luck,int int
     p->xp_max=0;
     
     p->weight_max=p->stat->str*10;
+
+    p->money=100;
 
     p->inventory = create_inventory();
 
@@ -74,21 +76,33 @@ int in_inventory(perso *p, int id, type_it type){
 void display_perso(const perso p){
     printf("Nom: %s\n", p.name);
     printf("Niveau: %d\n\n", p.level);
-    printf("XP: %d\n", p.xp);
-    printf("XP max: %d\n\n", p.xp_max);
-    printf("HP: %d\n", p.hp);
-    printf("HP max: %d\n\n", p.hp_max);
-    printf("MP: %d\n", p.mp);
-    printf("MP max: %d\n\n", p.mp_max);
+    printf("XP: %d / %d\n", p.xp,p.xp_max);
+    printf("HP: %d / %d\n", p.hp, p.hp_max);
+    printf("MP: %d / %d\n", p.mp, p.mp_max);
     printf("Poids max: %d\n\n", p.weight_max);
+    printf("Argent: %d\n\n", p.money);
     printf("Statistiques:\n");
     printf("Endurance: %d\n", p.stat->end);
     printf("Agilité: %d\n", p.stat->agi);
     printf("Force: %d\n", p.stat->str);
     printf("Chance: %d\n", p.stat->luck);
     printf("Intelligence: %d\n\n", p.stat->intel);
-    printf("Inventaire:\n");
+    display_equipement(p);
+    printf("\n\nInventaire:\n");
     display_inventory(p.inventory);
+}
+
+void display_equipement(const perso p){
+    printf("Equipement:\n");
+    for(int i=0;i<7;i++){
+        if(p.eqpmt[i]!=NULL){
+            display_eqpmt(*p.eqpmt[i]);
+        }
+        else{
+            printf("Emplacement vide\n");
+        
+        }
+    }
 }
 
 void destroy_perso(perso **p){
@@ -97,8 +111,17 @@ void destroy_perso(perso **p){
         (*p)->name=NULL;
         free((*p)->stat);
         (*p)->stat=NULL;
-        destroy_inventory(&((*p)->inventory));
+        destroy_inventory(*p);
         free(*p);
         *p=NULL;
+    }
+}
+
+void level_up(perso *p){
+    while(p->xp>=p->xp_max){
+        p->level++;
+        p->xp_max*=2;
+        p->xp=p->xp-p->xp_max;
+        p->stat->available+=5;
     }
 }

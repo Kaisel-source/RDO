@@ -3,39 +3,8 @@
 #include "common.h"
 #include "struct.h"
 
-typedef struct stat_p{
-    int intel;
-    int str;
-    int luck;
-    int agi;
-    int end;
-
-    //int available;
-}stat_s;
 
 
-
-typedef struct pers{
-    char *name;
-
-    stat_s *stat;
-
-    int hp;
-    int hp_max;
-
-    int mp;
-    int mp_max;
-
-    int xp;
-    int xp_max;
-
-    int level;
-
-    unsigned int weight_max;
-    int money;
-
-    item_list *inventory;
-} perso;
 
 
 
@@ -88,4 +57,7 @@ int in_inventory(perso *p, int id,type_it type);
  */
 void destroy_perso(perso **p);
 
+void display_equipement(const perso p);
+
+void level_up(perso *p);
 #endif

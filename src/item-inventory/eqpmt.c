@@ -106,3 +106,130 @@ void eqpmt_destructor(inv_item_s** item){ //Passer **
     free(*item);
     *item=NULL;
 }
+
+
+void use_eqpmt(perso *p,item_eqpmt *eqpmt){
+    switch (eqpmt->type){
+        case HEAD:
+            p->eqpmt[0]=eqpmt;
+            break;
+        case BODY:
+            p->eqpmt[1]=eqpmt;
+            break;
+        case LEGS:
+            p->eqpmt[2]=eqpmt;
+            break;
+        case FOOT:
+            p->eqpmt[3]=eqpmt;
+            break;
+        case RING:
+            p->eqpmt[4]=eqpmt;
+            break;
+        case WEAPON:
+            p->eqpmt[5]=eqpmt;
+            break;
+        case SHIELD:
+            p->eqpmt[6]=eqpmt;
+            break;
+        default:
+            printf("Erreur d'utilisation\n");
+            break;
+    }
+}
+
+void remove_eqpmt(perso *p, item_t *item){
+    switch (item->item_inv->item_u->eqpmt->type){
+        case HEAD:
+            p->eqpmt[0]=NULL;
+            break;
+
+        case BODY:
+            p->eqpmt[1]=NULL;
+            break;
+
+        case LEGS:
+            p->eqpmt[2]=NULL;
+            break;
+
+        case FOOT:
+            p->eqpmt[3]=NULL;
+            break;
+
+        case RING:
+            p->eqpmt[4]=NULL;
+            break;
+
+        case WEAPON:
+            p->eqpmt[5]=NULL;
+            break;
+
+        case SHIELD:
+            p->eqpmt[6]=NULL;
+            break;
+
+        default:
+            printf("Erreur de suppression\n");
+            break;
+    }
+}
+
+
+int is_equip(perso *p, item_t *item){
+    int id= item->item_inv->item_u->eqpmt->id;
+    eqpmt_type type_equip= item->item_inv->item_u->eqpmt->type;
+    switch (type_equip){
+        case HEAD:
+            if(p->eqpmt[0]==NULL)
+                return 0;
+            else
+                return p->eqpmt[0]->id==id;
+            break;
+
+        case BODY:
+            if(p->eqpmt[1]==NULL)
+                return 0;
+            else
+                return p->eqpmt[1]->id==id;
+            break;
+        case LEGS:
+            if(p->eqpmt[2]==NULL)
+                return 0;
+            else
+                return p->eqpmt[2]->id==id;
+            break;
+
+        case FOOT:
+            if(p->eqpmt[3]==NULL)
+                return 0;
+            else
+                return p->eqpmt[3]->id==id;
+            break;
+
+        case RING:
+            if(p->eqpmt[4]==NULL)
+                return 0;
+            else
+                return p->eqpmt[4]->id==id;
+            break;
+
+        case WEAPON:
+            if(p->eqpmt[5]==NULL)
+                return 0;
+            else
+                return p->eqpmt[5]->id==id;
+            break;
+        case SHIELD:
+            if(p->eqpmt[6]==NULL)
+                return 0;
+            else
+                return p->eqpmt[6]->id==id;
+            break;
+
+        default:
+            printf("Erreur de verification\n");
+            break;
+    }
+
+    return -1;
+    
+}

@@ -2,10 +2,12 @@
 #define COMMON_H
 
 #include "struct.h"
-#include "eqpmt.h"
+
 #include "ressource.h"
 #include "inventory.h"
 #include "temp.h"
+#include "consommable.h"
+#include "eqpmt.h"
 
 #define ERROR -1
 #define TRUE 1
@@ -25,7 +27,7 @@ void display_common(const inv_item_s item);
  * 
  * @param item Item to destroy
  */
-void destroy_common(item_t **item, int *nb_item);
+void destroy_common(perso *p);
 
 /**
  * @brief 
@@ -33,6 +35,6 @@ void destroy_common(item_t **item, int *nb_item);
  * @param item 
  * @param player 
  */
-void use_common(item_t *item, perso *player);
+void use_common(perso *player);
 
 #endif

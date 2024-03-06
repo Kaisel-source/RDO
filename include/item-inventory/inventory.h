@@ -4,6 +4,7 @@
 #include "struct.h"
 #include "common.h"
 #include "eqpmt.h"
+#include "temp.h"
 
 
 /**
@@ -138,7 +139,7 @@ void weight_calc(item_list *list);
  * 
  * @param list List to destroy the current item
  */
-void destroy_current(item_list *list);
+//void destroy_current(item_list *list);
 
 
 
@@ -147,9 +148,9 @@ void destroy_current(item_list *list);
  * 
  * @param list List to destroy
  */
-void destroy_inventory(item_list **list);
+void destroy_inventory(perso *p);
 
 
-
+void check_inventory(perso *p);
 
 #endif

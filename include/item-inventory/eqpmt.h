@@ -1,8 +1,9 @@
 #ifndef EQPMT_H
 #define EQPMT_H
 
+#include "common.h"
 #include "struct.h"
-
+#include "temp.h"
 
 /**
  * @brief : Create an item and convert it to an inventory item
@@ -54,6 +55,22 @@ char* name_eqpmt(int type);
  */
 void eqpmt_destructor(inv_item_s** item);
 
+/**
+ * @brief : Use the equipement
+ * 
+ * @param p : Personnage who use the equipement
+ * @param eqpmt : Equipement to use
+ */
+void use_eqpmt(perso *p,item_eqpmt *eqpmt);
+
+/**
+ * @brief : Remove the equipement from the personnage
+ * 
+ * @param p : Personnage who remove the equipement
+ * @param item : Equipement to remove
+ */
+void remove_eqpmt(perso *p, item_t *item);
 
 
+int is_equip(perso *p, item_t *item);
 #endif

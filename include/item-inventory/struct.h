@@ -14,12 +14,10 @@ typedef enum dmg_type {
 } dmg_t;
 
 typedef enum type_item{
-    RESSOURCE,EQPMT,MODIF
+    RESSOURCE,EQPMT,MODIF,CONSUM
 } type_it;
 
-typedef enum modif_type{
-    CONSUM,PERMANENT
-} modif_t;
+
 
 typedef struct stat {
     int damage;
@@ -53,10 +51,29 @@ typedef struct ressource{
 
 } item_ress;
 
+typedef struct conso {
+    char* name;
+    int id;
+    int poids;
+    int price;
+
+    int hp;
+    int mp;
+
+    int exp;
+    int available;
+
+    char *desc;
+} conso_s;
+
 typedef union item_inv{
     item_eqpmt *eqpmt;
     item_ress *ress;
+    conso_s *conso;
 }it_iv;
+
+
+
 
 
 typedef struct inv_item{
@@ -80,5 +97,44 @@ typedef struct item_list{
     item_t *queue;
     int nb_item;
 }item_list;
+
+
+/*-------------- PERSO -------------- */
+
+typedef struct stat_p{
+    int intel;
+    int str;
+    int luck;
+    int agi;
+    int end;
+
+    int available; //point to spend
+}stat_s;
+
+typedef struct pers{
+    char *name;
+
+    stat_s *stat;
+
+    int hp;
+    int hp_max;
+
+    int mp;
+    int mp_max;
+
+    int xp;
+    int xp_max;
+
+    int level;
+
+    unsigned int weight_max;
+    int money;
+
+    item_eqpmt *eqpmt[7]; //0: head, 1: body, 2: legs, 3: foot, 4:ring , 5: weapon, 6: shield
+    item_list *inventory;
+
+    //image ref
+} perso;
+
 
 #endif

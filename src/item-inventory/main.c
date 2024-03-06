@@ -110,7 +110,9 @@ int main(){
     prec_current(p->inventory);
     display_current(p->inventory);
 
-
+    printf("Perso");
+    printf("\n\n----------------------------------\n");
+    display_perso(*p);
     printf("\nDestruction du perso \n\n");
     destroy_perso(&p);
 

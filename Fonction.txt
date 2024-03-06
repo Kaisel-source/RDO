@@ -1,0 +1,62 @@
+Equipement:
+        Creer // Parametre de l'item
+        Detruire // inv_item_s 
+        Afficher item_eqpmt
+        Equiper perso , item_eqpmt
+        Désequiper perso , item_t
+
+------------------------------------------------------
+
+Ressource:
+        Creer
+        Detruire
+        Afficher 
+
+------------------------------------------------------
+
+Consommable:
+        Creer
+        Detruire
+        Afficher
+        Utiliser
+
+
+------------------------------------------------------
+
+Commun:
+        Detruire
+        Afficher
+        Utiliser
+        Ajouter
+        Supprimer
+
+        Importer/Exporter  A FAIRE
+
+------------------------------------------------------
+
+Inventaire:
+        Creer
+        Detruire //Need fix
+        Afficher
+        Calculer poids
+        Verifier inventaire
+        Detruire courant
+        Passer item
+        Ajouter Item
+
+------------------------------------------------------
+
+Personnage:
+        Creer
+        Detruire
+        Afficher
+        Prendre item
+        Level Up
+
+------------------------------------------------------
+                    A FAIRE:
+Modifier:
+        Creer
+        Detruire
+        Afficher
+        Utiliser
