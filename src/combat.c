@@ -36,13 +36,13 @@ typedef struct{
 
 
 
-pos_t detecte_enemie_proche(entite_t * mat[N][N],pos_t pos,int equipe){
+pos_t detecte_enemie_proche(entite_t  mat[N][N],pos_t pos,int equipe){
     int i,j;
     int plus_procheX=-1,plus_procheY=-1;
     double distance_min = INFINITY;
     for(i=0;i<N;i++){
         for(j=0;j<N;j++){       //parcours la matrice 
-            if(mat[i][j]->equipe!=equipe && mat[i][j]->equipe!=0){   //Si il trouve un enemie
+            if(mat[i][j].equipe!=equipe && mat[i][j].equipe!=0){   //Si il trouve un enemie
                 double distance = sqrt(pow(i-pos.y, 2) + pow(j-pos.x, 2));
                 if(distance < distance_min){
                     distance_min = distance;
@@ -56,9 +56,15 @@ pos_t detecte_enemie_proche(entite_t * mat[N][N],pos_t pos,int equipe){
         pos.x = plus_procheX;
         pos.y = plus_procheY;
     }
+    //renvoie la position la plus proche de 1 de distance
     return pos;
 }
 
+void deplacePlusProche(entite_t  plateau[N][N],pos_t pos,entite_t  perso){
+    pos_t dep;
+    dep=detecte_enemie_proche(plateau,pos,perso.equipe);
+    plateau[dep.x][dep.y]=perso;
+}
 
 
 void setButtonImage(SDL_Renderer* renderer, SDL_Texture* imageTexture, SDL_Rect* buttonRect) {
@@ -69,6 +75,7 @@ typedef struct {
     SDL_Rect rect;       // Rectangle définissant la position et la taille du bouton
     SDL_Texture* texture; // Texture du bouton (à générer avec SDL_CreateTextureFromSurface())
 } Button;
+
 
 
 SDL_Rect getButtonRect(int bouttonx, int bouttony) {
@@ -89,22 +96,27 @@ int main(){
     perso1.pv=100;
     perso1.pv_max=100;
     perso1.attaque=10;
+    perso1.equipe=1;
+
     entite_t perso2;
     perso2.pv=100;
     perso2.pv_max=100;
     perso2.attaque=10;
+    perso2.equipe=2;
 
+    pos_t pos1;
+    pos_t pos2;
+
+    int cpt1;
+    int banc = 100;
 
     entite_t  plateau_de_combat[GRID_ROWS][GRID_COLUMNS];
-    printf("\n ICI");
     for(int i=0;i<=GRID_ROWS;i++){
         for(int j=0;j<=GRID_COLUMNS;j++){
             plateau_de_combat[i][j].pv=0;
             plateau_de_combat[i][j].pv_max=0;
         }
     }
-
-    
 
 
     //declare les surfaces de case sous forme de button
@@ -113,10 +125,10 @@ int main(){
     Button buttonRect;
 
     //creation de fenetre 
-    SDL_Window* window = SDL_CreateWindow("Grille de boutons SDL",
+    SDL_Window* window = SDL_CreateWindow("RDO TEST",
     SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
-     // Création d'un renderer pour dessiner dans la fenêtre
+    // Création d'un renderer pour dessiner dans la fenêtre
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     // Calcul de la taille de la grille
@@ -161,7 +173,6 @@ int main(){
     SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
     SDL_FreeSurface(backgroundSurface);
 
-    int banc=100;
     // Calcul de la position de la grille
     int gridX = (SCREEN_WIDTH-gridWidth);
     int gridY = (SCREEN_HEIGHT-gridHeight)/2;
@@ -188,7 +199,6 @@ int main(){
                             int buttonY = gridY + row * (BUTTON_SIZEy + BUTTON_MARGIN);
                             if (mouseX >= buttonX && mouseX <= buttonX + BUTTON_SIZEx && mouseY >= buttonY && mouseY <= buttonY + BUTTON_SIZEy) {
                                 printf("Bouton (%d, %d) cliqué !\n", row, column);
-                                
                             }
                         }
                      }
@@ -212,14 +222,19 @@ int main(){
                 buttonRect.rect.h = BUTTON_SIZEy;
                 if(plateau_de_combat[row][column].pv>0){
                     setButtonImage(renderer,plateau_de_combat[row][column].img,&buttonRect.rect);
-                    plateau_de_combat[row][column].pv-=1;
                     SDL_Delay(100);
+                    pos1.x=row;
+                    pos1.y=column;
+                    deplacePlusProche(plateau_de_combat,pos1,plateau_de_combat[row][column]);
+                    printf("%d %d",pos1.x,pos1.y);
                 }else{
                     setButtonImage(renderer,buttonTexture2,&buttonRect.rect);
                 }
 
             }
         }
+
+
         SDL_RenderPresent(renderer);
     }
 
