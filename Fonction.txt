@@ -36,7 +36,7 @@ Commun:
 
 Inventaire:
         Creer
-        Detruire //Need fix
+        Detruire
         Afficher
         Calculer poids
         Verifier inventaire

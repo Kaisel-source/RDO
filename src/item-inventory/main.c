@@ -12,10 +12,10 @@ int main(){
     item_t *item2 ;
     item_t *item3 ;
     item_t *item4 ;
-    item = eqpmt_creator(1,"epee", WEAPON, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "une epee");
-    item2 = eqpmt_creator(2,"bouclier", SHIELD, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "un bouclier");
-    item3 = eqpmt_creator(3,"Casque", HEAD, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "un casque");
-    item4 = eqpmt_creator(4,"Armure", BODY, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "une armure");
+    item = eqpmt_creator(1,"epee", WEAPON, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "une epee",1);
+    item2 = eqpmt_creator(2,"bouclier", SHIELD, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "un bouclier",1);
+    item3 = eqpmt_creator(3,"Casque", HEAD, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "un casque",1);
+    item4 = eqpmt_creator(4,"Armure", BODY, PHYSICAL, 10, 10, 10, 10, 10, 10, 10, 10, 10, "une armure",1);
     
     printf("Ajout des items dans l'inventaire \n\n");
     printf("Ajout de l'item 1 \n\n");
@@ -110,11 +110,24 @@ int main(){
     prec_current(p->inventory);
     display_current(p->inventory);
 
-    printf("Perso");
+    printf("\n\n----------------------------------\n");
+    printf("PERSONNAGE");
     printf("\n\n----------------------------------\n");
     display_perso(*p);
+
+    printf("\n\n----------------------------------\n");
+    printf("SAVING...");
+    printf("\n\n----------------------------------\n");
+    export(p);
     printf("\nDestruction du perso \n\n");
     destroy_perso(&p);
 
+    printf("\n\n----------------------------------\n");
+    printf("IMPORT...");
+    printf("\n\n----------------------------------\n");
+    p=malloc(sizeof(perso));
+    import(p);
+    display_perso(*p);
+    destroy_perso(&p);
     return 0;
 }

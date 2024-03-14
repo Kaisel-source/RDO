@@ -1,8 +1,8 @@
 #include "../../include/item-inventory/consommable.h"
 
-item_t* conso_create(char* name,int id, int poids, int price, int hp, int mp, int xp,int available,char *desc)
+item_t* conso_create(char* name,int id, int poids, int price, int hp, int mp, int xp,int available,char *desc,int quantity)
 {
-    conso_s *conso = malloc(sizeof(conso_s));
+    item_conso *conso = malloc(sizeof(item_conso));
     it_iv* item_union= malloc(sizeof(it_iv));  // X
     inv_item_s *inv_item = malloc(sizeof(inv_item));  
     item_t* inv = malloc(sizeof(item_t));
@@ -27,7 +27,7 @@ item_t* conso_create(char* name,int id, int poids, int price, int hp, int mp, in
     item_union->conso = conso;
     inv_item->type = CONSUM;
     inv_item->item_u = item_union;
-    inv_item->quantity=1;
+    inv_item->quantity=quantity;
 
     //
     inv->item_inv=inv_item;
@@ -39,7 +39,7 @@ item_t* conso_create(char* name,int id, int poids, int price, int hp, int mp, in
 
 
 
-void display_conso(const conso_s conso)
+void display_conso(const item_conso conso)
 {
     printf("Nom: %s\nId: %d\nPoids: %d\nPrix: %d\nHP: %d\nMP: %d\nXP: %d\nAvailable: %d\nDescription: %s\n\n", conso.name, conso.id, conso.poids, conso.price, conso.hp, conso.mp, conso.exp,conso.available, conso.desc);
 }
@@ -70,7 +70,7 @@ void conso_destructor(inv_item_s** item){
 
 
 
-void use_conso(perso* p , conso_s* conso)
+void use_conso(perso* p , item_conso* conso)
 {
     p->hp += conso->hp;
     p->mp += conso->mp;

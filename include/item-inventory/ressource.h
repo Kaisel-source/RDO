@@ -13,7 +13,7 @@
  * @param desc  :  Description of the ressource
  * @return item_t*
  */
-item_t* ress_creator(int id, char* name, int price, int poids, char* desc);
+item_t* ress_creator(int id, char* name, int price, int poids, char* desc,int quantity);
 
 
 

@@ -1,5 +1,6 @@
 #ifndef COMMON_H
 #define COMMON_H
+#include <string.h>
 
 #include "struct.h"
 
@@ -37,4 +38,7 @@ void destroy_common(perso *p);
  */
 void use_common(perso *player);
 
+
+int export(const perso *p);
+int import(perso *p);
 #endif

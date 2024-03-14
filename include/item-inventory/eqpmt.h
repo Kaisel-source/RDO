@@ -24,7 +24,7 @@
  * @param desc : Description of the item
  * @return ** item_t* : Return the item converted to an inventory item
  */
-item_t* eqpmt_creator(int id, char* name, eqpmt_type type, dmg_t dmg_type, int damage, int defence, int str, int agi, int end, int luck, int intel, int price, int poids, char* desc);
+item_t* eqpmt_creator(int id, char* name, eqpmt_type type, dmg_t dmg_type, int damage, int defence, int str, int agi, int end, int luck, int intel, int price, int poids, char* desc,int quantity);
 
 
 

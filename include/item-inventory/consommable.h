@@ -15,7 +15,7 @@
  * @param desc : Description of the consumable
  * @return item_t* 
  */
-item_t* conso_create(char* name,int id, int poids, int price, int hp, int mp, int xp,int available,char *desc);
+item_t* conso_create(char* name,int id, int poids, int price, int hp, int mp, int xp,int available,char *desc,int quantity);
 
 /**
  * @brief : Free the memory of the consumable
@@ -29,7 +29,7 @@ void conso_destructor(inv_item_s** item);
  * 
  * @param conso : Consumable to display
  */
-void display_conso(const conso_s conso);
+void display_conso(const item_conso conso);
 
 /**
  * @brief : Use the consumable
@@ -37,4 +37,4 @@ void display_conso(const conso_s conso);
  * @param p : Personnage who use the consumable
  * @param conso : Consumable to use
  */
-void use_conso(perso* p,conso_s* conso);
+void use_conso(perso* p,item_conso* conso);

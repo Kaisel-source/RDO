@@ -64,12 +64,12 @@ typedef struct conso {
     int available;
 
     char *desc;
-} conso_s;
+} item_conso;
 
 typedef union item_inv{
     item_eqpmt *eqpmt;
     item_ress *ress;
-    conso_s *conso;
+    item_conso *conso;
 }it_iv;
 
 

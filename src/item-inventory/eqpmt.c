@@ -1,9 +1,9 @@
 #include "../../include/item-inventory/common.h"
 
-item_t* eqpmt_creator(int id, char* name, eqpmt_type type, dmg_t dmg_type,int dgt, int def, int end, int agi, int str, int luck,int intel,int price, int poids, char* desc) {
+item_t* eqpmt_creator(int id, char* name, eqpmt_type type, dmg_t dmg_type,int dgt, int def, int end, int agi, int str, int luck,int intel,int price, int poids, char* desc,int quantity) {
     //Creation of the item and allocation of memory
-    item_eqpmt* eqpmt = malloc(sizeof(item_eqpmt)); // X 
-    it_iv* item_union= malloc(sizeof(it_iv));  // X
+    item_eqpmt* eqpmt = malloc(sizeof(item_eqpmt)); 
+    it_iv* item_union= malloc(sizeof(it_iv));  
     inv_item_s *inv_item = malloc(sizeof(inv_item));  
     item_t* inv = malloc(sizeof(item_t));
 
@@ -19,7 +19,6 @@ item_t* eqpmt_creator(int id, char* name, eqpmt_type type, dmg_t dmg_type,int dg
     //Item damage and defence
     eqpmt->item_stat.defence = def;
     eqpmt->item_stat.damage = dgt;
-
     //Item stats modifiers
     eqpmt->item_stat.agi = agi;
     eqpmt->item_stat.str = str;
@@ -39,7 +38,7 @@ item_t* eqpmt_creator(int id, char* name, eqpmt_type type, dmg_t dmg_type,int dg
     item_union->eqpmt = eqpmt;
     inv_item->type = EQPMT;
     inv_item->item_u = item_union;
-    inv_item->quantity=1;
+    inv_item->quantity=quantity;
 
     //
     inv->item_inv=inv_item;
@@ -89,9 +88,9 @@ void eqpmt_destructor(inv_item_s** item){ //Passer **
     //Unnalocation of memory for the text items
     free((*item)->item_u->eqpmt->desc);
     free((*item)->item_u->eqpmt->name);
+    
     (*item)->item_u->eqpmt->desc=NULL;
     (*item)->item_u->eqpmt->name=NULL;
-    
 
     //Unnalocation of memory for the item
     free((*item)->item_u->eqpmt);

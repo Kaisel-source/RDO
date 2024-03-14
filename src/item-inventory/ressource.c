@@ -1,7 +1,7 @@
 #include "../../include/item-inventory/common.h"
 
 
-item_t* ress_creator(int id, char* name, int price, int poids, char* desc) {
+item_t* ress_creator(int id, char* name, int price, int poids, char* desc,int quantity) {
     //Creation of the ressource and allocation of memory
     item_ress* ress = malloc(sizeof(item_eqpmt));
     it_iv* item_union= malloc(sizeof(it_iv));
@@ -26,7 +26,7 @@ item_t* ress_creator(int id, char* name, int price, int poids, char* desc) {
     //Attribution to the union and the inventory item
     item_union->ress = ress;
     inv_item->type = RESSOURCE;
-    inv_item->quantity=1;
+    inv_item->quantity=quantity;
     inv_item->item_u = item_union;
 
     //

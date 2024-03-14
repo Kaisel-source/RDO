@@ -7,7 +7,7 @@ Ajout des items dans l'inventaire
 Ajout de l'item 1 
 
 N: 1
-Item: 0x6287b094d400
+Item: 0x57b0cb1f1430
 Quantité: 1
 Id : 1 
 Nom: epee
@@ -40,7 +40,7 @@ ID:2  QUANT : 0
 Ajout de l'item
 
 N: 2
-Item: 0x6287b094d400
+Item: 0x57b0cb1f1430
 Quantité: 1
 Id : 1 
 Nom: epee
@@ -57,7 +57,7 @@ Intelligence : 10
 Description : une epee 
 
 N: 2
-Item: 0x6287b094d4f0
+Item: 0x57b0cb1f1520
 Quantité: 1
 Id : 2 
 Nom: bouclier
@@ -106,7 +106,7 @@ Ajout de l'item 3
 Ajout de l'item
 
 N: 3
-Item: 0x6287b094d400
+Item: 0x57b0cb1f1430
 Quantité: 1
 Id : 1 
 Nom: epee
@@ -123,7 +123,7 @@ Intelligence : 10
 Description : une epee 
 
 N: 3
-Item: 0x6287b094d4f0
+Item: 0x57b0cb1f1520
 Quantité: 1
 Id : 2 
 Nom: bouclier
@@ -140,7 +140,7 @@ Intelligence : 10
 Description : un bouclier 
 
 N: 3
-Item: 0x6287b094d5e0
+Item: 0x57b0cb1f1610
 Quantité: 1
 Id : 3 
 Nom: Casque
@@ -186,7 +186,7 @@ take item 4
 Ajout de l'item
 
 N: 4
-Item: 0x6287b094d400
+Item: 0x57b0cb1f1430
 Quantité: 2
 Id : 1 
 Nom: epee
@@ -203,7 +203,7 @@ Intelligence : 10
 Description : une epee 
 
 N: 4
-Item: 0x6287b094d4f0
+Item: 0x57b0cb1f1520
 Quantité: 1
 Id : 2 
 Nom: bouclier
@@ -220,7 +220,7 @@ Intelligence : 10
 Description : un bouclier 
 
 N: 4
-Item: 0x6287b094d5e0
+Item: 0x57b0cb1f1610
 Quantité: 2
 Id : 3 
 Nom: Casque
@@ -237,7 +237,7 @@ Intelligence : 10
 Description : un casque 
 
 N: 4
-Item: 0x6287b094d6d0
+Item: 0x57b0cb1f1700
 Quantité: 1
 Id : 4 
 Nom: Armure
@@ -327,187 +327,4 @@ Description : une armure
 nb_elm : 4
 
 
-----------------------------------
-
-INVENTORY
-
-----------------------------------
-N: 4
-Item: 0x6287b094d400
-Quantité: 2
-Id : 1 
-Nom: epee
-Type: Weapon
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : une epee 
-
-N: 4
-Item: 0x6287b094d4f0
-Quantité: 1
-Id : 2 
-Nom: bouclier
-Type: Shield
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : un bouclier 
-
-N: 4
-Item: 0x6287b094d5e0
-Quantité: 2
-Id : 3 
-Nom: Casque
-Type: Head
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : un casque 
-
-N: 4
-Item: 0x6287b094d6d0
-Quantité: 1
-Id : 4 
-Nom: Armure
-Type: Body
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : une armure 
-
-Poids Total : 60
-nb_elm : 4
-
-
-----------------------------------
-
-Current
-
-----------------------------------
-nb_elm : 4
-Quantité: 1
-Id : 4 
-Nom: Armure
-Type: Body
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : une armure 
-
-
-
-----------------------------------
-
-PREC
-
-----------------------------------
-Prec: 0x6287b094d5e0
-Way: 1
-
-Quantité: 2
-Id : 3 
-Nom: Casque
-Type: Head
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : un casque 
-
-----------------------------------
-Prec: 0x6287b094d4f0
-Way: 1
-
-Quantité: 1
-Id : 2 
-Nom: bouclier
-Type: Shield
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : un bouclier 
-
-----------------------------------
-Prec: 0x6287b094d400
-Way: 1
-
-Quantité: 2
-Id : 1 
-Nom: epee
-Type: Weapon
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : une epee 
-
-----------------------------------
-Prec: (nil)
-Way: 2
-
-Quantité: 1
-Id : 4 
-Nom: Armure
-Type: Body
-Prix item: 10
-Poids: 10
-Dommage : 10
-Defense : 10
-Agilite : 10
-Force : 10
-Endurance : 10
-Chance : 10
-Intelligence : 10
-Description : une armure 
-
-
-Destruction du perso 
-
-Nombre d'item : 4
+----------------
