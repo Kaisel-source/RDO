@@ -141,6 +141,7 @@ int import(perso *p)
     int id,dmg,defence,price,poids,quantity,hp,mp,exp,available,dmg_t,eqpmt_t;
     int id_equipped[7]={-1,-1,-1,-1,-1,-1,-1};
     char name[50],desc[500];
+    char input[100];
     item_t *item;
     if(!fp){
         fclose(fp);
@@ -151,7 +152,9 @@ int import(perso *p)
         /*init SAVE*/
         printf("Import\n");
         printf("PERSO\n");
-        fscanf(fp, "%s;%d;%d;%d;%d;%d;\n", name, &intel, &str, &luck, &agi, &end);
+        fscanf(fp, "%s[^\n]", input );
+        sscanf(input, "%s[^;];%d;%d;%d;%d;%d;", name, &intel, &str, &luck, &agi, &end);
+        printf("%s;%d;%d;%d;%d;%d;\n", name, intel, str, luck, agi, end);
         printf("p1\n");
         init_perso(p, name, end, agi, str, luck, intel);
         printf("p2\n");
@@ -165,15 +168,15 @@ int import(perso *p)
             fscanf(fp, "%d", &type);
             switch (type){
             case RESSOURCE:
-                fscanf(fp, "%d;%s;%d;%d;%s;%d", &id, name, &price, &poids, desc, &quantity);
+                fscanf(fp, "%d;%s[^;];%d;%d;%s[^;];%d", &id, name, &price, &poids, desc, &quantity);
                 item=ress_creator(id,name,price,poids,desc,quantity);
                 break;
             case EQPMT:
-                fscanf(fp, "%d;%s;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%s;%d", &id ,name, &eqpmt_t, &dmg_t,&dmg, &defence, &str, &agi, &end, &luck,&intel,&price,&poids, desc, &quantity);
+                fscanf(fp, "%d;%s[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%s[^;];%d", &id ,name, &eqpmt_t, &dmg_t,&dmg, &defence, &str, &agi, &end, &luck,&intel,&price,&poids, desc, &quantity);
                 item=eqpmt_creator(id,name,eqpmt_t,dmg_t,dmg,defence,str,agi,end,luck,intel,price,poids,desc,quantity);
                 break;
             case CONSUM:
-                fscanf(fp, "%d;%s;%d;%d;%d;%d;%d;%d;%s;%d", &id, name, &poids, &price, &hp, &mp, &exp, &available, desc, &quantity);
+                fscanf(fp, "%d;%s[^;];%d;%d;%d;%d;%d;%d;%s;%d", &id, name, &poids, &price, &hp, &mp, &exp, &available, desc, &quantity);
                 item=conso_create(name,id,poids,price,hp,mp,exp,available,desc,quantity);
                 break;
             }
@@ -202,6 +205,7 @@ int export(const perso *p){
     {
         /*SAVE PERSO*/
         fprintf(fp, "%s;%d;%d;%d;%d;%d;\n", p->name, p->stat->intel, p->stat->str, p->stat->luck, p->stat->agi, p->stat->end);
+        
         fprintf(fp, "%d;%d;%d;%d;%d;%d;%d;%d;%d\n", p->hp, p->hp_max, p->mp, p->mp_max, p->xp, p->xp_max, p->level, p->weight_max, p->money);
         for (int i = 0; i < 7; i++)
         {
@@ -214,7 +218,6 @@ int export(const perso *p){
         /*SAVE INVENTORY*/
         fprintf(fp, "%d\n", nb_item);
         for (int i = 0; i < nb_item; i++){
-            printf("Hi %d\n",i);
             switch (elm->item_inv->type){
                 case RESSOURCE: // id,name,price,poids,desc,quantity
                     ress=elm->item_inv->item_u->ress;
@@ -232,18 +235,14 @@ int export(const perso *p){
                     break;
             
             }
-            printf("%d\n",i);
             elm = elm->suiv;
-            printf("%d switch\n",i);
         }
-        printf("Bye");
     }
     else
     {
         fclose(fp);
         return 0;
     }
-    printf("Hi");
     fclose(fp);
     return 1;
 }

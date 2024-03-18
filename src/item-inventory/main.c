@@ -118,7 +118,8 @@ int main(){
     printf("\n\n----------------------------------\n");
     printf("SAVING...");
     printf("\n\n----------------------------------\n");
-    export(p);
+   // printf("%s\n",export(p)?"Succes Sauvegarde":"Echec Sauvegarde");
+    printf("Fin Sauvegarde...\n");
     printf("\nDestruction du perso \n\n");
     destroy_perso(&p);
 
