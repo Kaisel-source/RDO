@@ -54,6 +54,31 @@ Personnage:
         Level Up
 
 ------------------------------------------------------
+
+Game:
+        Creer
+        Detruire
+        Ajouter PNJ
+        Ajouter Quete
+        Ajouter Item
+        Ajouter Joueur
+
+------------------------------------------------------
+
+Save:
+        Importer
+        Exporter
+
+------------------------------------------------------
+
+Quete:
+        Creer
+        Detruire
+        Verifier Quete
+        Afficher
+        Accepter Quete
+
+------------------------------------------------------
                     A FAIRE:
 Modifier:
         Creer

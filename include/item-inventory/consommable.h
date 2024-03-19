@@ -1,4 +1,4 @@
-#include "struct.h"
+#include "../common/struct.h"
 #include "temp.h"
 
 /**

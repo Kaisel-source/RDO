@@ -1,4 +1,4 @@
-#include "../../include/item-inventory/common.h"
+#include "../../include/common/common.h"
 
 item_t* eqpmt_creator(int id, char* name, eqpmt_type type, dmg_t dmg_type,int dgt, int def, int end, int agi, int str, int luck,int intel,int price, int poids, char* desc,int quantity) {
     //Creation of the item and allocation of memory

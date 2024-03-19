@@ -1,8 +1,8 @@
 #ifndef EQPMT_H
 #define EQPMT_H
 
-#include "common.h"
-#include "struct.h"
+#include "../common/common.h"
+#include "../common/struct.h"
 #include "temp.h"
 
 /**

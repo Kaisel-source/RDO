@@ -1,7 +1,7 @@
-#include "../../include/item-inventory/common.h"
+#include "../../include/common/common.h"
 
 
-item_t* ress_creator(int id, char* name, int price, int poids, char* desc,int quantity) {
+item_t * ress_creator(int id, char* name, int price, int poids, char* desc,int quantity) {
     //Creation of the ressource and allocation of memory
     item_ress* ress = malloc(sizeof(item_eqpmt));
     it_iv* item_union= malloc(sizeof(it_iv));
@@ -47,25 +47,28 @@ void display_ress(const item_ress ress) {
 
 void ress_destructor(inv_item_s** item){
     //Unnalocation of memory for the text items
+    printf("Unnallocation of memory for the text items\n");
     free((*item)->item_u->ress->desc);
     free((*item)->item_u->ress->name);
     (*item)->item_u->ress->desc=NULL;
     (*item)->item_u->ress->name=NULL;
 
+    printf("Unnallocation of memory for the union\n");
     //Unnalocation of memory for the item
     free((*item)->item_u->ress);
     (*item)->item_u->ress=NULL;
 
+    printf("Unnallocation of memory for the inventory item\n");
     //Unnalocation of memory for the union
     free((*item)->item_u);
     (*item)->item_u=NULL;
 
+    printf("Unnallocation of memory for the inventory item\n");
     //Unnalocation of memory for the inventory item
     free(*item);
     *item=NULL;
 
-    free(item);
-    item=NULL;
+
     
 
 }

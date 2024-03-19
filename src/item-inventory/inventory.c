@@ -1,4 +1,4 @@
-#include "../../include/item-inventory/common.h"
+#include "../../include/common/common.h"
 
 item_list *create_inventory()
 {
@@ -10,10 +10,12 @@ item_list *create_inventory()
     return list;
 }
 
+
 int empty_inventory(item_list *list)
 {
     return (list->head == NULL);
 }
+
 
 void add_first(item_t *item, item_list *list)
 {
@@ -21,8 +23,11 @@ void add_first(item_t *item, item_list *list)
     if (empty_inventory(list))
     {
         list->head = item;
+        printf("1\n");
         list->queue = NULL;
+        printf("2\n");
         list->current = list->head;
+        printf("3\n");
     }
     else
     {
@@ -34,16 +39,21 @@ void add_first(item_t *item, item_list *list)
 
 
 void add(item_t *item, item_list *list)
-{
+{  
+    printf("Ajout d'un item\n");
+    empty_inventory(list);
     if (empty_inventory(list))
     {
+        printf("Ajout en tete\n");
         add_first(item, list);
     }
     else
     {
+        printf("Ajout en queue\n");
         add_last(item, list);
     }
     list->nb_item++;
+    printf("Poids avant : %d\n", list->weight);
     weight_calc(list);
 }
 
@@ -57,6 +67,7 @@ item_t *find_queue(item_list *list)
     }
     return item;
 }
+
 
 void add_last(item_t *item, item_list *list)
 {
@@ -90,28 +101,41 @@ void display_inventory(const item_list *list)
     printf("Poids Total : %d\n", list->weight);
 }
 
-void destroy_inventory(perso *p)
+
+void destroy_stockage(item_list *inv)
 {
-    int nb_item = p->inventory->nb_item;
+    inv->current=NULL;
+    inv->head=NULL;
+    inv->queue=NULL;
+    free(inv);
+    inv = NULL;
+}
+
+
+void destroy_game_stockage(item_list *inv)
+{
+    int nb_item = inv->nb_item;
     item_t *suiv;
-    p->inventory->current=p->inventory->head;
+    inv->current=inv->head;
     printf("Nombre d'item : %d\n",nb_item);
     for(int i=0;i<nb_item;i++)
     {   
-        suiv=p->inventory->current->suiv;
-        printf("Item: %p\n", p->inventory->current);
-        printf("Item->suiv: %p\n", p->inventory->current->suiv);
+        suiv=inv->current->suiv;
+        printf("Item: %p\n", inv->current);
+        printf("Item->suiv: %p\n", inv->current->suiv);
         printf("Destruction...\n");
-        destroy_common(p);
+        destroy_common_item_stock(inv);
         printf("End of destruction...\n");
-        p->inventory->current=suiv;
+        inv->current=suiv;
     }
-    p->inventory->current=NULL;
-    p->inventory->head=NULL;
-    p->inventory->queue=NULL;
-    free(p->inventory);
-    p->inventory = NULL;
+    inv->current=NULL;
+    inv->head=NULL;
+    inv->queue=NULL;
+    free(inv);
+    inv = NULL;
+
 }
+
 
 void suiv_current(item_list *list)
 {
@@ -125,6 +149,7 @@ void suiv_current(item_list *list)
     else
         printf("Erreur de parcours\n");
 }
+
 
 void prec_current(item_list *list)
 {
@@ -151,6 +176,7 @@ void prec_current(item_list *list)
         printf("Erreur de parcours\n");
 }
 
+
 void weight_calc(item_list *list)
 {
     item_t *item = list->head;
@@ -173,28 +199,53 @@ void weight_calc(item_list *list)
         }
         item = item->suiv;
     }
+    printf("Poids Total : %d\n", list->weight);
 }
+
 
 void display_current(const item_list *list)
 {
     display_common(*list->current->item_inv);
 }
 
+
 void display_head(const item_list *list)
 {
     display_common(*list->head->item_inv);
 }
+
 
 void display_queue(const item_list *list)
 {
     display_common(*list->queue->item_inv);
 }
 
+
+void erase_item(item_list *list){
+    item_t *item =list->current;
+    if(item->prec==NULL){
+       list->head=item->suiv;
+       list->current=item->suiv;
+       list->current->prec=NULL;
+    }
+    else if(item->suiv==NULL){
+       list->queue=item->prec;
+       list->current=item->prec;
+       list->current->suiv=NULL;
+    }
+    else{
+        item->prec->suiv=item->suiv;
+        item->suiv->prec=item->prec;
+       list->current=item->suiv;
+    }
+   list->nb_item--;
+}
+
 void check_inventory(perso *p){
     p->inventory->current=p->inventory->head;
     for(int i=0;i<p->inventory->nb_item;i++){
         if(p->inventory->current->item_inv->quantity<=0){
-            destroy_common(p);
+            erase_item(p->inventory);
         }
         else{
             suiv_current(p->inventory);

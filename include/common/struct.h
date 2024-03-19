@@ -4,7 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#define NB_MAX_QUEST 10
+#define TOTAL_QUEST 10
+#define TOTAL_PERS 10
 typedef enum eqpmt_type {
     NONE, HEAD, BODY, LEGS, FOOT, RING, WEAPON, SHIELD
 } eqpmt_type;
@@ -99,6 +101,25 @@ typedef struct item_list{
 }item_list;
 
 
+/*-------------- QUETE -------------- */
+typedef enum {ON_GOING, COMPLETED, NOT_STARTED} quest_status;
+
+typedef struct quest_s{
+        char *name;
+        char *desc;
+        int id;
+
+        quest_status status;
+
+        int reward_xp;
+        int reward_gold;
+        item_t *reward_item;
+
+        int required_item_quant;
+        item_t *required_item; //ONLY EQPMT OR RESSOURCE
+
+}quest_t;
+
 /*-------------- PERSO -------------- */
 
 typedef struct stat_p{
@@ -133,8 +154,18 @@ typedef struct pers{
     item_eqpmt *eqpmt[7]; //0: head, 1: body, 2: legs, 3: foot, 4:ring , 5: weapon, 6: shield
     item_list *inventory;
 
+    int nb_quest;
+    quest_t *quest[NB_MAX_QUEST];
     //image ref
 } perso;
 
+typedef struct game_t{
+    perso *main_perso;
+    perso *p[TOTAL_PERS];
+    quest_t *quest[TOTAL_QUEST];
+    int nb_quest_saved;
+    int nb_pers_saved;
+    item_list *item;
+}game_s;
 
 #endif

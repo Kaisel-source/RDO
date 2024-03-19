@@ -1,7 +1,7 @@
 #ifndef TEMP_H
 #define TEMP_H
-#include "common.h"
-#include "struct.h"
+#include "../common/common.h"
+#include "../common/struct.h"
 
 
 

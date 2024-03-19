@@ -1,10 +1,25 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include "struct.h"
-#include "common.h"
+#include "../common/struct.h"
+#include "../common/common.h"
 #include "eqpmt.h"
 #include "temp.h"
+
+/**
+ * @brief Add an item to the current position of the list
+ * @warning Disable
+ * @param item Item to add
+ * @param list List to add the item
+ */
+//void add_current(item_t *item, item_list *list);
+
+/**
+ * @brief Destroy the current item and unallocate the memory
+ * 
+ * @param list List to destroy the current item
+ */
+//void destroy_current(item_list *list);
 
 
 /**
@@ -12,8 +27,7 @@
  * 
  * @return item_list* 
  */
-item_list * create_inventory();
-
+item_list *create_inventory();
 
 
 /**
@@ -25,7 +39,6 @@ item_list * create_inventory();
 int empty_inventory(item_list *list);
 
 
-
 /**
  * @brief Add an item at the beginning of the list
  * 
@@ -35,15 +48,22 @@ int empty_inventory(item_list *list);
 void add_first(item_t *item, item_list *list);
 
 
+/**
+ * @brief Add an item to the list
+ * 
+ * @param item 
+ * @param list 
+ */
+void add(item_t *item, item_list *list);
+
 
 /**
- * @brief Add an item to the current position of the list
- * @warning Disable
- * @param item Item to add
- * @param list List to add the item
+ * @brief Find the queue item in the list
+ * 
+ * @param list List to find the queue item
+ * @return item_t* The queue item
  */
-//void add_current(item_t *item, item_list *list);
-
+item_t *find_queue(item_list *list);
 
 
 /**
@@ -55,16 +75,27 @@ void add_first(item_t *item, item_list *list);
 void add_last(item_t *item, item_list *list);
 
 
+/**
+ * @brief Display the list of items in the console
+ * 
+ * @param list List to display
+ */
+void display_inventory(const item_list *list);
+
 
 /**
- * @brief Add an item to the list
+ * @brief Destroy the stockage and unallocate the memory
  * 
- * @param item 
- * @param list 
+ * @param list List to destroy
  */
+void destroy_stockage(item_list *inv);
 
-void add(item_t *item, item_list *list);
-
+/**
+ * @brief Unallock all item generate in the game
+ * 
+ * @param inv 
+ */
+void destroy_game_stockage(item_list *inv);
 
 
 /**
@@ -75,7 +106,6 @@ void add(item_t *item, item_list *list);
 void suiv_current(item_list *list);
 
 
-
 /**
  * @brief Change the current item to the previous one
  * 
@@ -83,13 +113,22 @@ void suiv_current(item_list *list);
  */
 void prec_current(item_list *list);
 
+
 /**
- * @brief Find the queue item in the list
+ * @brief Calculate the total weight of the inventory
  * 
- * @param list List to find the queue item
- * @return item_t* The queue item
+ * @param list List to calculate the weight
  */
-item_t *find_queue(item_list *list);
+void weight_calc(item_list *list);
+
+
+/**
+ * @brief Display the current item in the console
+ * 
+ * @param list List to display the current item
+ */
+void display_current(const item_list *list);
+
 
 /**
  * @brief Display the head item in the console
@@ -108,49 +147,18 @@ void display_head(const item_list *list);
 void display_queue(const item_list *list);
 
 /**
- * @brief Display the current item in the console
+ * @brief Remove the current item from the list
  * 
- * @param list List to display the current item
+ * @param list List to remove the item
  */
-void display_current(const item_list *list);
-
-
+void erase_item(item_list *list);
 
 /**
- * @brief Display the list of items in the console
+ * @brief Check the inventory of the player and remove the item if the quantity is 0 or less
  * 
- * @param list List to display
+ * @param p Player to check the inventory
  */
-void display_inventory(const item_list *list);
-
-
-
-/**
- * @brief Calculate the total weight of the inventory
- * 
- * @param list List to calculate the weight
- */
-void weight_calc(item_list *list);
-
-
-
-/**
- * @brief Destroy the current item and unallocate the memory
- * 
- * @param list List to destroy the current item
- */
-//void destroy_current(item_list *list);
-
-
-
-/**
- * @brief Destroy the list and unallocate the memory
- * 
- * @param list List to destroy
- */
-void destroy_inventory(perso *p);
-
-
 void check_inventory(perso *p);
+
 
 #endif

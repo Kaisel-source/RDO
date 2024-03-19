@@ -1,4 +1,4 @@
-#include "../../include/item-inventory/common.h"
+#include "../../include/common/common.h"
 #include "../../include/item-inventory/temp.h"
 
 void init_perso(perso *p, char *name,int end, int agi, int str, int luck,int intel){
@@ -28,6 +28,10 @@ void init_perso(perso *p, char *name,int end, int agi, int str, int luck,int int
     p->money=100;
 
     p->inventory = create_inventory();
+    p->nb_quest=0;
+    for(int i=0;i<NB_MAX_QUEST;i++){
+        p->quest[i]=NULL;
+    }
 
 }
 
@@ -36,12 +40,10 @@ void init_perso(perso *p, char *name,int end, int agi, int str, int luck,int int
 void take_item(perso *p,item_t *item){
     item_t *tmp = p->inventory->head;
     int id=item->item_inv->type==EQPMT?item->item_inv->item_u->eqpmt->id:item->item_inv->item_u->ress->id;
+    display_common(*item->item_inv);
     if(in_inventory(p,id,item->item_inv->type)>0){
         printf("item deja dans l'inventaire\n\n");
-        tmp = p->inventory->head;
-        while(tmp->item_inv != item->item_inv){
-            tmp = tmp->suiv;
-        }
+        
         tmp->item_inv->quantity++;
     }
     else{
@@ -55,20 +57,29 @@ void take_item(perso *p,item_t *item){
 
 int in_inventory(perso *p, int id, type_it type){
     item_t *tmp = p->inventory->head;
+    printf("Type:%d\n",type);
     for(int i=0;i<p->inventory->nb_item;i++){
-        if(type==RESSOURCE){
+        display_common(*tmp->item_inv);
+        printf("Type:%d\n",tmp->item_inv->type);
+        if(type==RESSOURCE && tmp->item_inv->type==RESSOURCE){
+            printf("%d == %d\n",tmp->item_inv->item_u->ress->id,id);
             if(tmp->item_inv->item_u->ress->id == id)
                 return tmp->item_inv->quantity;
             tmp = tmp->suiv;
         }
-        else if (type==EQPMT){
+        else if (type==EQPMT && tmp->item_inv->type==EQPMT) {
             printf("%d == %d\n",tmp->item_inv->item_u->eqpmt->id,id);
             if(tmp->item_inv->item_u->eqpmt->id == id)
                 return tmp->item_inv->quantity;
             tmp = tmp->suiv;
         }
-        
-        
+        else if (type==CONSUM && tmp->item_inv->type==CONSUM){
+            printf("%d == %d\n",tmp->item_inv->item_u->conso->id,id);
+            if(tmp->item_inv->item_u->conso->id == id)
+                return tmp->item_inv->quantity;
+            tmp = tmp->suiv;
+        }
+        else tmp = tmp->suiv;
     }
     return 0;
 }
@@ -90,6 +101,8 @@ void display_perso(const perso p){
     display_equipement(p);
     printf("\n\nInventaire:\n");
     display_inventory(p.inventory);
+    printf("\n\nQuêtes:\n");
+    quest_list_display(p.quest);
 }
 
 void display_equipement(const perso p){
@@ -111,9 +124,12 @@ void destroy_perso(perso **p){
         (*p)->name=NULL;
         free((*p)->stat);
         (*p)->stat=NULL;
-        destroy_inventory(*p);
+        destroy_stockage((*p)->inventory);
+        //quest_list_destructor(&(*p)->quest);
+        
         free(*p);
         *p=NULL;
+
     }
 }
 

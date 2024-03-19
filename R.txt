@@ -7,7 +7,7 @@ Ajout des items dans l'inventaire
 Ajout de l'item 1 
 
 N: 1
-Item: 0x57b0cb1f1430
+Item: 0x5ed1bf64f490
 Quantité: 1
 Id : 1 
 Nom: epee
@@ -40,7 +40,7 @@ ID:2  QUANT : 0
 Ajout de l'item
 
 N: 2
-Item: 0x57b0cb1f1430
+Item: 0x5ed1bf64f490
 Quantité: 1
 Id : 1 
 Nom: epee
@@ -57,7 +57,7 @@ Intelligence : 10
 Description : une epee 
 
 N: 2
-Item: 0x57b0cb1f1520
+Item: 0x5ed1bf64f580
 Quantité: 1
 Id : 2 
 Nom: bouclier
@@ -106,7 +106,7 @@ Ajout de l'item 3
 Ajout de l'item
 
 N: 3
-Item: 0x57b0cb1f1430
+Item: 0x5ed1bf64f490
 Quantité: 1
 Id : 1 
 Nom: epee
@@ -123,7 +123,7 @@ Intelligence : 10
 Description : une epee 
 
 N: 3
-Item: 0x57b0cb1f1520
+Item: 0x5ed1bf64f580
 Quantité: 1
 Id : 2 
 Nom: bouclier
@@ -140,7 +140,7 @@ Intelligence : 10
 Description : un bouclier 
 
 N: 3
-Item: 0x57b0cb1f1610
+Item: 0x5ed1bf64f670
 Quantité: 1
 Id : 3 
 Nom: Casque
@@ -186,7 +186,7 @@ take item 4
 Ajout de l'item
 
 N: 4
-Item: 0x57b0cb1f1430
+Item: 0x5ed1bf64f490
 Quantité: 2
 Id : 1 
 Nom: epee
@@ -203,7 +203,7 @@ Intelligence : 10
 Description : une epee 
 
 N: 4
-Item: 0x57b0cb1f1520
+Item: 0x5ed1bf64f580
 Quantité: 1
 Id : 2 
 Nom: bouclier
@@ -220,7 +220,7 @@ Intelligence : 10
 Description : un bouclier 
 
 N: 4
-Item: 0x57b0cb1f1610
+Item: 0x5ed1bf64f670
 Quantité: 2
 Id : 3 
 Nom: Casque
@@ -237,7 +237,7 @@ Intelligence : 10
 Description : un casque 
 
 N: 4
-Item: 0x57b0cb1f1700
+Item: 0x5ed1bf64f760
 Quantité: 1
 Id : 4 
 Nom: Armure
