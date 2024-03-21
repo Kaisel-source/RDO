@@ -1,5 +1,4 @@
-#include "../common/struct.h"
-#include "temp.h"
+#include "../common/common.h"
 
 /**
  * @brief : Create a consumable object

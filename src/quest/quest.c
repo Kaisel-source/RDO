@@ -100,3 +100,32 @@ int accept_quest(perso *p, quest_t *quest){
         return 0;
     }
 }
+
+quest_npc_t *quest_npc_create(char *accept, char *refuse, char *on_going, char *completed, quest_t *quest){
+    quest_npc_t *quest_npc = malloc(sizeof(quest_npc_t));
+    quest_npc->accept = malloc(strlen(accept) + 1);
+    strcpy(quest_npc->accept, accept);
+    quest_npc->refuse = malloc(strlen(refuse) + 1);
+    strcpy(quest_npc->refuse, refuse);
+    quest_npc->on_going = malloc(strlen(on_going) + 1);
+    strcpy(quest_npc->on_going, on_going);
+    quest_npc->completed = malloc(strlen(completed) + 1);
+    strcpy(quest_npc->completed, completed);
+
+    quest_npc->quest = quest;
+    return quest_npc;
+}
+
+void quest_npc_display(const quest_npc_t quest_npc){
+    printf("Accept: %s\nRefuse: %s\nOn going: %s\nCompleted: %s\n", quest_npc.accept, quest_npc.refuse, quest_npc.on_going, quest_npc.completed);
+    quest_display(*quest_npc.quest);
+}
+
+void destroy_quest_npc(quest_npc_t **quest_npc){
+    free((*quest_npc)->accept);
+    free((*quest_npc)->refuse);
+    free((*quest_npc)->on_going);
+    free((*quest_npc)->completed);
+    free(*quest_npc);
+    *quest_npc = NULL;
+}

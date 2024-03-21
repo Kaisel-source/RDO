@@ -1,5 +1,4 @@
 #include "../../include/common/common.h"
-#include "../../include/item-inventory/temp.h"
 
 void init_perso(perso *p, char *name,int end, int agi, int str, int luck,int intel){
     p->name = malloc(strlen(name) + 1);
@@ -124,7 +123,7 @@ void destroy_perso(perso **p){
         (*p)->name=NULL;
         free((*p)->stat);
         (*p)->stat=NULL;
-        destroy_stockage((*p)->inventory);
+        destroy_stockage(&(*p)->inventory);
         //quest_list_destructor(&(*p)->quest);
         
         free(*p);

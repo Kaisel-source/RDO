@@ -66,7 +66,7 @@ void game_destroy_game(game_s **g){
         destroy_quest(&(*g)->quest[i]);
     }
     printf("END DESTRUCTION QUEST\n");
-    destroy_game_stockage((*g)->item);
+    destroy_game_stockage(&(*g)->item);
     printf("END DESTRUCTION INVENTORY\n");
     printf("START DESTRUCTION MAIN PERSO\n");
     destroy_perso(&(*g)->main_perso);

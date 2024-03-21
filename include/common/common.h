@@ -6,7 +6,7 @@
 
 #include "../item-inventory/ressource.h"
 #include "../item-inventory/inventory.h"
-#include "../item-inventory/temp.h"
+#include "../character/main_chara.h"
 #include "../item-inventory/consommable.h"
 #include "../item-inventory/eqpmt.h"
 #include "../quest/quest.h"
