@@ -9,7 +9,7 @@
 #define N 10
 #define min(a, b) (((a) < (b)) ? (a) : (b))
 
-const float porcen= 0.85;
+const float porcen= 0.70;
 const int SCREEN_WIDTH = 1080;
 const int SCREEN_HEIGHT = 790;
 const int GRID_ROWS = 10;
@@ -27,12 +27,20 @@ typedef struct{
     SDL_Texture * img;
     int equipe;
     int mouv;
+    int initiative;
 }entite_t;
 
 typedef struct{
     int x;
     int y;
 }pos_t;
+
+typedef struct{
+    pos_t ...;
+    personnage;
+    quete; 
+
+}game_t;
 
 
 
@@ -72,12 +80,49 @@ pos_t detecte_enemie_proche(entite_t  mat[N][N],pos_t pos,int equipe,int mouv){
 }
 
 
+void turn_order(entite_t mat[N][N], pos_t turn[N*N]) {
+    int cpt = 0;
+    pos_t temp;
+
+    // Stocker les positions des entités vivantes dans le tableau turn
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            if (mat[i][j].pv > 0) {
+                turn[cpt].x = i;
+                turn[cpt].y = j;
+                cpt++;
+            }
+        }
+    }
+
+    // Tri des entités en fonction de leur initiative
+    for (int k = 0; k < cpt - 1; k++) {
+        int max = k;
+        for (int u = k + 1; u < cpt; u++) {
+            if (mat[turn[u].x][turn[u].y].initiative > mat[turn[max].x][turn[max].y].initiative) { 
+                max = u;
+            }
+        }
+        if (max != k) {
+            temp = turn[k];
+            turn[k] = turn[max];
+            turn[max] = temp;
+        }
+    }
+
+    // Affichage des initiatives triées pour vérification
+    for (int b = 0; b < cpt; b++) {
+        printf("%d ", mat[turn[b].x][turn[b].y].initiative);
+    }
+}
+
+
 
 
 void deplacePlusProche(entite_t  plateau[N][N],pos_t pos,entite_t  perso){
     pos_t dep;
     dep=detecte_enemie_proche(plateau,pos,perso.equipe,perso.mouv);
-    plateau[pos.x][pos.y].pv=1;
+    plateau[pos.x][pos.y].pv=0;
     plateau[pos.x][pos.y].equipe=0;
     plateau[pos.x][pos.y].pv_max=0;
     plateau[pos.x][pos.y].attaque=0;
@@ -117,6 +162,7 @@ int main(){
     perso1.attaque=10;
     perso1.equipe=1;
     perso1.mouv=3;
+    perso1.initiative=61;
 
     entite_t perso2;
     perso2.pv=100;
@@ -124,11 +170,15 @@ int main(){
     perso2.attaque=10;
     perso2.equipe=2;
     perso2.mouv=3;
+    perso2.initiative=51;
 
     pos_t pos1;
     pos_t pos2;
+    pos_t turn[N];
 
     int cpt1;
+
+
     
 
     entite_t  plateau_de_combat[GRID_ROWS][GRID_COLUMNS];
@@ -138,6 +188,7 @@ int main(){
             plateau_de_combat[i][j].pv_max=0;
             plateau_de_combat[i][j].equipe=0;
             plateau_de_combat[i][j].attaque=0;
+            plateau_de_combat[i][j].initiative=0;
         }
     }
 
@@ -154,27 +205,35 @@ int main(){
     // Création d'un renderer pour dessiner dans la fenêtre
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
+    //charge le fond
+    SDL_Surface* backgroundSurface = IMG_Load("../img/Wallhaven.png");
+    if (backgroundSurface == NULL) {
+        printf("Erreur de chargement de l'image de fond : %s\n", IMG_GetError());
+        return 1;
+    }
+
+
+
+    SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
+    SDL_FreeSurface(backgroundSurface);
+
+    
+
     // Calcul de la taille de la grille
     int gridWidth = GRID_COLUMNS * (BUTTON_SIZEx + BUTTON_MARGIN) - BUTTON_MARGIN;
     int gridHeight = GRID_ROWS * (BUTTON_SIZEy + BUTTON_MARGIN) - BUTTON_MARGIN;
 
+    // Calcul de la position de la grille
+    int gridX = (SCREEN_WIDTH-gridWidth);
+    int gridY = (SCREEN_HEIGHT-gridHeight)/2;
 
-    // Dessiner le rectangle supérieur
-    SDL_Rect topRect = {0, 0, SCREEN_WIDTH, gridY};
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // Couleur blanche
-    SDL_RenderFillRect(renderer, &topRect);
-
-    // Dessiner le rectangle inférieur
-    SDL_Rect bottomRect = {0, gridY + gridHeight, SCREEN_WIDTH, SCREEN_HEIGHT - gridY - gridHeight};
-    SDL_RenderFillRect(renderer, &bottomRect);
-
-    // Calcul de la position du bouton dans le coin bas droit du rectangle inférieur
+    // Calcul de la position du bouton dans le coin bas droit du rectangle inferieur
     int buttonBottomX = SCREEN_WIDTH - BUTTON_SIZEx - BUTTON_MARGIN;
     int buttonBottomY = SCREEN_HEIGHT - BUTTON_SIZEy - BUTTON_MARGIN;
 
 
     // initialise les image
-    SDL_Surface* buttonSurface2 = IMG_Load("../img/New Piskel.png");
+    SDL_Surface* buttonSurface2 = IMG_Load("../img/mouv.png");
     if (buttonSurface2 == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
@@ -209,45 +268,32 @@ int main(){
 
     perso2.img = SDL_CreateTextureFromSurface(renderer, persoSurface2);
     
-    // Dessiner le rectangle du bouton
-    Button buttonBottom;
-    buttonBottom.rect.x = buttonBottomX;
-    buttonBottom.rect.y = buttonBottomY;
-    buttonBottom.rect.w = BUTTON_SIZEx;
-    buttonBottom.rect.h = BUTTON_SIZEy;
-
-    // Remplir le rectangle du bouton
-    setButtonImage(renderer, attText, &buttonBottom.rect);
-
-    //charge le fond
-    SDL_Surface* backgroundSurface = IMG_Load("../img/Wallhaven.png");
-    if (backgroundSurface == NULL) {
-        printf("Erreur de chargement de l'image de fond : %s\n", IMG_GetError());
-        return 1;
-    }
+    
 
 
-
-    SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
-    SDL_FreeSurface(backgroundSurface);
-
-    // Calcul de la position de la grille
-    int gridX = (SCREEN_WIDTH-gridWidth);
-    int gridY = (SCREEN_HEIGHT-gridHeight)/2;
 
     int action=0;
     int mouseX, mouseY;
     int quit = 0;
     int cpt=0;
+    int tour=0;
+    int tourmax=0;
     plateau_de_combat[0][0]=perso1;
     plateau_de_combat[5][5]=perso2;
 
+    turn_order(plateau_de_combat,turn);
+
+    for(int i=0;i<GRID_ROWS;i++){
+        for(int j=0;j<GRID_COLUMNS;j++){
+            if(plateau_de_combat[i][j].pv>0){
+                tourmax++;
+            }
+        }
+    }
 
 
 
-    
-
-
+    int time=0;
     while (!quit) {
         mouseX, mouseY;
         SDL_Event event;
@@ -257,7 +303,8 @@ int main(){
                         quit = 1;
                         break;
                     case SDL_MOUSEBUTTONDOWN:
-                         SDL_GetMouseState(&mouseX, &mouseY);
+                    SDL_GetMouseState(&mouseX, &mouseY);
+                    if(time==1){
                         for (int row = 0; row < GRID_ROWS; row++) {
                             for (int column = 0; column < GRID_COLUMNS; column++) {
                                 int buttonX = gridX + column * (BUTTON_SIZEx + BUTTON_MARGIN);
@@ -270,8 +317,13 @@ int main(){
                                 }
                             }
                         }
-                        break;
-
+                    }
+                    if(){
+                        if(mouseX >= buttonBottomX && mouseX <= buttonBottomX + BUTTON_SIZEx && mouseY >= buttonBottomY && mouseY <= buttonBottomY + BUTTON_SIZEy){
+                                    printf("Bouton attaque clique !\n");
+                     }
+                    }
+                    break;
                 }
             }
 
@@ -290,7 +342,7 @@ int main(){
                     setButtonImage(renderer,plateau_de_combat[row][column].img,&buttonRect.rect);
                     pos1.x=row;
                     pos1.y=column;
-                    deplacePlusProche(plateau_de_combat,pos1,plateau_de_combat[row][column]); 
+                  // deplacePlusProche(plateau_de_combat,pos1,plateau_de_combat[row][column]); 
                 }else{
                     setButtonImage(renderer,buttonTexture2,&buttonRect.rect);
                 }
@@ -299,9 +351,33 @@ int main(){
         }   
 
 
+        // Dessiner le rectangle supérieur
+        SDL_Rect topRect = {0, 0, SCREEN_WIDTH, gridY};
+        SDL_SetRenderDrawColor(renderer, 0, 0, 255, 0); // Couleur blanche
+        SDL_RenderFillRect(renderer, &topRect);
+
+        // Dessiner le rectangle inférieur
+        SDL_Rect bottomRect = {0, gridY + gridHeight, SCREEN_WIDTH, SCREEN_HEIGHT - gridY - gridHeight};
+        SDL_RenderFillRect(renderer, &bottomRect);
+
+        // Dessiner le rectangle du bouton
+        Button buttonBottom;
+        buttonBottom.rect.x = buttonBottomX;
+        buttonBottom.rect.y = buttonBottomY;
+        buttonBottom.rect.w = BUTTON_SIZEx;
+        buttonBottom.rect.h = BUTTON_SIZEy;
+
+    // Remplir le rectangle du bouton
+    setButtonImage(renderer, attText, &buttonBottom.rect);
 
 
-        SDL_RenderPresent(renderer);
+
+
+    if(tour>=tourmax){
+        tour=0;
+    }
+    SDL_RenderPresent(renderer);
+    
     }
 
     
