@@ -19,8 +19,8 @@ skills_inventory *skills_list_create(){
 }
 
 void skills_destroy(skills_s **skill){
-    free((*skill)->name);
-    free((*skill)->desc);
+    //free((*skill)->name);
+    //free((*skill)->desc);
     free(*skill);
     *skill = NULL;
 }
