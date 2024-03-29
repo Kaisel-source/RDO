@@ -55,6 +55,8 @@ void skills_list_add(skills_inventory *list, skills_s *skill){
 int skills_use(skills_s *skill, perso* player){
     if(player->mp < skill->mana){
         return 0;
+    }if(player->level < skill->level_min){
+        return 0;
     }
     player->mp -= skill->mana;
     return skill->damage;
