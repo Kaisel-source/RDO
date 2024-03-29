@@ -44,6 +44,7 @@ typedef struct{
     int equipe;
     int mouv;
     int initiative;
+    int range;
 }entite_t;
 
 
@@ -159,8 +160,13 @@ void deplacePlusProche(entite_t plateau[N][N], pos_t pos, entite_t perso) {
     // Trouver la nouvelle position de l'ennemi le plus proche sans modifier la position actuelle
     pos_t nouvelle_pos = detecte_mouv(plateau, pos, perso.equipe, perso.mouv);
     // Déplacer l'entité vers la nouvelle position de l'ennemi le plus proche
-    plateau[pos.y][pos.x] = (entite_t){0}; // Réinitialiser la case actuelle
-    plateau[nouvelle_pos.y][nouvelle_pos.x] = perso;
+    plateau[pos.x][pos.y].pv=0;
+    plateau[pos.x][pos.y].pv_max=0;
+    plateau[pos.x][pos.y].equipe=0;
+    plateau[pos.x][pos.y].attaque=0;
+    plateau[pos.x][pos.y].initiative=0;
+    plateau[pos.x][pos.y].range=0;
+    plateau[nouvelle_pos.x][nouvelle_pos.y] = perso;
 }
 
 /**
@@ -238,19 +244,22 @@ void setButtonImage(SDL_Renderer* renderer, SDL_Texture* imageTexture, SDL_Rect*
  * @param pos_cibler
  * @param range 
  * @param dmg 
- * @param pos_perso 
+ * @param pos_perso
+ * @param plateau
  */
-void attaque_physiqe(int range,int dmg,pos_t pos_perso,pos_t pos_cibler){
+int attaque_physiqe(int range,int dmg,pos_t pos_perso,pos_t pos_cibler,entite_t plateau[N][N]){
         // Vérifier si la cible est à portée
     int distance = abs(pos_perso.x - pos_cibler.x) + abs(pos_perso.y - pos_cibler.y);
-    if (distance <= range) {
+    if ((distance <= range) && (plateau[pos_cibler.x][pos_cibler.y].pv>0)) {
         // Appliquer les dégâts à la cible
         printf("Attaque physique réussie ! Dégâts infligés : %d\n", dmg);
+        plateau[pos_cibler.x][pos_cibler.y].pv-=dmg;
+        return 1;
     } else {
-        printf("Cible hors de portée !\n");
+        printf("Cible hors de portée ou cible incorecte (vise mieux)!\n");
+        return 0;
     }
 }
-
 
 /**
  * @brief infige des dommage  avec un spell sur une case cibler et verifie si possible
@@ -258,15 +267,19 @@ void attaque_physiqe(int range,int dmg,pos_t pos_perso,pos_t pos_cibler){
  * @param range 
  * @param dmg 
  * @param pos_perso
+ * @param plateau
  */
-void attaque_spell(int range,int dmg,pos_t pos_perso,pos_t pos_cibler){
+int attaque_spell(int range,int dmg,pos_t pos_perso,pos_t pos_cibler,entite_t plateau[N][N]){
     // Vérifier si la cible est à portée
     int distance = abs(pos_perso.x - pos_cibler.x) + abs(pos_perso.y - pos_cibler.y);
-    if (distance <= range) {
+    if ((distance <= range) && (plateau[pos_cibler.x][pos_cibler.y].pv>0)) {
         // Appliquer les dégâts à la cible
         printf("Sort lancé avec succès ! Dégâts infligés : %d\n", dmg);
+        plateau[pos_cibler.x][pos_cibler.y].pv-=dmg;
+        return 1;
     } else {
-        printf("Cible hors de portée pour le sort !\n");
+        printf("Cible hors de portée pour le sort ou cible incorecte (vise mieux) !\n");
+        return 0;
     }
 }
 
@@ -287,24 +300,106 @@ SDL_Rect getButtonRect(int bouttonx, int bouttony) {
     return buttonRect.rect;
 }
 
+/**
+ * @brief Construct a new void object
+ * 
+ * @param mouseX 
+ * @param mouseY 
+ */
+pos_t plateau_cible(int mouseX,int mouseY,entite_t plateau[N][N],int gridX,int gridY){
+    pos_t pos_cible;
+    int x=-1,y=-1;
+    SDL_Event event;
+    event.type = SDL_MOUSEBUTTONUP;
+    while(event.type != SDL_MOUSEBUTTONDOWN){
+        for (int row = 0; row < GRID_ROWS; row++) {
+        for (int column = 0; column < GRID_COLUMNS; column++) {
+            int buttonX = gridX + column * (BUTTON_SIZEx + BUTTON_MARGIN);
+            int buttonY = gridY + row * (BUTTON_SIZEy + BUTTON_MARGIN);
+            if (mouseX >= buttonX && mouseX <= buttonX + BUTTON_SIZEx && mouseY >= buttonY && mouseY <= buttonY + BUTTON_SIZEy) {
+                    printf("Bouton (%d, %d) clique !\n", row, column);
+                    printf("pv = %d !\n", plateau[row][column].pv);
+                    printf("equipe = %d !\n", plateau[row][column].equipe);
+                    x=row;
+                    y=column;
+            }
+        }
+    }
+    SDL_PollEvent(&event);    
+    }
+    pos_cible.x=x;
+    pos_cible.y=y;
+    return pos_cible;
+}
+
+/**
+ * @brief 
+ * @param plateau
+ */
+void init_plateau(entite_t plateau[N][N]){
+    for(int i=0;i<GRID_ROWS;i++){
+        for(int j=0;j<GRID_COLUMNS;j++){
+            plateau[i][j].pv=0;
+            plateau[i][j].pv_max=0;
+            plateau[i][j].equipe=0;
+            plateau[i][j].attaque=0;
+            plateau[i][j].initiative=0;
+            plateau[i][j].range=0;
+        }
+    }
+}
+
+/**
+ * @brief fait le dessin d un echequier
+ * 
+ * @param plateau_de_combat 
+ * @param gridX 
+ * @param gridY 
+ * @param rien 
+ * @param buttonRect 
+ * @param renderer 
+ */
+void dessin_plateau(entite_t plateau_de_combat[N][N],int gridX,int gridY, SDL_Texture* rien,Button buttonRect,SDL_Renderer* renderer){
+    for (int row = 0; row < GRID_ROWS; row++) {
+        for (int column = 0; column < GRID_COLUMNS; column++) {
+            // Calcul de la position du bouton dans la grille
+            int buttonX = gridX + column * (BUTTON_SIZEx + BUTTON_MARGIN);
+            int buttonY = gridY + row * (BUTTON_SIZEy + BUTTON_MARGIN);
+            // Dessiner le rectangle du bouton
+            buttonRect.rect.x =  buttonX;   
+            buttonRect.rect.y =  buttonY;
+            buttonRect.rect.w =  BUTTON_SIZEx;
+            buttonRect.rect.h = BUTTON_SIZEy;
+            if(plateau_de_combat[row][column].pv>0){
+                setButtonImage(renderer,plateau_de_combat[row][column].img,&buttonRect.rect);
+            }else{
+                setButtonImage(renderer,rien,&buttonRect.rect);
+            }
+
+        }
+    } 
+}
+
 
 int main(){
 
     entite_t  perso1;
     perso1.pv=100;
     perso1.pv_max=100;
-    perso1.attaque=10;
+    perso1.attaque=40;
     perso1.equipe=1;
     perso1.mouv=3;
     perso1.initiative=61;
+    perso1.range=2;
 
     entite_t perso2;
     perso2.pv=100;
     perso2.pv_max=100;
-    perso2.attaque=10;
+    perso2.attaque=40;
     perso2.equipe=2;
     perso2.mouv=3;
     perso2.initiative=51;
+    perso2.range=2;
 
     pos_t pos1;
     pos_t pos2;
@@ -316,16 +411,7 @@ int main(){
     
 
     entite_t  plateau_de_combat[GRID_ROWS][GRID_COLUMNS];
-    for(int i=0;i<GRID_ROWS;i++){
-        for(int j=0;j<GRID_COLUMNS;j++){
-            plateau_de_combat[i][j].pv=0;
-            plateau_de_combat[i][j].pv_max=0;
-            plateau_de_combat[i][j].equipe=0;
-            plateau_de_combat[i][j].attaque=0;
-            plateau_de_combat[i][j].initiative=0;
-        }
-    }
-
+    init_plateau(plateau_de_combat);
 
     //declare les surfaces de case sous forme de button
     Button bouton1;
@@ -412,9 +498,14 @@ int main(){
     int tour=0;
     int tourmax=0;
     int time=0;
+    pos_t enemiepos;
+    pos_t posCible;
+    posCible.x=-1;
+    posCible.y=-1;
+    int condition=0;
+    int interrupt=0;
     plateau_de_combat[0][0]=perso1;
     plateau_de_combat[5][5]=perso2;
-
     turn_order(plateau_de_combat,turn);
 
     for(int i=0;i<GRID_ROWS;i++){
@@ -424,6 +515,8 @@ int main(){
             }
         }
     }
+
+
 
 
 
@@ -437,41 +530,43 @@ int main(){
                         break;
                     case SDL_MOUSEBUTTONDOWN:
                     SDL_GetMouseState(&mouseX, &mouseY);
-                        for (int row = 0; row < GRID_ROWS; row++) {
-                            for (int column = 0; column < GRID_COLUMNS; column++) {
-                                int buttonX = gridX + column * (BUTTON_SIZEx + BUTTON_MARGIN);
-                                int buttonY = gridY + row * (BUTTON_SIZEy + BUTTON_MARGIN);
-                                if (mouseX >= buttonX && mouseX <= buttonX + BUTTON_SIZEx && mouseY >= buttonY && mouseY <= buttonY + BUTTON_SIZEy) {
-                                    printf("Bouton (%d, %d) clique !\n", row, column);
-                                    printf("pv = %d !\n", plateau_de_combat[row][column].pv);
-                                    printf("equipe = %d !\n", plateau_de_combat[row][column].equipe);
-                                }
-                            }
-                        }
+                        printf("Bouton %d %d !\n",posCible.x,posCible.y);
                         if(plateau_de_combat[turn[tour].x][turn[tour].y].equipe==2){
                             if(mouseX >= buttonBottomX && mouseX <= buttonBottomX + BUTTON_SIZEx && mouseY >= buttonBottomY && mouseY <= buttonBottomY + BUTTON_SIZEy){
-                                    printf("Bouton attaque clique !\n");
+                                printf("Bouton attaque clique !\n");
+                                posCible=plateau_cible(mouseX,mouseY,plateau_de_combat,gridX,gridY);
+                                attaque_spell(plateau_de_combat[turn[tour].x][turn[tour].y].range,plateau_de_combat[turn[tour].x][turn[tour].y].attaque,turn[tour],posCible,plateau_de_combat);
+                                printf("Bouton %d %d !\n",posCible.x,posCible.y);
                              }if(mouseX >= buttonBottomX && mouseX <= buttonBottomX + BUTTON_SIZEx && mouseY >= (buttonBottomY - BUTTON_SIZEy) && mouseY <= buttonBottomY){
                                     printf("Bouton spell !\n");
+
                              }if(mouseX >= (buttonBottomX - BUTTON_SIZEx) && mouseX <= buttonBottomX && mouseY >= buttonBottomY && mouseY <= buttonBottomY + BUTTON_SIZEy){
                                 if(tour < tourmax - 1){
                                     tour+=1;
                                     printf("end tour joueur %d !\n",tour);
                                 }else{
                                     tour=0;
-                                    printf("end tour joueur %d !\n",tour);
+                                    printf("SS end tour joueur %d !\n",tour);
                                 }
                              }if(mouseX >= (buttonBottomX - BUTTON_SIZEx) && mouseX <= buttonBottomX && mouseY >= (buttonBottomY - BUTTON_SIZEy) && mouseY <= buttonBottomY){
                                     printf("inventory  !\n");
+                            }if(condition==0){
+
                             }
                         }
                     break;
                 }
             }
             if (plateau_de_combat[turn[tour].x][turn[tour].y].equipe == 1) {
-                deplacePlusProche(plateau_de_combat, turn[tour], plateau_de_combat[turn[tour].x][turn[tour].y]);
-                tour += 1;
-                printf("end tour enemie %d !\n",tour);
+                enemiepos=detecte_enemie(plateau_de_combat,turn[tour],1);
+                if(estAporter(plateau_de_combat,turn[tour],enemiepos,plateau_de_combat[turn[tour].x][turn[tour].y].range)==1){
+                    plateau_de_combat[enemiepos.x][enemiepos.y].pv-=plateau_de_combat[turn[tour].x][turn[tour].y].attaque;
+                    printf("estaporter \n");
+                }else{
+                    deplacePlusProche(plateau_de_combat, turn[tour], plateau_de_combat[turn[tour].x][turn[tour].y]);
+                }
+                    tour += 1;
+                    printf("end tour enemie %d !\n",tour);
             }
 
         turn_order(plateau_de_combat,turn);
@@ -479,26 +574,8 @@ int main(){
 
         SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
 
-        for (int row = 0; row < GRID_ROWS; row++) {
-            for (int column = 0; column < GRID_COLUMNS; column++) {
-                // Calcul de la position du bouton dans la grille
-                int buttonX = gridX + column * (BUTTON_SIZEx + BUTTON_MARGIN);
-                int buttonY = gridY + row * (BUTTON_SIZEy + BUTTON_MARGIN);
-                // Dessiner le rectangle du bouton
-                buttonRect.rect.x =  buttonX;   
-                buttonRect.rect.y =  buttonY;
-                buttonRect.rect.w =  BUTTON_SIZEx;
-                buttonRect.rect.h = BUTTON_SIZEy;
-                if(plateau_de_combat[row][column].pv>0){
-                    setButtonImage(renderer,plateau_de_combat[row][column].img,&buttonRect.rect);
-                }else{
-                    setButtonImage(renderer,buttonTexture2,&buttonRect.rect);
-                }
-
-            }
-        }   
-
-
+        dessin_plateau(plateau_de_combat,gridX,gridY,buttonTexture2,buttonRect,renderer);
+  
         // Dessiner le rectangle superieur
         SDL_Rect topRect = {0, 0, SCREEN_WIDTH, gridY};
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 0); // Couleur blanche
