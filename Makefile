@@ -17,7 +17,7 @@ $(TEST): $(filter-out src/item-inventory/main.o, $(OBJS))
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(EXE) $(OBJS)
+	rm -f $(EXE) $(TEST) $(OBJS)
 
 .PHONY: all clean
 
