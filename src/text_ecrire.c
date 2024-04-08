@@ -1,125 +1,124 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdio.h>
-#include <stdbool.h>
 
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-
-SDL_Window* gWindow = NULL;
-SDL_Renderer* gRenderer = NULL;
-TTF_Font* gFont = NULL;
-
-bool initSDL() {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
-        return false;
-    }
-
-    if (TTF_Init() == -1) {
-        printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
-        return false;
-    }
-
-    gWindow = SDL_CreateWindow("SDL TTF Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-    if (gWindow == NULL) {
-        printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
-        return false;
-    }
-
-    gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
-    if (gRenderer == NULL) {
-        printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
-        return false;
-    }
-
-    return true;
-}
-
-bool loadFont(const char* path, int fontSize) {
-    gFont = TTF_OpenFont(path, fontSize);
-    if (gFont == NULL) {
-        printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());
-        return false;
-    }
-    return true;
-}
-
-void closeSDL() {
-    if (gFont != NULL) {
-        TTF_CloseFont(gFont);
-        gFont = NULL;
-    }
-
-    SDL_DestroyRenderer(gRenderer);
-    SDL_DestroyWindow(gWindow);
-    TTF_Quit();
-    SDL_Quit();
-}
-
-void renderText(const char* text, int x, int y) {
-    SDL_Color textColor = {255, 255, 255};
-    SDL_Surface* textSurface = TTF_RenderText_Solid(gFont, text, textColor);
+// La fonction qui dessine du texte encadré dans un rectangle avec des sauts de ligne
+void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int maxWidth, int maxHeight, int lineHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
+    // Création de la surface de texte à partir de la police et du texte fournis
+    SDL_Surface *textSurface = TTF_RenderText_Blended_Wrapped(font, text, textColor, maxWidth);
     if (textSurface == NULL) {
-        printf("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
+        printf("Erreur lors du rendu du texte : %s\n", TTF_GetError());
         return;
     }
 
-    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(gRenderer, textSurface);
+    // Création de la texture à partir de la surface de texte
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
     if (textTexture == NULL) {
-        printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
+        printf("Erreur lors de la création de la texture du texte : %s\n", SDL_GetError());
         SDL_FreeSurface(textSurface);
         return;
     }
 
-    SDL_Rect renderQuad = {x, y, textSurface->w, textSurface->h};
-    SDL_RenderCopy(gRenderer, textTexture, NULL, &renderQuad);
+    // Obtention des dimensions de la surface de texte
+    int textWidth = textSurface->w;
+    int textHeight = textSurface->h;
 
+    // Mise à jour de la hauteur du rectangle englobant
+    boundingRect->x = x;
+    boundingRect->y = y;
+    boundingRect->w = maxWidth;
+    boundingRect->h = maxHeight;
+
+    // Dessin du rectangle de fond
+    SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
+    SDL_RenderFillRect(renderer, boundingRect);
+
+    // Dessin du texte
+    SDL_Rect renderRect = { x, y, 0, 0 };
+    SDL_QueryTexture(textTexture, NULL, NULL, &renderRect.w, &renderRect.h);
+    SDL_RenderCopy(renderer, textTexture, NULL, &renderRect);
+
+    // Libération de la surface et de la texture
     SDL_FreeSurface(textSurface);
     SDL_DestroyTexture(textTexture);
 }
 
-int main() {
-    if (!initSDL()) {
-        printf("Failed to initialize SDL!\n");
+int main(int argc, char *argv[]) {
+    // Initialisation de SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        printf("Erreur lors de l'initialisation de SDL : %s\n", SDL_GetError());
         return 1;
     }
 
-    if (!loadFont("arial.ttf", 28)) {
-        printf("Failed to load font!\n");
-        closeSDL();
+    // Initialisation de SDL_ttf
+    if (TTF_Init() < 0) {
+        printf("Erreur lors de l'initialisation de SDL_ttf : %s\n", TTF_GetError());
+        SDL_Quit();
         return 1;
     }
 
-    bool quit = false;
-    SDL_Event e;
+    // Création de la fenêtre
+    SDL_Window *window = SDL_CreateWindow("Texte encadré", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+    if (window == NULL) {
+        printf("Erreur lors de la création de la fenêtre : %s\n", SDL_GetError());
+        SDL_Quit();
+        return 1;
+    }
 
-    while (!quit) {
-        while (SDL_PollEvent(&e) != 0) {
-            if (e.type == SDL_QUIT) {
-                quit = true;
-            }
+    // Création du renderer
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (renderer == NULL) {
+        printf("Erreur lors de la création du renderer : %s\n", SDL_GetError());
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 1;
+    }
+
+    // Chargement de la police de caractères
+    TTF_Font *font = TTF_OpenFont("../img/police.ttf", 15);
+    if (font == NULL) {
+        printf("Erreur lors du chargement de la police de caractères : %s\n", TTF_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 1;
+    }
+
+    // Couleurs
+    SDL_Color textColor = { 255, 255, 255, 255 };
+    SDL_Color bgColor = { 30, 30, 30, 255 };
+
+    // Texte à dessiner
+    const char *text = "Ceci est un exemple de texte \n qui sera encadre.";
+
+    // Coordonnées et hauteur de saut de ligne
+    int x = 100;
+    int y = 100;
+    int lineHeight = 30;
+
+    // Rectangle englobant
+    SDL_Rect boundingRect;
+
+    // Dessin du texte encadré
+    drawText(renderer, font, text, x, y, 400, 400, lineHeight, textColor, bgColor, &boundingRect);
+
+    // Rafraîchissement de l'affichage
+    SDL_RenderPresent(renderer);
+
+    // Attente d'un événement de fermeture de fenêtre
+    SDL_Event event;
+    while (SDL_WaitEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            break;
         }
-
-        SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-        SDL_RenderClear(gRenderer);
-
-        // Afficher le texte dans un carré de taille 200x200 au centre de l'écran
-        int squareSize = 200;
-        int squareX = (SCREEN_WIDTH - squareSize) / 2;
-        int squareY = (SCREEN_HEIGHT - squareSize) / 2;
-        SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xFF);
-        SDL_Rect squareRect = {squareX, squareY, squareSize, squareSize};
-        SDL_RenderDrawRect(gRenderer, &squareRect);
-
-        // Afficher les informations dans le carré
-        const char* infoText = "Informations";
-        renderText(infoText, squareX + 20, squareY + 20);
-
-        SDL_RenderPresent(gRenderer);
     }
 
-    closeSDL();
+    // Libération des ressources
+    TTF_CloseFont(font);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    TTF_Quit();
+    SDL_Quit();
 
     return 0;
 }

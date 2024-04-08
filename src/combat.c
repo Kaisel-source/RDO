@@ -550,9 +550,9 @@ int main(){
                                 }
                              }if(mouseX >= (buttonBottomX - BUTTON_SIZEx) && mouseX <= buttonBottomX && mouseY >= (buttonBottomY - BUTTON_SIZEy) && mouseY <= buttonBottomY){
                                     printf("inventory  !\n");
-                            }if(condition==0){
+                             }if(condition==0){
 
-                            }
+                             }
                         }
                     break;
                 }
