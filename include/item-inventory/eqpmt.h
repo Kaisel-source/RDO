@@ -2,8 +2,6 @@
 #define EQPMT_H
 
 #include "../common/common.h"
-#include "../common/struct.h"
-#include "temp.h"
 
 /**
  * @brief : Create an item and convert it to an inventory item

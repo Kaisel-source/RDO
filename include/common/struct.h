@@ -159,6 +159,26 @@ typedef struct pers{
     //image ref
 } perso;
 
+typedef struct quest_npc_s{
+    char *accept;
+    char *refuse;
+    char *on_going;
+    char *completed;
+    quest_t *quest;
+}quest_npc_t;
+
+typedef struct npc_t{
+    char *name;
+    char *dialog;
+
+    int money;
+    item_list *inventory;
+
+    int nb_quest;
+    quest_npc_t **quest;
+    //image ref
+} npc_s;
+
 typedef struct game_t{
     perso *main_perso;
     perso *p[TOTAL_PERS];

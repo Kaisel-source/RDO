@@ -1,10 +1,8 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include "../common/struct.h"
 #include "../common/common.h"
-#include "eqpmt.h"
-#include "temp.h"
+
 
 /**
  * @brief Add an item to the current position of the list
@@ -88,14 +86,14 @@ void display_inventory(const item_list *list);
  * 
  * @param list List to destroy
  */
-void destroy_stockage(item_list *inv);
+void destroy_stockage(item_list **inv);
 
 /**
  * @brief Unallock all item generate in the game
  * 
  * @param inv 
  */
-void destroy_game_stockage(item_list *inv);
+void destroy_game_stockage(item_list **inv);
 
 
 /**

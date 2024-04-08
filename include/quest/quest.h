@@ -7,3 +7,6 @@ void destroy_quest(quest_t **quest);
 void quest_list_display(quest_t * const* quest);
 int accept_quest(perso *p, quest_t *quest);
 void quest_list_destructor(quest_t **quest);
+quest_npc_t *quest_npc_create(char *accept, char *refuse, char *on_going, char *completed, quest_t *quest);
+void quest_npc_display(const quest_npc_t quest_npc);
+void destroy_quest_npc(quest_npc_t **quest_npc);

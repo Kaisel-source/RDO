@@ -102,37 +102,37 @@ void display_inventory(const item_list *list)
 }
 
 
-void destroy_stockage(item_list *inv)
+void destroy_stockage(item_list **inv)
 {
-    inv->current=NULL;
-    inv->head=NULL;
-    inv->queue=NULL;
-    free(inv);
-    inv = NULL;
+    (*inv)->current=NULL;
+    (*inv)->head=NULL;
+    (*inv)->queue=NULL;
+    free((*inv));
+    (*inv) = NULL;
 }
 
 
-void destroy_game_stockage(item_list *inv)
+void destroy_game_stockage(item_list **inv)
 {
-    int nb_item = inv->nb_item;
+    int nb_item = (*inv)->nb_item;
     item_t *suiv;
-    inv->current=inv->head;
+    (*inv)->current=(*inv)->head;
     printf("Nombre d'item : %d\n",nb_item);
     for(int i=0;i<nb_item;i++)
     {   
-        suiv=inv->current->suiv;
-        printf("Item: %p\n", inv->current);
-        printf("Item->suiv: %p\n", inv->current->suiv);
+        suiv=(*inv)->current->suiv;
+        printf("Item: %p\n", (*inv)->current);
+        printf("Item->suiv: %p\n", (*inv)->current->suiv);
         printf("Destruction...\n");
-        destroy_common_item_stock(inv);
+        destroy_common_item_stock((*inv));
         printf("End of destruction...\n");
-        inv->current=suiv;
+        (*inv)->current=suiv;
     }
-    inv->current=NULL;
-    inv->head=NULL;
-    inv->queue=NULL;
-    free(inv);
-    inv = NULL;
+    (*inv)->current=NULL;
+    (*inv)->head=NULL;
+    (*inv)->queue=NULL;
+    free((*inv));
+    (*inv) = NULL;
 
 }
 

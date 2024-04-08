@@ -1,7 +1,7 @@
 #ifndef RESSOURCE_H
 #define RESSOURCE_H
 
-#include "../common/struct.h"
+#include "../common/common.h"
 
 /**
  * @brief Create a ressource object an convert it to an inventory item
