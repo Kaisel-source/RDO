@@ -1,19 +1,23 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -g
-SRC = $(wildcard src/*/*.c)
-OBJ = $(SRC:.c=.o)
-EXECUTABLE = mon_programme
+CC=gcc
+CFLAGS=-Wall -Wextra -std=c99
+LDFLAGS=
 
-all: $(EXECUTABLE)
-
-$(EXECUTABLE): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+SRCS=$(wildcard src/*/*.c)
+OBJS=$(SRCS:.c=.o)
+EXE=my_program
+TEST=my_test
+all: $(EXE)
+test: $(TEST)
+$(EXE): $(filter-out src/item-inventory/test.o, $(OBJS))
+	$(CC) $(LDFLAGS) -o $@ $^
+$(TEST): $(filter-out src/item-inventory/main.o, $(OBJS))
+	$(CC) $(LDFLAGS) -o $@ $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(EXE) $(OBJS)
 
-clear : clean
-	rm -f $(EXECUTABLE)
+.PHONY: all clean
+

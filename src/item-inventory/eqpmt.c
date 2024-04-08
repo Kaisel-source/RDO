@@ -84,7 +84,7 @@ char* name_eqpmt(int type) {
 
 
 
-void eqpmt_destructor(inv_item_s** item){ //Passer **
+void eqpmt_destructor(inv_item_s** item){ 
     //Unnalocation of memory for the text items
     free((*item)->item_u->eqpmt->desc);
     free((*item)->item_u->eqpmt->name);
