@@ -99,7 +99,7 @@ personnage_t * init_personnage(int x,int y,direction_t direction,SDL_Renderer **
     SDL_Surface * Surface =IMG_Load("image/perso.png"); 
     if(Surface == NULL) 
         printf("Erreur lors du chargement de l'image : %s\n",SDL_GetError());
-    perso->Texture = malloc(sizeof(SDL_Texture));
+    perso->Texture = malloc(sizeof(SDL_Texture *));
     perso->Texture = SDL_CreateTextureFromSurface(render,Surface);
 
     if(perso->Texture == NULL) 
@@ -113,19 +113,19 @@ personnage_t * init_personnage(int x,int y,direction_t direction,SDL_Renderer **
     perso->state = IDLE;
     perso->sprite_move = malloc(sizeof(img_t *)*4);
     for(int i=0;i<4;i++){
-        perso->sprite_move[i] = malloc(sizeof(img_t));
+        perso->sprite_move[i] = malloc(sizeof(img_t *));
         perso->sprite_move[i]->texture = malloc(sizeof(SDL_Rect *)*9);  
         perso->sprite_move[i]->num_ref=0;
         perso->sprite_move[i]->nb_sprite = 9;
     }
     direction_t dir[4] = {FRAME_HAUT,FRAME_BAS,FRAME_GAUCHE,FRAME_DROITE};
-    for(int i=0;i<4;i++){
-        for(int j = 0; j < 9;j++){
-            perso->sprite_move[i]->texture[j].y = dir[i] * TAILLE_SPRITE;
-            perso->sprite_move[i]->texture[j].x = j * TAILLE_SPRITE;             /*Récupère les différentes frames*/
-            perso->sprite_move[i]->texture->w = CELL_WIDTH;                 /*Taille du perso*/
-            perso->sprite_move[i]->texture->h = CELL_HEIGHT;              /*Taille du perso*/
-            SDL_Log("free de la surface du perso %d",i);
+    for(int ligne=0;ligne<4;ligne++){
+        for(int colonne = 0; colonne < 9;colonne++){
+            perso->sprite_move[ligne]->texture[colonne].y = dir[ligne] * TAILLE_SPRITE;
+            perso->sprite_move[ligne]->texture[colonne].x = colonne % TAILLE_SPRITE;             /*Récupère les différentes frames*/
+            perso->sprite_move[ligne]->texture[colonne].w = CELL_WIDTH;                 /*Taille du perso*/
+            perso->sprite_move[ligne]->texture[colonne].h = CELL_HEIGHT;              /*Taille du perso*/
+            SDL_Log("free de la surface du perso %d",ligne);
         }
     }
     printf("I m out!! \n");
