@@ -5,10 +5,17 @@
 #include "SDL2/SDL_image.h"
 #include <unistd.h>
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
+#define WINDOW_WIDTH 1900
+#define WINDOW_HEIGHT 1080
 #define SPRITE_WIDTH 200 // Nouvelle largeur de l'image
 #define SPRITE_HEIGHT 150 // Nouvelle hauteur de l'image
+
+#define BOARD_SIZE_X 24
+#define BOARD_SIZE_Y 24
+
+// Calcul de la taille des cases du plateau en fonction de la taille de la fenêtre
+#define CELL_WIDTH (WINDOW_WIDTH / BOARD_SIZE_X)
+#define CELL_HEIGHT (WINDOW_HEIGHT / BOARD_SIZE_Y)
 
 typedef struct img_s{
     char *ref;
@@ -24,8 +31,25 @@ typedef enum{
     IDLE
 }state_t;
 
-int main(int argc, char *argv[]) {    
-    int nb_sprite = 9;
+typedef enum{
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+}direction_t;
+
+typedef struct{
+    int x;
+    int y;
+    direction_t direction;
+    state_t state;
+}personnage_t;
+
+
+
+
+
+int main(int argc, char *argv[]) {  
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
 
@@ -125,26 +149,72 @@ int main(int argc, char *argv[]) {
     int hide_ref = 0;
     int interact_ref = 0;
     SDL_Event event;
+    int board[24][24]={
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}};
+    int board_size_x = 24;
+    int board_size_y = 24;
     int x = (WINDOW_WIDTH - SPRITE_WIDTH) / 2;
     int y = (WINDOW_HEIGHT - SPRITE_HEIGHT) / 2;
+    SDL_Texture *back = IMG_LoadTexture(renderer, "image/coll/back.png");
+    int pos_x = 10;
+    int pos_y = 10;
     state_t state = IDLE;
-    SDL_Rect destinationRect = {x, y, SPRITE_WIDTH, SPRITE_HEIGHT};
+    SDL_Rect destinationRect = {pos_x * CELL_WIDTH, pos_y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT};
+    destinationRect.y = (pos_y * (WINDOW_WIDTH/board_size_y)) % WINDOW_WIDTH;
+    destinationRect.x = (pos_x * (WINDOW_WIDTH/board_size_x)) % WINDOW_WIDTH;
     while (running) {
+        printf("pos_x : %d,pos_y:%d state %d\n", pos_x+1,pos_y+1,board[pos_y][pos_x]);
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = 0;
             }
             else if (event.type == SDL_KEYDOWN) {
                 if (event.key.keysym.sym == SDLK_RIGHT) {
+                    walk_ref = state==WALK_R?((walk_ref + 1) % walk.nb_sprite):0;
                     state = WALK_R;
-                    walk_ref = (walk_ref + 1) % walk.nb_sprite;
-                    destinationRect.x = (destinationRect.x + 10) % WINDOW_WIDTH;
+                    if(board[pos_y][(pos_x+1)%board_size_x] == 0){
+                        pos_x = (pos_x+1)%board_size_x;
+                        destinationRect.x = (pos_x * (WINDOW_WIDTH/board_size_x)) % WINDOW_WIDTH;
+                    }
+                    else{
+                        printf("You can't go there\n");
+                    }
+                    
                     
                 }
                 else if (event.key.keysym.sym == SDLK_LEFT) {
+                    walk_ref = state==WALK_L?((walk_ref + 1) % walk.nb_sprite):0;
                     state = WALK_L;
-                    walk_ref = (walk_ref - 1 + nb_sprite) % walk.nb_sprite;
-                    destinationRect.x = (destinationRect.x - 10 + WINDOW_WIDTH) % WINDOW_WIDTH;
+                    if(board[pos_y][(pos_x-1 + board_size_x)%board_size_x] == 0 ){
+                        pos_x = (pos_x-1)%board_size_x;
+                        destinationRect.x = (pos_x * (WINDOW_WIDTH/board_size_x)) % WINDOW_WIDTH;
+                     }
+                    else{
+                        printf("You can't go there\n");
+                    }
                 }
                 else if (event.key.keysym.sym == SDLK_UP) {
                     state = INTERACT;
@@ -154,6 +224,13 @@ int main(int argc, char *argv[]) {
                         SDL_RenderCopy(renderer,*(interact.texture+i) , NULL, &destinationRect);
                         SDL_RenderPresent(renderer);
                         usleep(55000);
+                    }
+                    if(board[(pos_y-1 + board_size_y)%board_size_y][pos_x] == 0 ){
+                        pos_y = (pos_y-1)%board_size_y;
+                        destinationRect.y = (pos_y * (WINDOW_HEIGHT/board_size_y)) % WINDOW_HEIGHT;
+                     }
+                    else{
+                        printf("You can't go there\n");
                     }
                     state = IDLE;
                 }
@@ -178,11 +255,16 @@ int main(int argc, char *argv[]) {
                         SDL_RenderPresent(renderer);
                         usleep(55000);
                     }
+                    if(board[(pos_y+1)%board_size_y][pos_x] == 0 ){
+                        pos_y = (pos_y+1)%board_size_y;
+                        destinationRect.y = (pos_y * (WINDOW_HEIGHT/board_size_y)) % WINDOW_HEIGHT;
+                     }
+                    else{
+                        printf("You can't go there\n");
+                    }
                     state = IDLE;
                 }
             }
-            
-            
         }
         
         // Effacement de l'écran
@@ -193,7 +275,14 @@ int main(int argc, char *argv[]) {
         
         SDL_RenderClear(renderer);
         // Affichage de l'image avec la taille redimensionnée
-        printf("state : %d\n", state);
+        for(int i=0;i<board_size_y;i++){
+            for(int j=0;j<board_size_x;j++){
+                SDL_Rect rect = {j * CELL_WIDTH, i * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT};
+                if(board[i][j] == 0){
+                    SDL_RenderCopy(renderer,back , NULL, &rect);
+                }
+            }
+        }
         switch (state)
         {
             case IDLE:
