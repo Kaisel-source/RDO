@@ -108,7 +108,7 @@ int main() {
 
 
     // Chargement de l'icône de la fenêtre
-    SDL_Surface* iconSurface = IMG_Load("../images/wall.jpg");
+    SDL_Surface* iconSurface = IMG_Load("../images/Icone.png");
     SDL_SetWindowIcon(window, iconSurface);
     SDL_FreeSurface(iconSurface);
 
