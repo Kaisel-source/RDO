@@ -26,15 +26,17 @@
 #define FRAME_BAS 11
 #define TAILLE_SPRITE 65
 
-#define NB_AREA 8
-#define FRAME_WALK 0
+#define NB_AREA 10
+#define GRASS 0
 #define STONE -1
-#define TREE -2
+#define BUSH -2
 #define CRYSTALL -3
 #define CACTUS -4
 #define WATER -5
 #define DOOR_O -6
 #define DOOR_C -7
+#define TREE -8
+#define TILES -9
 
 #define SORTIE -9999
 
@@ -283,13 +285,13 @@ int pose_block(int (*board)[24][24],int key,int x,int y){
     switch (key)
     {
     case SDLK_0:
-        build_board(board,FRAME_WALK,x,y);
+        build_board(board,GRASS,x,y);
         break;
     case SDLK_1:
         build_board(board,STONE,x,y);
         break;
     case SDLK_2:
-        build_board(board,TREE,x,y);
+        build_board(board,BUSH,x,y);
         break;
     case SDLK_3:
         build_board(board,CRYSTALL,x,y);
@@ -304,10 +306,10 @@ int pose_block(int (*board)[24][24],int key,int x,int y){
         build_board(board,DOOR_C,x,y);
         break;
     case SDLK_7:
-        build_board(board,FRAME_WALK,x,y);
+        build_board(board,TREE,x,y);
         break;
     case SDLK_8:
-        build_board(board,FRAME_WALK,x,y);
+        build_board(board,TILES,x,y);
         break;
     case SDLK_9:
         build_board(board,SORTIE,x,y);
@@ -383,7 +385,7 @@ int collision(int (*board)[24][24],int x,int y){
     case DOOR_O:
         return 1;
         break;
-    case WATER:
+    case TILES:
         return 1;
         break;
     default:
@@ -447,6 +449,7 @@ int main(int argc, char *argv[]) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = 0;
+                export_board(&map.map[map.y][map.x],map.path[map.y][map.x]);
             }
             else if (event.type == SDL_KEYDOWN) {
                 if (event.key.keysym.sym == SDLK_RIGHT) {
