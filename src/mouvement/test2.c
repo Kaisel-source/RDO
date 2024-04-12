@@ -77,6 +77,7 @@ typedef struct{
     int x;
     int y;
     int map[NB_MAP_Y][NB_MAP_X][24][24];
+    char* path[NB_MAP_Y][NB_MAP_X];
 }map_t;
 
 personnage_t * init_personnage(int x,int y,direction_t direction,SDL_Renderer **render){
@@ -190,14 +191,17 @@ SDL_Texture** load_area(SDL_Renderer **render) {
 }
 
 
-int rending(SDL_Renderer **render,personnage_t *perso,int map[24][24],SDL_Texture **area){
+int rending(SDL_Renderer **render,personnage_t *perso,int map[24][24],SDL_Texture **area,SDL_Texture *TextureOut){
     SDL_RenderClear(*render); // Effacer le rendu précédent
     // Dessiner le plateau
     for(int i=0;i<BOARD_SIZE_Y;i++){
             for(int j=0;j<BOARD_SIZE_X;j++){
                 SDL_Rect rect = {j * CELL_WIDTH, i * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT};
                 SDL_RenderCopy(*render, area[0], NULL, &rect);
-                SDL_RenderCopy(*render, area[abs(map[i][j])], NULL, &rect);
+                if(abs(map[i][j]) <= NB_AREA)
+                    SDL_RenderCopy(*render, area[abs(map[i][j])], NULL, &rect);
+                else if(map[i][j] == SORTIE)
+                    SDL_RenderCopy(*render, TextureOut, NULL, &rect);
 
             }
         }
@@ -211,14 +215,19 @@ int rending(SDL_Renderer **render,personnage_t *perso,int map[24][24],SDL_Textur
 
 int build_board(int (*board)[24][24],int value,int x,int y){
     printf("%d\n",(*board)[y][x]);
-    (*board)[y][x] = -value;
+    (*board)[y][x] = value;
     return 0;
 }
 
 int import_board(int (*board)[24][24],char *path){
     FILE *file = fopen(path,"r");
     if(file == NULL){
-        printf("Erreur lors de l'ouverture du fichier\n");
+        for(int i=0;i<24;i++){
+            for(int j=0;j<24;j++){
+                (*board)[i][j] = 0;
+            
+            }
+        }
         return -1;
     }
     for(int i=0;i<24;i++){
@@ -271,30 +280,117 @@ int free_area(SDL_Texture ***area){
 int pose_block(int (*board)[24][24],int key,int x,int y){
     int id=key-SDLK_0;
     printf("%d\n",id);
-    if(id>=0 && id<=NB_AREA){
-        build_board(board,id,x,y);
-    }
-    else{
-        printf("Invalid key\n");
+    switch (key)
+    {
+    case SDLK_0:
+        build_board(board,FRAME_WALK,x,y);
+        break;
+    case SDLK_1:
+        build_board(board,STONE,x,y);
+        break;
+    case SDLK_2:
+        build_board(board,TREE,x,y);
+        break;
+    case SDLK_3:
+        build_board(board,CRYSTALL,x,y);
+        break;
+    case SDLK_4:
+        build_board(board,CACTUS,x,y);
+        break;
+    case SDLK_5:
+        build_board(board,WATER,x,y);
+        break;
+    case SDLK_6:
+        build_board(board,DOOR_C,x,y);
+        break;
+    case SDLK_7:
+        build_board(board,FRAME_WALK,x,y);
+        break;
+    case SDLK_8:
+        build_board(board,FRAME_WALK,x,y);
+        break;
+    case SDLK_9:
+        build_board(board,SORTIE,x,y);
+        break;
+    
+    default:
+        break;
     }
     
     return 0;
 }
 
-int interact(map_t *map,int x,int y,int direction){
+int interact(map_t *map,int x,int y,int direction,personnage_t *perso){
     int num_map_x = (map)->x;
     int num_map_y = (map)->y;
-    if((map)->map[num_map_y][num_map_x][y][x] == DOOR_O){
-        (map)->map[num_map_y][num_map_x][y][x] = DOOR_C;
-    }
-    else if((map)->map[num_map_y][num_map_x][y][x] == DOOR_C){
-        (map)->map[num_map_y][num_map_x][y][x] = DOOR_O;
-    }
-    else if((map)->map[num_map_y][num_map_x][y][x]==SORTIE){
-        /*PRENDRE EN COMPTE DIRECTION ET XMAP,YMAP POUR LES DEP*/
-    }
+    switch ((map)->map[num_map_y][num_map_x][y][x]){
+        case DOOR_O:
+            (map)->map[num_map_y][num_map_x][y][x] = DOOR_C;
+            break;
+        case DOOR_C:
+            (map)->map[num_map_y][num_map_x][y][x] = DOOR_O;
+            break;
+        case SORTIE:
+            printf("X : %d\n",x);
+            export_board(&map->map[map->y][map->x],map->path[map->y][map->x]);
+            if(y==0){
+                if(num_map_y-1>=0){
+                    map->y = num_map_y-1;
+                    map->x = num_map_x;
+                    perso->y = BOARD_SIZE_Y-1;
+                }
+            }
+            else if(y==BOARD_SIZE_Y-1){
+                if(num_map_y+1<NB_MAP_Y){
+                    map->y = num_map_y+1;
+                    map->x = num_map_x;
+                    perso->y = 0;
+                }
+            }
+            else if(x==0){
+                printf("X : %d\n",x);
+                if(num_map_x-1>=0){
+                    map->y = num_map_y;
+                    map->x = num_map_x-1;
+                    perso->x = BOARD_SIZE_X-1;
+                }
+            }
+            else if(x==BOARD_SIZE_X-1){
+                if(num_map_x+1<NB_MAP_X){
+                    map->y = num_map_y;
+                    map->x = num_map_x+1;
+                    perso->x = 0;
+                }
+            }
+            
+            import_board(&map->map[map->y][map->x],map->path[map->y][map->x]);
 
-    return 0;
+            break;
+        default:
+            printf("You can't interact with this\n");
+            break;
+    }
+    
+}
+
+int collision(int (*board)[24][24],int x,int y){
+    printf("%d %d\n",x,y);
+    switch ((*board)[y][x])
+    {
+    case 0:
+        return 1;
+        break;
+    case DOOR_O:
+        return 1;
+        break;
+    case WATER:
+        return 1;
+        break;
+    default:
+        return 0;
+        break;
+    }
+    
 }
 
 int main(int argc, char *argv[]) {  
@@ -336,8 +432,17 @@ int main(int argc, char *argv[]) {
     map_t map;
     map.x = 0;
     map.y = 0;
+    map.path[0][0] = malloc(sizeof(char)*20);
+    map.path[0][1] = malloc(sizeof(char)*20);
+    strcpy(map.path[0][0],"board.txt");
+    strcpy(map.path[0][1],"board2.txt");
     
-    import_board(&map.map[map.x][map.y],"board.txt");
+    
+    import_board(&map.map[map.y][map.x],map.path[map.y][map.x]);
+    
+    SDL_Surface *SurfaceOut = IMG_Load("image/area/OUT.png");
+    SDL_Texture *TextureOut = SDL_CreateTextureFromSurface(renderer, SurfaceOut);
+    SDL_FreeSurface(SurfaceOut);
     while (running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
@@ -350,12 +455,13 @@ int main(int argc, char *argv[]) {
                     
                     SDL_Delay(100);
                     if(perso->state == WALK_R)
-                        if(map.map[map.x][map.y][perso->y][(perso->x+1)%BOARD_SIZE_X] == 0 || map.map[map.x][map.y][perso->y][(perso->x+1)%BOARD_SIZE_X] == DOOR_O){
+                    
+                        if((perso->x+1>=0 && perso->x+1<BOARD_SIZE_X) && collision(&map.map[map.y][map.x],perso->x+1,perso->y)){
                             perso->x = (perso->x+1)%BOARD_SIZE_X;
                             
                         }
                         else{
-                            printf("%d\n",map.map[map.x][map.y][perso->y][(perso->x+1)%BOARD_SIZE_X]);
+                            printf("%d\n",map.map[map.y][map.x][perso->y][(perso->x+1)%BOARD_SIZE_X]);
                             printf("You can't go there\n");
                         }
                     perso->state = WALK_R;
@@ -366,7 +472,7 @@ int main(int argc, char *argv[]) {
                     
                     SDL_Delay(100);
                     if(perso->state == WALK_L)
-                        if(map.map[map.x][map.y][perso->y][(perso->x-1 + BOARD_SIZE_X)%BOARD_SIZE_X] == 0 || map.map[map.x][map.y][perso->y][(perso->x-1 + BOARD_SIZE_X)%BOARD_SIZE_X] == DOOR_O ){
+                        if((perso->x-1>=0 && perso->x-1<BOARD_SIZE_X) && collision(&map.map[map.y][map.x],perso->x-1,perso->y)){
                             perso->x = (perso->x-1)%BOARD_SIZE_X;
                         }else{
                             printf("You can't go there\n");
@@ -379,7 +485,7 @@ int main(int argc, char *argv[]) {
                     
                     SDL_Delay(100);
                     if(perso->state == WALK_U)
-                        if(map.map[map.x][map.y][(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y][perso->x] == 0 || map.map[map.x][map.y][(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y][perso->x] == DOOR_O ){
+                        if((perso->y-1>=0 && perso->y-1<BOARD_SIZE_Y) && collision(&map.map[map.y][map.x],perso->x,perso->y-1) ){
                             perso->y = (perso->y-1)%BOARD_SIZE_Y;
                         }
                         else{
@@ -393,7 +499,7 @@ int main(int argc, char *argv[]) {
                     
                     SDL_Delay(100);
                     if(perso->state == WALK_D)
-                        if(map.map[map.x][map.y][(perso->y+1)%BOARD_SIZE_Y][perso->x] == 0 || map.map[map.x][map.y][(perso->y+1)%BOARD_SIZE_Y][perso->x] == DOOR_O){
+                        if((perso->y+1>=0 && perso->y+1<BOARD_SIZE_Y) && collision(&map.map[map.y][map.x],perso->x,perso->y+1)){
                             perso->y = (perso->y+1)%BOARD_SIZE_Y;
                         }
                         else{
@@ -404,45 +510,45 @@ int main(int argc, char *argv[]) {
                 
                 else if (event.key.keysym.sym == SDLK_e) {
                     printf("Exportation du plateau\n");
-                    export_board(&map.map[map.x][map.y],"board.txt");
+                    export_board(&map.map[map.y][map.x],map.path[map.y][map.x]);
                 }
                 else if (event.key.keysym.sym == SDLK_r) {
                     printf("Reset du plateau\n");
-                    import_board(&map.map[map.x][map.y],"board.txt");
+                    import_board(&map.map[map.y][map.x],map.path[map.y][map.x]);
                 }
                 else if (event.key.keysym.sym == SDLK_a) {
                     printf("Clear du plateau\n");
                     for(int i=0;i<24;i++){
                         for(int j=0;j<24;j++){
-                            map.map[map.x][map.y][i][j] = 0;
+                            map.map[map.y][map.x][i][j] = 0;
                         }
                     }
                 }
                 else if (event.key.keysym.sym == SDLK_q) {
                     if(perso->direction == RIGHT && perso->x+1<BOARD_SIZE_X)
-                        interact(&map,(perso->x+1)%BOARD_SIZE_X,perso->y,perso->direction);
+                        interact(&map,(perso->x+1)%BOARD_SIZE_X,perso->y,perso->direction, perso);
                     else if(perso->direction == LEFT && perso->x-1>=0)
-                        interact(&map,(perso->x-1 + BOARD_SIZE_X)%BOARD_SIZE_X,perso->y,perso->direction);
+                        interact(&map,(perso->x-1 + BOARD_SIZE_X)%BOARD_SIZE_X,perso->y,perso->direction, perso);
                     else if(perso->direction == UP && perso->y-1>=0)
-                        interact(&map,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,perso->direction);
+                        interact(&map,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,perso->direction, perso);
                     else if(perso->direction == DOWN && perso->y+1<BOARD_SIZE_Y)
-                        interact(&map,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,perso->direction);
+                        interact(&map,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,perso->direction, perso);
                 }
                 else{
                     if(perso->direction == RIGHT && perso->x+1<BOARD_SIZE_X)
-                        pose_block(&map.map[map.x][map.y],event.key.keysym.sym,(perso->x+1)%BOARD_SIZE_X,perso->y);
+                        pose_block(&map.map[map.y][map.x],event.key.keysym.sym,(perso->x+1)%BOARD_SIZE_X,perso->y);
                     else if(perso->direction == LEFT && perso->x-1>=0)
-                        pose_block(&map.map[map.x][map.y],event.key.keysym.sym,(perso->x-1 + BOARD_SIZE_X)%BOARD_SIZE_X,perso->y);
+                        pose_block(&map.map[map.y][map.x],event.key.keysym.sym,(perso->x-1 + BOARD_SIZE_X)%BOARD_SIZE_X,perso->y);
                     else if(perso->direction == UP && perso->y-1>=0)
-                        pose_block(&map.map[map.x][map.y],event.key.keysym.sym,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y);
+                        pose_block(&map.map[map.y][map.x],event.key.keysym.sym,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y);
                     else if(perso->direction == DOWN && perso->y+1<BOARD_SIZE_Y)
-                        pose_block(&map.map[map.x][map.y],event.key.keysym.sym,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y);
+                        pose_block(&map.map[map.y][map.x],event.key.keysym.sym,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y);
                 }
             }
     
         
         }
-        rending(&renderer,perso,map.map[map.x][map.y],area);
+        rending(&renderer,perso,map.map[map.y][map.x],area,TextureOut);
     }
     // Libération de la mémoire
     free_personnage(&perso);
