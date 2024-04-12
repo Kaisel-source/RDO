@@ -12,13 +12,13 @@ int pose_block(int (*board)[24][24],int key,int x,int y){
     switch (key)
     {
     case SDLK_0:
-        build_board(board,FRAME_WALK,x,y);
+        build_board(board,GRASS,x,y);
         break;
     case SDLK_1:
         build_board(board,STONE,x,y);
         break;
     case SDLK_2:
-        build_board(board,TREE,x,y);
+        build_board(board,BUSH,x,y);
         break;
     case SDLK_3:
         build_board(board,CRYSTALL,x,y);
@@ -33,10 +33,10 @@ int pose_block(int (*board)[24][24],int key,int x,int y){
         build_board(board,DOOR_C,x,y);
         break;
     case SDLK_7:
-        build_board(board,FRAME_WALK,x,y);
+        build_board(board,TREE,x,y);
         break;
     case SDLK_8:
-        build_board(board,FRAME_WALK,x,y);
+        build_board(board,TILES,x,y);
         break;
     case SDLK_9:
         build_board(board,SORTIE,x,y);

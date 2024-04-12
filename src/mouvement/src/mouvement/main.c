@@ -95,10 +95,10 @@ int main(int argc, char *argv[]) {
     map.x = 0;
     map.y = 0;
     map.path[0][0] = malloc(sizeof(char)*20);
-    strcpy(map.path[0][0],"board.txt");
+    strcpy(map.path[0][0],"map/board.txt");
     
     map.path[0][1] = malloc(sizeof(char)*20);
-    strcpy(map.path[0][1],"board2.txt");
+    strcpy(map.path[0][1],"map/board2.txt");
     
     
     import_board(&map.map[map.y][map.x],map.path[map.y][map.x]);
