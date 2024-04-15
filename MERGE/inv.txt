@@ -1,0 +1,13 @@
+Nom du personnage: toto
+Statistiques: Intel:10, Str:10, Luck:10, Agi:10, End:10
+HP: 100/100, MP: 100/100, XP: 0/0, Level: 1
+Poids maximal supporté: 100, Argent: 100
+Équipements équipés:
+Emplacement 1: ID de l'équipement: -1
+Emplacement 2: ID de l'équipement: -1
+Emplacement 3: ID de l'équipement: -1
+Emplacement 4: ID de l'équipement: -1
+Emplacement 5: ID de l'équipement: -1
+Emplacement 6: ID de l'équipement: -1
+Emplacement 7: ID de l'équipement: -1
+Inventaire:
