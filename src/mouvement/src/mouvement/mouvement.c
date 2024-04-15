@@ -4,13 +4,14 @@ int collision(int (*board)[24][24],int x,int y){
     printf("%d %d\n",x,y);
     switch ((*board)[y][x])
     {
-    case 0:
+    case GRASS:
         return 1;
         break;
     case DOOR_O:
         return 1;
         break;
-    case WATER:
+
+    case TILES:
         return 1;
         break;
     default:
