@@ -1,4 +1,4 @@
-#include <text_ecrire.h>
+#include "text_ecrire.h"
 
 
 // La fonction qui dessine du texte encadré dans un rectangle avec des sauts de ligne

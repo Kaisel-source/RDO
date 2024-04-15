@@ -1,4 +1,4 @@
-#include <enemie.h>
+#include "enemie.h"
 
 
 
@@ -95,8 +95,8 @@ pos_t detecte_enemie(entite_t mat[N][N], pos_t pos, int equipe) {
                 // Met à jour la position de l'ennemi le plus proche si la distance est plus petite
                 if (distance < distance_min) {
                     distance_min = distance;
-                    plus_procheX = j;
-                    plus_procheY = i;
+                    plus_procheX = i;
+                    plus_procheY = j;
                 }
             }
         }
@@ -136,9 +136,11 @@ void deplacePlusProche(entite_t plateau[N][N], pos_t pos, entite_t perso) {
 void process_enemy_turn(entite_t plateau_de_combat[N][N], pos_t turn[], int *tour) {
     if (plateau_de_combat[turn[*tour].x][turn[*tour].y].equipe == 1) {
         pos_t enemiepos = detecte_enemie(plateau_de_combat, turn[*tour], 1);
+        printf("%d %d",enemiepos.x,enemiepos.y);
         if (estAporter(plateau_de_combat, turn[*tour], enemiepos, plateau_de_combat[turn[*tour].x][turn[*tour].y].range) == 1) {
             plateau_de_combat[enemiepos.x][enemiepos.y].pv -= plateau_de_combat[turn[*tour].x][turn[*tour].y].attaque;
             printf("estaporter \n");
+            printf("%d %d",enemiepos.x,enemiepos.y);
         } else {
             deplacePlusProche(plateau_de_combat, turn[*tour], plateau_de_combat[turn[*tour].x][turn[*tour].y]);
         }

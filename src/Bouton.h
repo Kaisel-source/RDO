@@ -1,23 +1,18 @@
-#include <SDL2/SDL.h>
-#include "SDL2/SDL_image.h"
+#ifndef BOUTON_H
+#define BOUTON_H
+
+#include "commun.h"
 
 
 
 
-/**
- * @brief position + image d un espace defeni
- * 
- */
-typedef struct {
-    SDL_Rect rect;       // Rectangle définissant la position et la taille du bouton
-    SDL_Texture* texture; // Texture du bouton (à générer avec SDL_CreateTextureFromSurface())
-} Button;
-
-
+// Initialiser un bouton avec les coordonnées et dimensions spécifiées
 Button initButton(int x, int y, int width, int height);
 
-
+// Obtenir le rectangle d'un bouton à partir de ses coordonnées
 SDL_Rect getButtonRect(int bouttonx, int bouttony);
 
-
+// Coller une image sur un bouton
 void setButtonImage(SDL_Renderer* renderer, SDL_Texture* imageTexture, SDL_Rect* buttonRect);
+
+#endif /* BOUTON_H */
