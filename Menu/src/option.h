@@ -1,5 +1,8 @@
-#ifndef COMMONSDL_H
-#define COMMONSDL_H
+#ifndef OPTION_H
+#define OPTION_H
+
+#include "commonSDL.h"
+
 
 void option();
 

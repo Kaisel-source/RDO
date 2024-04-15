@@ -1,5 +1,4 @@
 #include "commonSDL.h"
-#include "option.h"
 
 
 // Fonction pour initialiser un bouton
