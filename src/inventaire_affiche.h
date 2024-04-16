@@ -8,10 +8,6 @@
 
 
 // Structure pour représenter un article
-typedef struct {
-    char *name;
-    char *description;
-} Item;
 
 void drawInventory(SDL_Renderer *renderer, TTF_Font *font, char *name, char *description, int x, int y, int maxWidth, int maxHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect);
 

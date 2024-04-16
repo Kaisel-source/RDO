@@ -50,6 +50,12 @@ typedef struct {
     SDL_Texture* texture; // Texture du bouton (à générer avec SDL_CreateTextureFromSurface())
 } Button;
 
+typedef struct {
+    char *name;
+    char *description;
+} Item;
+
+
 
 
 #include "Bouton.h"
