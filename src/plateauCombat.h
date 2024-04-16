@@ -30,7 +30,7 @@ void init_plateau(entite_t plateau[N][N]);
  * @param gridY La position Y de la grille sur l'écran
  * @return pos_t La position de la case ciblée
  */
-pos_t plateau_cible(int mouseX, int mouseY, entite_t plateau[N][N], int gridX, int gridY);
+pos_t plateau_cible(int mouseX, int mouseY,int gridX, int gridY);
 
 /**
  * @brief Fonction pour dessiner le plateau de combat sur l'écran

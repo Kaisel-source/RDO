@@ -56,10 +56,10 @@ typedef struct {
 #include "entite.h"
 #include "enemie.h"
 #include "fonction_joueur.h"
-#include "inventaire_affiche.h"
 #include "text_ecrire.h"
 #include "plateauCombat.h"
 #include "turn_order.h"
+#include "inventaire_affiche.h"
 
 
 

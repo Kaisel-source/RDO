@@ -3,7 +3,6 @@
 
 // Fonction pour initialiser le turn order
 void init_turn_order(pos_t turn[N*N]) {
-    int cpt = 0;
     // Parcourir le plateau de jeu et stocker les positions des entités vivantes
     for (int i = 0; i < (N*N); i++) {
         turn[i].x = 0;
@@ -44,7 +43,7 @@ void turn_order(entite_t mat[N][N], pos_t turn[N*N]) {
         if (max != k) {
             temp = turn[k];
             turn[k] = turn[max];
-            turn[max] = temp;
+            turn[max] = temp; 
         }
     }
 }

@@ -34,7 +34,7 @@ void init_plateau(entite_t plateau[N][N]){
  * @param mouseX 
  * @param mouseY 
  */
-pos_t plateau_cible(int mouseX,int mouseY,entite_t plateau[N][N],int gridX,int gridY){
+pos_t plateau_cible(int mouseX,int mouseY,int gridX,int gridY){
     pos_t pos_cible;
     int x=-1,y=-1;
     for (int row = 0; row < GRID_ROWS; row++) {
@@ -42,9 +42,6 @@ pos_t plateau_cible(int mouseX,int mouseY,entite_t plateau[N][N],int gridX,int g
             int buttonX = gridX + column * (BUTTON_SIZEx + BUTTON_MARGIN);
             int buttonY = gridY + row * (BUTTON_SIZEy + BUTTON_MARGIN);
             if (mouseX >= buttonX && mouseX <= buttonX + BUTTON_SIZEx && mouseY >= buttonY && mouseY <= buttonY + BUTTON_SIZEy) {
-                    printf("Bouton (%d, %d) clique !\n", row, column);
-                    printf("pv = %d !\n", plateau[row][column].pv);
-                    printf("equipe = %d !\n", plateau[row][column].equipe);
                     x=row;
                     y=column;
             }
@@ -207,9 +204,8 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
     SDL_FreeSurface(backgroundSurface);
     
     int mouseX, mouseY;
-    int quit = 0;
     int tour=0;
-    int tourmax=0;
+    int tourmax=0; 
     int action=0;
 
 
@@ -222,12 +218,9 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
         SDL_Event event;
           while (SDL_PollEvent(&event)) {
                 switch (event.type) {
-                    case SDL_QUIT:
-                        quit = 1;
-                        break;
                     case SDL_MOUSEBUTTONDOWN:
                     SDL_GetMouseState(&mouseX, &mouseY);
-                        pl=plateau_cible(mouseX,mouseY,plateau_de_combat,gridX,gridY);
+                        pl=plateau_cible(mouseX,mouseY,gridX,gridY);
                         if(plateau_de_combat[turn[tour].x][turn[tour].y].equipe==2){
                             if((mouseX >= buttonBottomX && mouseX <= buttonBottomX + BUTTON_SIZEx && mouseY >= buttonBottomY && mouseY <= buttonBottomY + BUTTON_SIZEy) && (action==0)){
                                 action=1;
@@ -281,17 +274,17 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
         buttonBottom4 = initButton(buttonBottomX - BUTTON_SIZEx, buttonBottomY - BUTTON_SIZEy, BUTTON_SIZEx, BUTTON_SIZEy);
 
         if(action==0){
-            drawText(renderer, font, "   IS YOUR TURN  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, 0, textColor, bgColor, &statu);
+            drawText(renderer, font, "   IS YOUR TURN  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }
         if(action==1){
-            drawText(renderer, font, "   mode attaque  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, 0, textColor, bgColor, &statu);
+            drawText(renderer, font, "   mode attaque  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }
         if(action==2){
-            drawText(renderer, font, "   vous aller utiliser un sort  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, 0, textColor, bgColor, &statu);
+            drawText(renderer, font, "   vous aller utiliser un sort  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }if(action==3){
-            drawText(renderer, font, "   mouvement en  cour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, 0, textColor, bgColor, &statu);
+            drawText(renderer, font, "   mouvement en  cour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
         }if(action!=1 && action!=2 && action!=3 && action!=0){
-            drawText(renderer, font, "   metter Fin a votre tour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, 0, textColor, bgColor, &statu);
+            drawText(renderer, font, "   metter Fin a votre tour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
         }
 
 
@@ -305,7 +298,7 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
         //affiche stat si entite mob cliquer 
         if ((pl.x >= 0 && pl.x < GRID_ROWS) && (pl.y >= 0 && pl.y < GRID_COLUMNS)) {
             if ((action == 0 || action == 5) && (plateau_de_combat[pl.x][pl.y].pv>0)) {
-                drawTextWithStats(renderer, font, plateau_de_combat[pl.x][pl.y].prenom, plateau_de_combat[pl.x][pl.y].classe,plateau_de_combat[pl.x][pl.y].pv,plateau_de_combat[pl.x][pl.y].attaque,0,gridY + gridHeight, 250, 300, 0, textColor, bgColor, &boundingRect);
+                drawTextWithStats(renderer, font, plateau_de_combat[pl.x][pl.y].prenom, plateau_de_combat[pl.x][pl.y].classe,plateau_de_combat[pl.x][pl.y].pv,plateau_de_combat[pl.x][pl.y].attaque,0,gridY + gridHeight, 250, 300, textColor, bgColor, &boundingRect);
             }
         }
 

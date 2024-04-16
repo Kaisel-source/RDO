@@ -2,7 +2,7 @@
 
 
 // La fonction qui dessine du texte encadré dans un rectangle avec des sauts de ligne
-void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int maxWidth, int maxHeight, int lineHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
+void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int maxWidth, int maxHeight,SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
     // Création de la surface de texte à partir de la police et du texte fournis
     SDL_Surface *textSurface = TTF_RenderText_Blended_Wrapped(font, text, textColor, maxWidth);
     if (textSurface == NULL) {
@@ -15,12 +15,9 @@ void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, i
     if (textTexture == NULL) {
         printf("Erreur lors de la création de la texture du texte : %s\n", SDL_GetError());
         SDL_FreeSurface(textSurface);
-        return;
+        return; 
     }
 
-    // Obtention des dimensions de la surface de texte
-    int textWidth = textSurface->w;
-    int textHeight = textSurface->h;
 
     // Mise à jour de la hauteur du rectangle englobant
     boundingRect->x = x;
@@ -42,7 +39,7 @@ void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, i
     SDL_DestroyTexture(textTexture);
 }
 
-void drawTextWithStats(SDL_Renderer *renderer, TTF_Font *font,char *name,char *classe, int pv, int force, int x, int y, int maxWidth, int maxHeight, int lineHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
+void drawTextWithStats(SDL_Renderer *renderer, TTF_Font *font,char *name,char *classe, int pv, int force, int x, int y, int maxWidth, int maxHeight,SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
     char statsText[100]; // Pour stocker le texte des statistiques
 
     // Création du texte des statistiques
@@ -63,9 +60,6 @@ void drawTextWithStats(SDL_Renderer *renderer, TTF_Font *font,char *name,char *c
         return;
     }
 
-    // Obtention des dimensions de la surface de texte
-    int textWidth = textSurface->w;
-    int textHeight = textSurface->h;
 
     // Mise à jour de la hauteur du rectangle englobant
     boundingRect->x = x;
