@@ -27,7 +27,7 @@ La trame narrative est enrichie par des quêtes captivantes, offrant des récomp
 En somme, ce RPG propose une expérience immersive mêlant exploration, quêtes , développement de personnages et stratégie tactique dans un monde ouvert prêt à être exploré.<br>
 <br>
 
-La Documentation est disponible [ici](...).
+La Documentation est disponible [ici](https://Kaisel-source.github.io/RDO/).
 <br><br>
 
 
@@ -47,7 +47,7 @@ The game incorporates a tactical dimension with a turn-based combat system, elem
 The narrative is enriched by captivating quests, offering rewards and contributing to the deep exploration of the universe.<br> 
 In short, this RPG offers an immersive experience combining exploration, quests, character development and tactical strategy in an open world ready to be explored.
 
-The Documentation is available [here](...).
+The Documentation is available [here](https://Kaisel-source.github.io/RDO/).
 
 
 <br><br>
