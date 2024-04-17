@@ -35,28 +35,38 @@ int main() {
         return -1;
     }
 
-    perso *perso=malloc(sizeof(perso));
-    init_perso(perso, "tata", 1,1,1,1,1,1, 1, LEFT, &renderer);
-    display_perso(*perso);
-    import(perso);
-    display_perso(*perso);
-    
 
+    /*COMBAT*/
+    TTF_Font *font = TTF_OpenFont("img/police.ttf", 12);
+    SDL_Color textColor = {255, 255, 255, 255};
+    SDL_Color bgColor = {0, 100, 100, 255};
+    int inventoryVisible = 0;
+    SDL_Rect boundingRect;
+
+
+    /*PERSONNAGE*/
+    perso *perso=malloc(sizeof(perso));
+    init_perso(perso, "tata", 1,1,1,1,1,11,23, UP, &renderer);
+
+    import(&perso);
+    printf("%s\n",perso->name);
+    printf("%d %d\n",perso->x,perso->y);
+    
+    /*MAP*/
     SDL_Texture **area = load_area(&renderer);
-    // Boucle principale
-    int running = 1;
-    SDL_Event event;
     map_t map;
-    map.x = 0;
-    map.y = 0;
-    map.path[0][0] = malloc(sizeof(char)*20);
-    strcpy(map.path[0][0],"data/map/board.txt");
-    
-    map.path[0][1] = malloc(sizeof(char)*20);
-    strcpy(map.path[0][1],"data/map/board2.txt");
+    map.x = perso->map_x;
+    map.y = perso->map_y;
     
     
-    import_board(&map.map[map.y][map.x],map.path[map.y][map.x]);
+    for(int y=0;y<NB_MAP_Y;y++){
+        for(int x=0;x<NB_MAP_X;x++){
+            map.path[y][x] = malloc(sizeof(char)*30);
+            sprintf(map.path[y][x], "data/map/board%d-%d.txt", y, x);
+            import_board(&map.map[y][x],map.path[y][x]);
+        }
+    }
+    
     
     SDL_Surface *SurfaceOut = IMG_Load("data/image/area/OUT.png");
     SDL_Texture *TextureOut = SDL_CreateTextureFromSurface(renderer, SurfaceOut);
@@ -66,19 +76,24 @@ int main() {
     SDL_Texture *TextureMonster = SDL_CreateTextureFromSurface(renderer, SurfaceOut);
     SDL_FreeSurface(SurfaceOut);
 
-    npc_s *npc = npc_creator("toto", "toto", 10, "data/image/perso.png", LEFT, &renderer, 0);
-    npc_s *npc2 = npc_creator("kevin", "Je etre kevin", 10, "data/image/perso.png", LEFT, &renderer, 0);
-    TTF_Font *font = TTF_OpenFont("img/police.ttf", 12);
-    SDL_Color textColor = {255, 255, 255, 255};
-    SDL_Color bgColor = {0, 100, 100, 255};
-    int inventoryVisible = 0;
-    SDL_Rect boundingRect;
+
+    /*GAME*/
     game_s *g = malloc(sizeof(game_s));
     game_init_game(g,&map,TextureOut,TextureMonster,area);
     game_add_main_perso(g,perso);
-    game_add_npc(g,npc);
-    game_add_npc(g,npc2);
 
+
+    /*NPC*/
+    npc_s *npc = npc_creator("toto", "toto", 10, "data/image/perso.png", LEFT, &renderer, 0);
+    game_add_npc(g,npc);
+    npc = npc_creator("kevin", "Je etre kevin", 10, "data/image/perso.png", LEFT, &renderer, 0);
+    game_add_npc(g,npc);
+
+    
+    
+
+    int running = 1;
+    SDL_Event event;
     while (running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
@@ -166,13 +181,10 @@ int main() {
                     }
                 }
                                 
-                else if (event.key.keysym.sym == SDLK_i) {
+                else if (event.key.keysym.sym == SDLK_m) {
                     // Affichage/masquage de l'inventaire lorsque la touche "i" est enfoncée
-                    printf("Toggle inventory visibility\n");
-                    if(inventoryVisible)
-                        inventoryVisible = 0;
-                    else
-                        inventoryVisible = 1;
+                    printf("Board%d-%d\n",map.y,map.x);
+                    
                     
                         
                 }
@@ -185,6 +197,7 @@ int main() {
                         interact(g,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window);
                     else if(perso->direction == DOWN && perso->y+1<BOARD_SIZE_Y)
                         interact(g,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window);
+
                 }
                 else{
                     if(perso->direction == RIGHT && perso->x+1<BOARD_SIZE_X)
@@ -201,10 +214,13 @@ int main() {
         
         }
         if(inventoryVisible)
-                    showInventory(g->main_perso->inventory, font, renderer, textColor, bgColor, &boundingRect);
+            showInventory(g->main_perso->inventory, font, renderer, textColor, bgColor, &boundingRect);
         rending(&renderer,g);
     }
     // Libération de la mémoire
+    
+    perso->map_x = map.x;
+    perso->map_y = map.y;
     export(perso);
     game_destroy_game(&g);
     SDL_DestroyRenderer(renderer);

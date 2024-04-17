@@ -1,7 +1,9 @@
-Nom du personnage: toto
-Statistiques: Intel:10, Str:10, Luck:10, Agi:10, End:10
-HP: 100/100, MP: 100/100, XP: 0/0, Level: 1
-Poids maximal supporté: 100, Argent: 100
+Nom du personnage: trte
+Statistiques: Intel:100, Str:1, Luck:1, Agi:1, End:1
+HP: 10/10, MP: 10/10, XP: 0/100, Level: 1
+Poids maximal supporté: 1000000, Argent: 100
+Pos x: 7, y: 2
+Map x: 0, y: 1
 Équipements équipés:
 Emplacement 1: ID de l'équipement: -1
 Emplacement 2: ID de l'équipement: -1
@@ -10,4 +12,5 @@ Emplacement 4: ID de l'équipement: -1
 Emplacement 5: ID de l'équipement: -1
 Emplacement 6: ID de l'équipement: -1
 Emplacement 7: ID de l'équipement: -1
+Nombre d'objets dans l'inventaire: 0
 Inventaire:

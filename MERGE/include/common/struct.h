@@ -14,8 +14,8 @@
 #define TOTAL_QUEST 10
 #define TOTAL_PERS 10
 
-#define NB_MAP_X 2
-#define NB_MAP_Y 1
+#define NB_MAP_X 3
+#define NB_MAP_Y 2
 typedef enum eqpmt_type {
     NONE, HEAD, BODY, LEGS, FOOT, RING, WEAPON, SHIELD
 } eqpmt_type;
@@ -204,6 +204,8 @@ typedef struct pers{
     img_t **sprite_move;
     SDL_Rect *position;
     
+    int map_x;
+    int map_y;
 } perso;
 
 typedef struct quest_npc_s{

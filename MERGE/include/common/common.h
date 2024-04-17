@@ -63,7 +63,7 @@ void use_common(perso *player);
 
 
 int export(const perso *p);
-int import(perso *p);
+int import(perso **p);
 
 void add_n(perso *p,item_t it, int nb);
 void remove_n(perso *p,item_t it, int nb);
