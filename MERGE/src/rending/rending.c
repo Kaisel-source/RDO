@@ -67,10 +67,14 @@ int rending(SDL_Renderer **render,game_s *g){
                 if(g->map->map[map_y][map_x][i][j] > 0 && g->map->map[map_y][map_x][i][j] <= g->nb_pers_saved)
                     SDL_RenderCopy(*render, g->npc[g->map->map[map_y][map_x][i][j]-1]->Texture, g->npc[g->map->map[map_y][map_x][i][j]-1]->sprite_move->texture[0], &rect);
                 
-                else if(abs(g->map->map[map_y][map_x][i][j]) <= NB_AREA)
-                    SDL_RenderCopy(*render, g->area[abs(g->map->map[map_y][map_x][i][j])], NULL, &rect);
                 else if(g->map->map[map_y][map_x][i][j] == SORTIE)
                     SDL_RenderCopy(*render, g->TextureOut, NULL, &rect);
+
+                else if(g->map->map[map_y][map_x][i][j] == MONSTER)
+                    SDL_RenderCopy(*render, g->TextureMonster, NULL, &rect);
+                else if(abs(g->map->map[map_y][map_x][i][j]) <= NB_AREA)
+                    SDL_RenderCopy(*render, g->area[abs(g->map->map[map_y][map_x][i][j])], NULL, &rect);
+               
             
             }
         }

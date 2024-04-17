@@ -6,6 +6,8 @@
 #include <string.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include "SDL2/SDL_ttf.h"
+#include <math.h>
 #include <unistd.h>
 
 #define NB_MAX_QUEST 10
@@ -227,6 +229,36 @@ typedef struct npc_t{
     img_t *sprite_move;
 } npc_s;
 
+/**
+ * @brief Structure pour représenter une position sur le plateau
+ */
+typedef struct {
+    int x; /**< Coordonnée en X */
+    int y; /**< Coordonnée en Y */
+} pos_t;
+
+// Structure représentant une entité
+typedef struct {
+    char prenom[50];
+    char classe[50];
+    int pv;
+    int pv_max;
+    int attaque;
+    int alive;
+    void *img; // Pointeur vers l'image de l'entité, à définir selon votre utilisation
+    int equipe;
+    int mouv;
+    int initiative;
+    int range;
+} entite_t;
+
+// Structure représentant un bouton
+typedef struct {
+    SDL_Rect rect;       // Rectangle définissant la position et la taille du bouton
+    SDL_Texture* texture; // Texture du bouton (à générer avec SDL_CreateTextureFromSurface())
+} Button;
+
+
 typedef struct game_t{
     perso *main_perso;
     npc_s *npc[TOTAL_PERS];
@@ -237,6 +269,7 @@ typedef struct game_t{
     map_t *map;
     SDL_Texture **area;
     SDL_Texture *TextureOut;
+    SDL_Texture *TextureMonster;
 
 }game_s;
 

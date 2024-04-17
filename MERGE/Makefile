@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -I/usr/include/SDL2 -Iinclude
-LDFLAGS = -lSDL2 -lSDL2_image -lSDL2main
+LDFLAGS = -lSDL2 -lSDL2_image -lSDL2main -lSDL2_ttf -lm
 
 SRCDIR = src
 INCDIR = include

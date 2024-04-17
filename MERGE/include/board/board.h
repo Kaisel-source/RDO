@@ -20,6 +20,7 @@
 #define TILES -9
 
 #define SORTIE -9999
+#define MONSTER -10000
 
 
 

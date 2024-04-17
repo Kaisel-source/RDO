@@ -1,5 +1,7 @@
 #include "../../include/common/common.h"
 
+#include <string.h> // Pour utiliser strcpy
+
 void init_perso(perso *p, const char *name, int end, int agi, int str, int luck, int intel, int x, int y, direction_t direction, SDL_Renderer **render) {
     if (p == NULL || name == NULL || render == NULL || *render == NULL) {
         // Gestion des pointeurs nuls
@@ -7,7 +9,7 @@ void init_perso(perso *p, const char *name, int end, int agi, int str, int luck,
     }
 
     // Allocation de mémoire pour le nom du personnage
-    p->name = malloc(sizeof(char) * strlen(name) + 1);
+    p->name = malloc(sizeof(char) * (strlen(name) + 1)); // Ajout de 1 pour le caractère nul
     if (p->name == NULL) {
         // Gestion de l'échec de l'allocation de mémoire
         return;
@@ -36,11 +38,16 @@ void init_perso(perso *p, const char *name, int end, int agi, int str, int luck,
     p->mp = p->mp_max;
     p->level = 1;
     p->xp = 0;
-    p->xp_max = 0;
+    p->xp_max = 100 * p->level; // Initialisation de xp_max
     p->weight_max = p->stat->str * 10;
+
+    // Initialisation de p->inventory avant d'utiliser ses membres
+    p->inventory = create_inventory(); // Supposons que create_inventory() retourne un pointeur valide
+
+    // Initialisation du poids de l'inventaire
     p->inventory->weight = 0;
+
     p->money = 100;
-    p->inventory = create_inventory();
     p->nb_quest = 0;
     for (int i = 0; i < NB_MAX_QUEST; i++) {
         p->quest[i] = NULL;

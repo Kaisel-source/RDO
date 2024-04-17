@@ -47,13 +47,14 @@ void game_add_item(game_s *g, item_t *i){
     game_item(i,g->item);
 }
 
-void game_init_game(game_s *g,map_t *m,SDL_Texture *textureOut,SDL_Texture **area){
+void game_init_game(game_s *g,map_t *m,SDL_Texture *textureOut,SDL_Texture *textureMonster,SDL_Texture **area){
     g->nb_pers_saved=0;
     g->nb_quest_saved=0;
     g->main_perso=NULL;
     g->map=m;
     g->area=area;
     g->TextureOut=textureOut;
+    g->TextureMonster=textureMonster;
     g->item=create_inventory();
 }
 

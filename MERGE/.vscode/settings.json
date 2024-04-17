@@ -4,6 +4,10 @@
         "stdarg.h": "c",
         "common.h": "c",
         "map": "c",
-        "board.h": "c"
+        "board.h": "c",
+        "eqpmt.h": "c",
+        "plateaucombat.h": "c",
+        "bouton.h": "c",
+        "typeinfo": "c"
     }
 }

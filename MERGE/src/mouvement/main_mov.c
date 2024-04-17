@@ -62,11 +62,19 @@ int main() {
     SDL_Texture *TextureOut = SDL_CreateTextureFromSurface(renderer, SurfaceOut);
     SDL_FreeSurface(SurfaceOut);
 
+    SurfaceOut = IMG_Load("data/image/area/MONSTER.png");
+    SDL_Texture *TextureMonster = SDL_CreateTextureFromSurface(renderer, SurfaceOut);
+    SDL_FreeSurface(SurfaceOut);
+
     npc_s *npc = npc_creator("toto", "toto", 10, "data/image/perso.png", LEFT, &renderer, 0);
     npc_s *npc2 = npc_creator("kevin", "Je etre kevin", 10, "data/image/perso.png", LEFT, &renderer, 0);
-
+    TTF_Font *font = TTF_OpenFont("img/police.ttf", 12);
+    SDL_Color textColor = {255, 255, 255, 255};
+    SDL_Color bgColor = {0, 100, 100, 255};
+    int inventoryVisible = 0;
+    SDL_Rect boundingRect;
     game_s *g = malloc(sizeof(game_s));
-    game_init_game(g,&map,TextureOut,area);
+    game_init_game(g,&map,TextureOut,TextureMonster,area);
     game_add_main_perso(g,perso);
     game_add_npc(g,npc);
     game_add_npc(g,npc2);
@@ -157,15 +165,26 @@ int main() {
                         }
                     }
                 }
+                                
+                else if (event.key.keysym.sym == SDLK_i) {
+                    // Affichage/masquage de l'inventaire lorsque la touche "i" est enfoncée
+                    printf("Toggle inventory visibility\n");
+                    if(inventoryVisible)
+                        inventoryVisible = 0;
+                    else
+                        inventoryVisible = 1;
+                    
+                        
+                }
                 else if (event.key.keysym.sym == SDLK_q) {
                     if(perso->direction == RIGHT && perso->x+1<BOARD_SIZE_X)
-                        interact(g,(perso->x+1)%BOARD_SIZE_X,perso->y);
+                        interact(g,(perso->x+1)%BOARD_SIZE_X,perso->y,renderer,window);
                     else if(perso->direction == LEFT && perso->x-1>=0)
-                        interact(g,(perso->x-1)%BOARD_SIZE_X,perso->y);
+                        interact(g,(perso->x-1)%BOARD_SIZE_X,perso->y,renderer,window);
                     else if(perso->direction == UP && perso->y-1>=0)
-                        interact(g,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y);
+                        interact(g,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window);
                     else if(perso->direction == DOWN && perso->y+1<BOARD_SIZE_Y)
-                        interact(g,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y);
+                        interact(g,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window);
                 }
                 else{
                     if(perso->direction == RIGHT && perso->x+1<BOARD_SIZE_X)
@@ -181,7 +200,8 @@ int main() {
     
         
         }
-        
+        if(inventoryVisible)
+                    showInventory(g->main_perso->inventory, font, renderer, textColor, bgColor, &boundingRect);
         rending(&renderer,g);
     }
     // Libération de la mémoire
