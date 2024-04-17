@@ -1,3 +1,13 @@
+/**
+ * @file commonSDL.h
+ * @author Nathan Duval
+ * @brief 
+ * @version 0.1
+ * @date 2024-04-17
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #ifndef COMMONSDL_H
 #define COMMONSDL_H
 
@@ -13,7 +23,10 @@
 #define BUTTON_HEIGHT 75
 #define BUTTON_MARGIN 20
 
-
+/**
+ * @brief 
+ * 
+ */
 typedef struct {
     SDL_Rect rect;
     SDL_Texture *texture;

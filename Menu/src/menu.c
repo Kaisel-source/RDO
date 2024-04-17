@@ -3,11 +3,11 @@
 void handle_menu_events(SDL_Renderer *renderer, SDL_Event event, int *running, int *settingsPage) {
 
     // Chargement des images des boutons
-    SDL_Surface *playSurface = IMG_Load("../images/Play.jpg");
+    SDL_Surface *playSurface = IMG_Load("../images/bouton_jouer.png");
     SDL_Texture *playTexture = SDL_CreateTextureFromSurface(renderer, playSurface);
-    SDL_Surface *settingsSurface = IMG_Load("../images/Engrenage.jpg");
+    SDL_Surface *settingsSurface = IMG_Load("../images/bouton_sort.png");
     SDL_Texture *settingsTexture = SDL_CreateTextureFromSurface(renderer, settingsSurface);
-    SDL_Surface *quitSurface = IMG_Load("../images/Quit.jpg");
+    SDL_Surface *quitSurface = IMG_Load("../images/bouton_quitter.png");
     SDL_Texture *quitTexture = SDL_CreateTextureFromSurface(renderer, quitSurface);
 
 
@@ -53,7 +53,7 @@ void menu(SDL_Renderer *renderer, Button playButton, Button settingsButton, Butt
     SDL_Event event;
 
     // Chargement de l'image de fond
-    SDL_Surface *backgroundSurface = IMG_Load("../images/wallhav.png");
+    SDL_Surface *backgroundSurface = IMG_Load("../images/background_rpg.png");
     SDL_Texture *backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
     SDL_FreeSurface(backgroundSurface);
 
