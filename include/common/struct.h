@@ -4,9 +4,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include "SDL2/SDL_ttf.h"
+#include <math.h>
+#include <unistd.h>
+
 #define NB_MAX_QUEST 10
 #define TOTAL_QUEST 10
 #define TOTAL_PERS 10
+
+#define NB_MAP_X 3
+#define NB_MAP_Y 2
 typedef enum eqpmt_type {
     NONE, HEAD, BODY, LEGS, FOOT, RING, WEAPON, SHIELD
 } eqpmt_type;
@@ -120,7 +129,46 @@ typedef struct quest_s{
 
 }quest_t;
 
+typedef struct quest_npc_s{
+    char *accept;
+    char *refuse;
+    char *on_going;
+    char *completed;
+    quest_t *quest;
+}quest_npc_t;
+
+
 /*-------------- PERSO -------------- */
+typedef struct img_s{
+    int nb_sprite;
+    int num_ref;
+    SDL_Rect **texture;
+}img_t;
+
+typedef struct{
+    int x;
+    int y;
+    int map[NB_MAP_Y][NB_MAP_X][24][24];
+    char* path[NB_MAP_Y][NB_MAP_X];
+}map_t;
+
+typedef enum{
+    WALK_R,
+    WALK_L,
+    WALK_U,
+    WALK_D,
+    INTERACT,
+    HIDE,
+    IDLE
+}state_t;
+
+typedef enum{
+    DOWN,
+    RIGHT,
+    LEFT,
+    UP
+    
+}direction_t;
 
 typedef struct stat_p{
     int intel;
@@ -157,15 +205,20 @@ typedef struct pers{
     int nb_quest;
     quest_t *quest[NB_MAX_QUEST];
     //image ref
+    int x;
+    int y;
+    direction_t direction;
+    state_t state;
+    SDL_Texture *Texture;
+    img_t **sprite_move;
+    SDL_Rect *position;
+    
+    int map_x;
+    int map_y;
 } perso;
 
-typedef struct quest_npc_s{
-    char *accept;
-    char *refuse;
-    char *on_going;
-    char *completed;
-    quest_t *quest;
-}quest_npc_t;
+
+/*-------------- NPC -------------- */
 
 typedef struct npc_t{
     char *name;
@@ -176,16 +229,57 @@ typedef struct npc_t{
 
     int nb_quest;
     quest_npc_t **quest;
-    //image ref
+
+    direction_t direction;
+    SDL_Texture *Texture;
+    img_t *sprite_move;
 } npc_s;
+
+
+/*-------------- STRUCTURE DE JEU -------------- */
+
+/**
+ * @brief Structure pour représenter une position sur le plateau
+ */
+typedef struct {
+    int x; /**< Coordonnée en X */
+    int y; /**< Coordonnée en Y */
+} pos_t;
+
+// Structure représentant une entité
+typedef struct {
+    char prenom[50];
+    char classe[50];
+    int pv;
+    int pv_max;
+    int attaque;
+    int alive;
+    void *img; // Pointeur vers l'image de l'entité, à définir selon votre utilisation
+    int equipe;
+    int mouv;
+    int initiative;
+    int range;
+} entite_t;
+
+// Structure représentant un bouton
+typedef struct {
+    SDL_Rect rect;       // Rectangle définissant la position et la taille du bouton
+    SDL_Texture* texture; // Texture du bouton (à générer avec SDL_CreateTextureFromSurface())
+} Button;
+
 
 typedef struct game_t{
     perso *main_perso;
-    perso *p[TOTAL_PERS];
+    npc_s *npc[TOTAL_PERS];
     quest_t *quest[TOTAL_QUEST];
     int nb_quest_saved;
     int nb_pers_saved;
     item_list *item;
+    map_t *map;
+    SDL_Texture **area;
+    SDL_Texture *TextureOut;
+    SDL_Texture *TextureMonster;
+
 }game_s;
 
 #endif

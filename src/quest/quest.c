@@ -63,9 +63,7 @@ void quest_display(const quest_t quest){
 void destroy_quest(quest_t **quest){
     printf("Destruction de la quete\n");
     if(*quest){
-        printf("start\n");
         free((*quest)->name);
-        printf("blblb\n");
         free((*quest)->desc);
         free(*quest);
         *quest = NULL;

@@ -1,0 +1,166 @@
+Quantité: 1
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+Ajout de l'item
+
+Ajout d'un item
+Ajout en tete
+1
+2
+3
+Poids avant : 0
+Poids Total : 10
+Type:0
+Quantité: 1
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+1 == 1
+Quantité: 1
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+Quantité: 1
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+1 == 1
+item deja dans l'inventaire
+
+Type:0
+Quantité: 2
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+1 == 1
+Quete deja acceptee ou nombre de quete maximum atteint
+Type:0
+Quantité: 2
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+1 == 1
+Statut update: 1 / 2
+Type:0
+Quantité: 2
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+1 == 1
+Quantité: 1
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+Type:1
+Quantité: 2
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+Ajout de l'item
+
+Ajout d'un item
+Ajout en queue
+Poids avant : 10
+Poids Total : 30
+Type:1
+Quantité: 2
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+Quantité: 1
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+Type:1
+1 == 0
+Erreur de suppression
+Poids Total : 30
+Type:1
+Quantité: 2
+Id : 1 
+Nom: ressource
+Prix item: 10
+Poids: 10
+Description : Test 
+
+Type:0
+Quantité: 1
+Id : 1 
+Nom: epee
+Type: Weapon
+Prix item: 10
+Poids: 10
+Dommage : 10
+Defense : 10
+Agilite : 10
+Force : 10
+Endurance : 10
+Chance : 10
+Intelligence : 10
+Description : une epee 
+
+Type:1
+1 == 1
+Poids Total : 40
+Quete completee
+All tests passed
+Destruction de la quete

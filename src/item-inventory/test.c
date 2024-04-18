@@ -2,6 +2,36 @@
 #include <assert.h>
 
 int main(){
+
+    SDL_Window *window = NULL;
+    SDL_Renderer *renderer = NULL;
+
+    // Initialisation de SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        printf("Erreur lors de l'initialisation de SDL : %s\n", SDL_GetError());
+        return -1;
+    }
+
+    // Création de la fenêtre
+    window = SDL_CreateWindow("SDL Image", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                              WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+    if (window == NULL) {
+        printf("Erreur lors de la création de la fenêtre : %s\n", SDL_GetError());
+        return -1;
+    }
+
+    // Création du renderer
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    if (renderer == NULL) {
+        printf("Erreur lors de la création du renderer : %s\n", SDL_GetError());
+        return -1;
+    }
+
+    // Initialisation de SDL_image
+    if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
+        printf("Erreur lors de l'initialisation de SDL_image : %s\n", IMG_GetError());
+        return -1;
+    }
     /**
      * Test for the item creation
      * Test 1: Verify the item type
@@ -61,7 +91,7 @@ int main(){
      * Test : Verify the perso name
     */
     perso *p = malloc(sizeof(perso));
-    init_perso(p, "toto", 10,10,10,10,10);
+    init_perso(p,"toto", 10, 10,10, 10, 10, 0, 0, UP, &renderer);
     assert(strcmp(p->name, "toto") == 0);
     
     /**
@@ -118,4 +148,9 @@ int main(){
     
     destroy_quest(&q);
     destroy_perso(&p);
+
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    IMG_Quit();
+    SDL_Quit();
 }

@@ -1,6 +1,8 @@
 #ifndef TEMP_H
 #define TEMP_H
+#include "../common/board.h"
 #include "../common/common.h"
+
 
 
 
@@ -18,9 +20,9 @@
  * @param luck Stat luck of the personnage
  * @param intel Stat intelligence of the personnage
  */
-void init_perso(perso *p, char *name,int end, int agi, int str, int luck,int intel);
+void init_perso(perso *p, const char *name, int end, int agi, int str, int luck, int intel, int x, int y, direction_t direction, SDL_Renderer **render) ;
 
-
+void init_personnage_render(perso *p,int x,int y,direction_t direction,SDL_Renderer **render);
 /**
  * @brief Display the personnage information in the console
  * 
@@ -56,7 +58,13 @@ int in_inventory(perso *p, int id,type_it type);
  */
 void destroy_perso(perso **p);
 
+int free_personnage_render(perso **perso);
+
 void display_equipement(const perso p);
 
 void level_up(perso *p);
+
+int total_strength(const perso p);
+int total_agility(const perso p);
+int total_endurance(const perso p);
 #endif

@@ -98,6 +98,7 @@ void display_inventory(const item_list *list)
         display_common(*item->item_inv);
         item = item->suiv;
     }
+    weight_calc(list);
     printf("Poids Total : %d\n", list->weight);
 }
 

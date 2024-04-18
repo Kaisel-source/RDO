@@ -10,9 +10,9 @@ void game_add_quest(game_s *g, quest_t *q){
     }
 }
 
-void game_add_perso(game_s *g, perso *p){
+void game_add_npc(game_s *g, npc_s *p){
     if(g->nb_pers_saved<TOTAL_PERS){
-        g->p[g->nb_pers_saved]=p;
+        g->npc[g->nb_pers_saved]=p;
         g->nb_pers_saved++;
     }
     else{
@@ -47,30 +47,59 @@ void game_add_item(game_s *g, item_t *i){
     game_item(i,g->item);
 }
 
-void game_init_game(game_s *g){
+void game_init_game(game_s *g,map_t *m,SDL_Texture *textureOut,SDL_Texture *textureMonster,SDL_Texture **area){
     g->nb_pers_saved=0;
     g->nb_quest_saved=0;
     g->main_perso=NULL;
+    g->map=m;
+    g->area=area;
+    g->TextureOut=textureOut;
+    g->TextureMonster=textureMonster;
     g->item=create_inventory();
 }
 
 
 
 
-void game_destroy_game(game_s **g){
-    for(int i=0;i<TOTAL_PERS;i++){
-        destroy_perso(&(*g)->p[i]);
+void game_destroy_game(game_s **g) {
+    if (g == NULL || *g == NULL) {
+        return;
     }
-    printf("END DESTRUCTION PERSO\n");
-    for(int i=0;i<TOTAL_QUEST;i++){
-        destroy_quest(&(*g)->quest[i]);
+
+    // Libération de la mémoire pour chaque PNJ sauvegardé
+    for (int i = 0; i < (*g)->nb_pers_saved; i++) {
+        destroy_npc(&((*g)->npc[i]));
     }
-    printf("END DESTRUCTION QUEST\n");
-    destroy_game_stockage(&(*g)->item);
-    printf("END DESTRUCTION INVENTORY\n");
-    printf("START DESTRUCTION MAIN PERSO\n");
-    destroy_perso(&(*g)->main_perso);
-    printf("END DESTRUCTION MAIN PERSO\n");
+
+    // Libération de la mémoire pour chaque quête sauvegardée
+    for (int i = 0; i < (*g)->nb_quest_saved; i++) {
+        destroy_quest(&((*g)->quest[i]));
+    }
+
+    // Libération de la mémoire pour l'inventaire du jeu
+    destroy_game_stockage(&((*g)->item));
+
+    // Libération de la mémoire pour le personnage principal
+    destroy_perso(&((*g)->main_perso));
+
+    // Libération de la mémoire pour la zone de jeu
+    free((*g)->area);
+
+    // Destruction de la texture SDL
+    SDL_DestroyTexture((*g)->TextureOut);
+
+    // Export et libération de la mémoire de la carte
+    if ((*g)->map != NULL) {
+        int num_map_x = (*g)->map->x;
+        int num_map_y = (*g)->map->y;
+        if ((*g)->map->map != NULL) {
+            export_board(&((*g)->map->map[num_map_y][num_map_x]), (*g)->map->path[num_map_y][num_map_x]);
+        }    
+
+
+        free_map(&((*g)->map));
+    }
+    // Libération de la mémoire pour la structure de jeu elle-même
     free(*g);
-    *g=NULL;
+    *g = NULL;
 }

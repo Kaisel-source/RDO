@@ -1,140 +1,177 @@
 #include "../../include/common/common.h"
+#include <unistd.h>
 
-/*int lireFichier(char *nomFichier, table *t){
-    printf("Ouverture du fichier\n");
-    FILE *fp;
-    fp=fopen(nomFichier,"r");
-    t->nbJoueurs=0;
-    if(fp){
 
-        printf("Lecture et initialisation des joueurs\n");
 
-        for(int i=0;i<NB_JOUEURS && fscanf(fp,"%d;%f;%f;%f;%f;%f;%f;%f;%f;%[^\n]",&t->joueurs[i].age,&t->joueurs[i].fg,&t->joueurs[i].fga,&t->joueurs[i].p3,&t->joueurs[i].p3a,&t->joueurs[i].ft,&t->joueurs[i].fta,&t->joueurs[i].orb,&t->joueurs[i].drb,t->joueurs[i].nom);i++)
-            t->nbJoueurs++;
 
-       }
-    else{
-        printf("Le fichier est vide,fermeture du fichier\n");
-        fclose(fp);
-
+int import(perso **p) {
+    if (p == NULL || *p == NULL) {
+        printf("Erreur: Le pointeur vers le personnage est NULL.\n");
         return 0;
     }
-    printf("Fin de l'initialisation des joueurs\n");
-    fclose(fp);
-    return 1;
 
-}fscanf(fp,"%[^\n\0];",temp);*/
-int import(perso *p)
-{
-    
-    FILE *fp = fopen("inventory.csv", "r");
-    int type, intel, str, luck, agi, end, nb_item;
-    int id,dmg,defence,price,poids,quantity,hp,mp,exp,available,dmg_t,eqpmt_t;
-    int id_equipped[7]={-1,-1,-1,-1,-1,-1,-1};
-    char name[50],desc[500];
-    char input[100];
-    item_t *item;
-    if(!fp){
-        fclose(fp);
+    FILE *fp = fopen("inv.txt", "r");
+    if (!fp) {
+        printf("Erreur: Impossible d'ouvrir le fichier.\n");
         return 0;
     }
-    if (fp)
-    {
-        /*init SAVE*/
-        printf("Import\n");
-        printf("PERSO\n");
-        fscanf(fp, "%s[^\n]", input );
-        sscanf(input, "%s[^;];%d;%d;%d;%d;%d;", name, &intel, &str, &luck, &agi, &end);
-        printf("%s;%d;%d;%d;%d;%d;\n", name, intel, str, luck, agi, end);
-        printf("p1\n");
-        init_perso(p, name, end, agi, str, luck, intel);
-        printf("p2\n");
-        fscanf(fp, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &p->hp, &p->hp_max, &p->mp, &p->mp_max, &p->xp, &p->xp_max, &p->level, &p->weight_max, &p->money);
-        fscanf(fp,"%d;%d;%d;%d;%d;%d;%d",&id_equipped[0],&id_equipped[1],&id_equipped[2],&id_equipped[3],&id_equipped[4],&id_equipped[5],&id_equipped[6]);
-        display_perso(*p);
-        fscanf(fp, "%d", &nb_item);
-        p->inventory->nb_item = nb_item;
-        printf("INVENTORY\n");
-        for(int i=0;i<nb_item;i++){
-            fscanf(fp, "%d", &type);
-            switch (type){
+
+    int id[7], nb_item;
+    item_t *elm;
+    item_eqpmt *eqpmt;
+    item_ress *ress;
+    item_conso *conso;
+
+    /* Lecture des données du personnage */
+    fscanf(fp, "Nom du personnage: %[^\n]%*c", (*p)->name);
+    printf("Nom du personnage: %s\n", (*p)->name);
+
+    fscanf(fp, "Statistiques: Intel:%d, Str:%d, Luck:%d, Agi:%d, End:%d%*c", &(*p)->stat->intel, &(*p)->stat->str, &(*p)->stat->luck, &(*p)->stat->agi, &(*p)->stat->end);
+    printf("Statistiques: Intel:%d, Str:%d, Luck:%d, Agi:%d, End:%d\n", (*p)->stat->intel, (*p)->stat->str, (*p)->stat->luck, (*p)->stat->agi, (*p)->stat->end);
+
+    fscanf(fp, "HP: %d/%d, MP: %d/%d, XP: %d/%d, Level: %d%*c", &(*p)->hp, &(*p)->hp_max, &(*p)->mp, &(*p)->mp_max, &(*p)->xp, &(*p)->xp_max, &(*p)->level);
+    printf("HP: %d/%d, MP: %d/%d, XP: %d/%d, Level: %d\n", (*p)->hp, (*p)->hp_max, (*p)->mp, (*p)->mp_max, (*p)->xp, (*p)->xp_max, (*p)->level);
+
+    fscanf(fp, "Poids maximal supporté: %d, Argent: %d%*c", &(*p)->weight_max, &(*p)->money);
+    printf("Poids maximal supporté: %d, Argent: %d\n", (*p)->weight_max, (*p)->money);
+
+    fscanf(fp, "Pos x: %d, y: %d%*c", &(*p)->x, &(*p)->y);
+    printf("Pos x: %d, y: %d\n", (*p)->x, (*p)->y);
+
+    fscanf(fp, "Map x: %d, y: %d%*c", &(*p)->map_x, &(*p)->map_y);
+    printf("Map x: %d, y: %d\n", (*p)->map_x, (*p)->map_y);
+
+    fscanf(fp, "Équipements équipés:%*c");
+
+    /* Lecture des équipements équipés */
+    for (int i = 0; i < 7; i++) {
+        fscanf(fp, "Emplacement %d: ID de l'équipement: %d%*c", &i, &id[i]);
+        printf("Emplacement %d: ID de l'équipement: %d\n", i+1, id[i]);
+        // Charger l'équipement correspondant à l'ID id[i]
+        // Assurez-vous que les éléments de l'inventaire sont correctement initialisés avant d'utiliser cette fonction
+    }
+
+    /* Lecture de l'inventaire */
+    /* Lecture de l'inventaire */
+    fscanf(fp, "Nombre d'objets dans l'inventaire: %d%*c", &nb_item);
+    printf("Nombre d'objets dans l'inventaire: %d\n", nb_item);
+    for (int i = 0; i < nb_item; i++) {
+        int type;
+        // Lecture du type d'objet correctement
+        fscanf(fp, "Type d'objet: %d%*c", &type);
+        printf("Type d'objet: %d\n", type);
+        elm = malloc(sizeof(item_t)); // Allouer de la mémoire pour un nouvel élément d'inventaire
+        switch (type) {
             case RESSOURCE:
-                fscanf(fp, "%d;%s[^;];%d;%d;%s[^;];%d", &id, name, &price, &poids, desc, &quantity);
-                item=ress_creator(id,name,price,poids,desc,quantity);
+                ress = malloc(sizeof(item_ress));
+                fscanf(fp, "Ressource - ID: %d, Nom: %[^\n], Prix: %d, Poids: %d, Description: %[^\n], Quantité: %d%*c", &ress->id, ress->name, &ress->price, &ress->poids, ress->desc, &elm->item_inv->quantity);
+                printf("Ressource - ID: %d, Nom: %s, Prix: %d, Poids: %d, Description: %s, Quantité: %d\n", ress->id, ress->name, ress->price, ress->poids, ress->desc, elm->item_inv->quantity);
+                // Ajouter l'objet ressource à l'inventaire du personnage
                 break;
             case EQPMT:
-                fscanf(fp, "%d;%s[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%s[^;];%d", &id ,name, &eqpmt_t, &dmg_t,&dmg, &defence, &str, &agi, &end, &luck,&intel,&price,&poids, desc, &quantity);
-                item=eqpmt_creator(id,name,eqpmt_t,dmg_t,dmg,defence,str,agi,end,luck,intel,price,poids,desc,quantity);
+                eqpmt = malloc(sizeof(item_eqpmt));
+                fscanf(fp, "Équipement - ID: %d, Nom: %[^\n], Type: %d, Type de dégâts: %d, Dégâts: %d, Défense: %d, Force: %d, Agilité: %d, Endurance: %d, Chance: %d, Intelligence: %d, Prix: %d, Poids: %d, Description: %[^\n], Quantité: %d%*c",
+                    &eqpmt->id, eqpmt->name, &eqpmt->type, &eqpmt->dmg_type, &eqpmt->item_stat.damage, &eqpmt->item_stat.defence, &eqpmt->item_stat.str, &eqpmt->item_stat.agi, &eqpmt->item_stat.end, &eqpmt->item_stat.luck, &eqpmt->item_stat.intel,
+                    &eqpmt->price, &eqpmt->poids, eqpmt->desc, &elm->item_inv->quantity);
+                printf("Équipement - ID: %d, Nom: %s, Type: %d, Type de dégâts: %d, Dégâts: %d, Défense: %d, Force: %d, Agilité: %d, Endurance: %d, Chance: %d, Intelligence: %d, Prix: %d, Poids: %d, Description: %s, Quantité: %d\n",
+                    eqpmt->id, eqpmt->name, eqpmt->type, eqpmt->dmg_type, eqpmt->item_stat.damage, eqpmt->item_stat.defence, eqpmt->item_stat.str, eqpmt->item_stat.agi, eqpmt->item_stat.end, eqpmt->item_stat.luck, eqpmt->item_stat.intel,
+                    eqpmt->price, eqpmt->poids, eqpmt->desc, elm->item_inv->quantity);
+                // Ajouter l'objet équipement à l'inventaire du personnage
                 break;
             case CONSUM:
-                fscanf(fp, "%d;%s[^;];%d;%d;%d;%d;%d;%d;%s;%d", &id, name, &poids, &price, &hp, &mp, &exp, &available, desc, &quantity);
-                item=conso_create(name,id,poids,price,hp,mp,exp,available,desc,quantity);
+                conso = malloc(sizeof(item_conso));
+                fscanf(fp, "Consommable - ID: %d, Nom: %[^\n], Poids: %d, Prix: %d, HP: %d, MP: %d, Exp: %d, Disponible: %d, Description: %[^\n], Quantité: %d%*c",
+                    &conso->id, conso->name, &conso->poids, &conso->price, &conso->hp, &conso->mp, &conso->exp, &conso->available, conso->desc, &elm->item_inv->quantity);
+                printf("Consommable - ID: %d, Nom: %s, Poids: %d, Prix: %d, HP: %d, MP: %d, Exp: %d, Disponible: %d, Description: %s, Quantité: %d\n",
+                    conso->id, conso->name, conso->poids, conso->price, conso->hp, conso->mp, conso->exp, conso->available, conso->desc, elm->item_inv->quantity);
+                // Ajouter l'objet consommable à l'inventaire du personnage
                 break;
-            }
-            display_common(*(item->item_inv));
-            take_item(p, item);
+            case MODIF:
+                break;
         }
     }
+
+    weight_calc((*p)->inventory);
+    
+
     fclose(fp);
     return 1;
 }
 
-int export(const perso *p){
-    if (p == NULL)
-    {
+
+
+
+
+
+
+int export(const perso *p) {
+    system("rm inv.txt");
+    if (p == NULL) {
+        printf("Erreur: Le personnage est NULL.\n");
         return 0;
     }
-    FILE *fp = fopen("inventory.csv", "w+");
-    
-    int id[5],nb_item=p->inventory->nb_item;
+
+    FILE *fp = fopen("inv.txt", "w");
+    if (!fp) {
+        printf("Erreur: Impossible d'ouvrir ou de créer le fichier.\n");
+        return 0;
+    }
+
+    int id[7], nb_item = p->inventory->nb_item;
     item_t *elm = p->inventory->head;
     item_eqpmt *eqpmt;
     item_ress *ress;
     item_conso *conso;
 
-    if (fp)
-    {
-        /*SAVE PERSO*/
-        fprintf(fp, "%s;%d;%d;%d;%d;%d;\n", p->name, p->stat->intel, p->stat->str, p->stat->luck, p->stat->agi, p->stat->end);
-        
-        fprintf(fp, "%d;%d;%d;%d;%d;%d;%d;%d;%d\n", p->hp, p->hp_max, p->mp, p->mp_max, p->xp, p->xp_max, p->level, p->weight_max, p->money);
-        for (int i = 0; i < 7; i++)
-        {
-            id[i] = -1;
-            if (p->eqpmt[i]) 
-                id[i] = p->eqpmt[i]->id;
-            
-        }
-        fprintf(fp,"%d;%d;%d;%d;%d;%d;%d\n",id[0],id[1],id[2],id[3],id[4],id[5],id[6]);
-        /*SAVE INVENTORY*/
-        fprintf(fp, "%d\n", nb_item);
-        for (int i = 0; i < nb_item; i++){
-            switch (elm->item_inv->type){
-                case RESSOURCE: // id,name,price,poids,desc,quantity
-                    ress=elm->item_inv->item_u->ress;
-                    fprintf(fp, "%d;%s;%d;%d;%s;%d\n", ress->id, ress->name, ress->price, ress->poids, ress->desc, elm->item_inv->quantity);
-                    break;
-                 case EQPMT: // id,name,type,dmg_type,item_stat,price,poids,desc,quantity
-                    eqpmt = elm->item_inv->item_u->eqpmt;
-                    fprintf(fp, "%d;%s;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%s;%d\n", eqpmt->id, eqpmt->name, eqpmt->type, eqpmt->dmg_type,\
-                        eqpmt->item_stat.damage, eqpmt->item_stat.defence, eqpmt->item_stat.str, eqpmt->item_stat.agi, eqpmt->item_stat.end, eqpmt->item_stat.luck, eqpmt->item_stat.intel,\
+    /* Enregistrement des données du personnage */
+    fprintf(fp, "Nom du personnage: %s\n", p->name);
+    fprintf(fp, "Statistiques: Intel:%d, Str:%d, Luck:%d, Agi:%d, End:%d\n", p->stat->intel, p->stat->str, p->stat->luck, p->stat->agi, p->stat->end);
+    fprintf(fp, "HP: %d/%d, MP: %d/%d, XP: %d/%d, Level: %d\n", p->hp, p->hp_max, p->mp, p->mp_max, p->xp, p->xp_max, p->level);
+    fprintf(fp, "Poids maximal supporté: %d, Argent: %d\n", p->weight_max, p->money);
+    fprintf(fp, "Pos x: %d, y: %d\n", p->x, p->y);
+    fprintf(fp, "Map x: %d, y: %d\n", p->map_x, p->map_y);
+    /* Enregistrement des équipements équipés */
+    fprintf(fp, "Équipements équipés:\n");
+    for (int i = 0; i < 7; i++) {
+        id[i] = -1;
+        if (p->eqpmt[i]) 
+            id[i] = p->eqpmt[i]->id;
+        fprintf(fp, "Emplacement %d: ID de l'équipement: %d\n", i+1, id[i]);
+    }
+
+    /* Enregistrement de l'inventaire */
+    fprintf(fp, "Nombre d'objets dans l'inventaire: %d\n", nb_item);
+    fprintf(fp, "Inventaire:\n");
+    for (int i = 0; i < nb_item; i++) {
+        switch (elm->item_inv->type) {
+            case RESSOURCE: // id,name,price,poids,desc,quantity
+                ress = elm->item_inv->item_u->ress;
+                fprintf(fp, "Ressource - ID: %d, Nom: %s, Prix: %d, Poids: %d, Description: %s, Quantité: %d\n", 
+                        ress->id, ress->name, ress->price, ress->poids, ress->desc, elm->item_inv->quantity);
+                break;
+            case EQPMT: // id,name,type,dmg_type,item_stat,price,poids,desc,quantity
+                eqpmt = elm->item_inv->item_u->eqpmt;
+                fprintf(fp, "Équipement - ID: %d, Nom: %s, Type: %d, Type de dégâts: %d, Dégâts: %d, Défense: %d, Force: %d, Agilité: %d, Endurance: %d, Chance: %d, Intelligence: %d, Prix: %d, Poids: %d, Description: %s, Quantité: %d\n",
+                        eqpmt->id, eqpmt->name, eqpmt->type, eqpmt->dmg_type, eqpmt->item_stat.damage, eqpmt->item_stat.defence, eqpmt->item_stat.str, eqpmt->item_stat.agi, eqpmt->item_stat.end, eqpmt->item_stat.luck, eqpmt->item_stat.intel,
                         eqpmt->price, eqpmt->poids, eqpmt->desc, elm->item_inv->quantity);
-                    break;
-                case CONSUM: // id,name,poids,price,hp,mp,exp,available,desc,quantity
-                    conso = elm->item_inv->item_u->conso;
-                    fprintf(fp, "%d;%s;%d;%d;%d;%d;%d;%d;%s;%d\n", conso->id, conso->name, conso->poids, conso->price, conso->hp, conso->mp, conso->exp, conso->available, conso->desc, elm->item_inv->quantity);
-                    break;
-                case MODIF:
-                    break;
-            }
-            elm = elm->suiv;
+                break;
+            case CONSUM: // id,name,poids,price,hp,mp,exp,available,desc,quantity
+                conso = elm->item_inv->item_u->conso;
+                fprintf(fp, "Consommable - ID: %d, Nom: %s, Poids: %d, Prix: %d, HP: %d, MP: %d, Exp: %d, Disponible: %d, Description: %s, Quantité: %d\n",
+                        conso->id, conso->name, conso->poids, conso->price, conso->hp, conso->mp, conso->exp, conso->available, conso->desc, elm->item_inv->quantity);
+                break;
+            case MODIF:
+                break;
         }
+        elm = elm->suiv;
     }
-    else
-    {
-        fclose(fp);
-        return 0;
-    }
+    
+
     fclose(fp);
+    return 1;
+}
+
+int erase_save() {
+    system("rm inv.txt");
     return 1;
 }
