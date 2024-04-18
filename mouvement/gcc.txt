@@ -1,0 +1,2 @@
+gcc -o mov test2.c -lSDL2 -lSDL2_image -lm
+
