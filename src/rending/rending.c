@@ -72,6 +72,7 @@ int rending(SDL_Renderer **render,game_s *g){
 
                 else if(g->map->map[map_y][map_x][i][j] == MONSTER)
                     SDL_RenderCopy(*render, g->TextureMonster, NULL, &rect);
+                    
                 else if(abs(g->map->map[map_y][map_x][i][j]) <= NB_AREA)
                     SDL_RenderCopy(*render, g->area[abs(g->map->map[map_y][map_x][i][j])], NULL, &rect);
                

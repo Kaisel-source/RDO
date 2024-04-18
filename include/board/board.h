@@ -7,7 +7,7 @@
 
 
 
-#define NB_AREA 10
+#define NB_AREA 11
 #define GRASS 0
 #define STONE -1
 #define BUSH -2
@@ -18,6 +18,7 @@
 #define DOOR_C -7
 #define TREE -8
 #define TILES -9
+#define YOURT -10
 
 #define SORTIE -9999
 #define MONSTER -10000
