@@ -1,5 +1,5 @@
 /**
- * @file main_chara.h
+ * @file npc.h
  * @author Aymeric MABIRE
  * @brief 
  * @version 0.1

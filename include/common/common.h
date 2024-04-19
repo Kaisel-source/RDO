@@ -1,3 +1,10 @@
+/**
+ * @file common.h
+ * @author Aymeric MABIRE
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
 #ifndef COMMON_H
 #define COMMON_H
 
