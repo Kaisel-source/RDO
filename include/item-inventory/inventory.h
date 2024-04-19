@@ -1,23 +1,18 @@
+/**
+ * @file inventory.h
+ * @author Aymeric MABIRE
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
+
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
 #include "../common/common.h"
 
 
-/**
- * @brief Add an item to the current position of the list
- * @warning Disable
- * @param item Item to add
- * @param list List to add the item
- */
-//void add_current(item_t *item, item_list *list);
 
-/**
- * @brief Destroy the current item and unallocate the memory
- * 
- * @param list List to destroy the current item
- */
-//void destroy_current(item_list *list);
 
 
 /**
@@ -158,5 +153,22 @@ void erase_item(item_list *list);
  */
 void check_inventory(perso *p);
 
+/**
+ * @brief Add N item in the inventory
+ * 
+ * @param p Player to add the item
+ * @param it Item to add
+ * @param nb Number of item to add
+*/
+void add_n(perso *p,item_t it, int nb);
+
+/**
+ * @brief Remove N item in the inventory
+ * 
+ * @param p Player to remove the item
+ * @param it Item to remove
+ * @param nb Number of item to remove
+*/
+void remove_n(perso *p,item_t it, int nb);
 
 #endif

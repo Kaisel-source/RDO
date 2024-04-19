@@ -14,16 +14,26 @@
 #define BUTTON_SIZEy  WINDOW_HEIGHT*porcen/GRID_ROWS
 #define BUTTON_MARGIN  0
 
-#include <string.h>
+
+/*COMMUN*/
 #include "struct.h"
 #include "board.h"
+#include "game.h"
+
+/*INVENTAIRE*/
 #include "../item-inventory/ressource.h"
 #include "../item-inventory/inventory.h"
 #include "../item-inventory/consommable.h"
 #include "../item-inventory/eqpmt.h"
+
+/*PERSO*/
 #include "../character/main_chara.h"
 #include "../character/npc.h"
+
+/*QUETE*/
 #include "../quest/quest.h"
+
+/*COMBAT*/
 #include "../combat/Bouton.h"
 #include "../combat/entite.h"
 #include "../combat/enemie.h"
@@ -33,8 +43,12 @@
 #include "../combat/turn_order.h"
 #include "../combat/inventaire_affiche.h"
 
+/*MENU*/
+#include "../menu/option.h"
+#include "../menu/button.h"
+#include "../menu/menu.h"
 
-#include "game.h"
+
 
 
 /**
@@ -61,12 +75,23 @@ void destroy_common_item_stock(item_list *inv);
  */
 void use_common(perso *player);
 
-
+/**
+ * @brief Export the personnage in a file
+ * 
+ * @param p Personnage to export
+*/
 int export(const perso *p);
+
+/**
+ * @brief Import the personnage from a file
+ * 
+ * @param p Personnage to import
+*/
 int import(perso **p);
 
-void add_n(perso *p,item_t it, int nb);
-void remove_n(perso *p,item_t it, int nb);
+
+
+
 
 
 #endif

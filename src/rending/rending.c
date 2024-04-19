@@ -55,8 +55,9 @@ SDL_Texture** load_area(SDL_Renderer **render) {
     return area;
 }
 
-int rending(SDL_Renderer **render,game_s *g){
-    SDL_RenderClear(*render); // Effacer le rendu précédent
+int rending(SDL_Renderer **render,game_s *g,TTF_Font *font, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect,int cpt,int suite){
+    SDL_RenderClear(*render);  
+    // Effacer le rendu précédent
     // Dessiner le plateau
     int map_x = g->map->x;
     int map_y = g->map->y;
@@ -72,7 +73,6 @@ int rending(SDL_Renderer **render,game_s *g){
 
                 else if(g->map->map[map_y][map_x][i][j] == MONSTER)
                     SDL_RenderCopy(*render, g->TextureMonster, NULL, &rect);
-                    
                 else if(abs(g->map->map[map_y][map_x][i][j]) <= NB_AREA)
                     SDL_RenderCopy(*render, g->area[abs(g->map->map[map_y][map_x][i][j])], NULL, &rect);
                
@@ -82,6 +82,9 @@ int rending(SDL_Renderer **render,game_s *g){
     // Dessiner le personnage
     g->main_perso->position->y = (g->main_perso->y * (WINDOW_HEIGHT / BOARD_SIZE_Y)) % WINDOW_HEIGHT;
     g->main_perso->position->x = (g->main_perso->x * (WINDOW_WIDTH / BOARD_SIZE_X)) % WINDOW_WIDTH;
+    if(cpt==1){
+        show_Inventory(g->main_perso->inventory, font, *render, textColor, bgColor, &boundingRect,suite);
+    }
     SDL_RenderCopy(*render, g->main_perso->Texture, g->main_perso->sprite_move[g->main_perso->direction]->texture[g->main_perso->sprite_move[g->main_perso->direction]->num_ref], g->main_perso->position);
     SDL_RenderPresent(*render);
     return 0;

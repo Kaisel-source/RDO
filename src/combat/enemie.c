@@ -12,7 +12,7 @@
  * @param enemie La position de l'ennemi à vérifier
  * @return int 1 si un ennemi est à portée, 0 sinon
  */
-int estAporter( pos_t pos, pos_t enemie,int range) {
+int est_A_porter( pos_t pos, pos_t enemie,int range) {
     
     // Calculer la distance entre les deux positions
     int distance = abs(pos.x - enemie.x) + abs(pos.y - enemie.y);
@@ -119,7 +119,7 @@ pos_t detecte_enemie(entite_t mat[N][N], pos_t pos, int equipe) {
  * @param pos 
  * @param perso 
  */
-void deplacePlusProche(entite_t plateau[N][N], pos_t pos, entite_t perso) {
+void deplace_Plus_Proche(entite_t plateau[N][N], pos_t pos, entite_t perso) {
     // Trouver la nouvelle position de l'ennemi le plus proche sans modifier la position actuelle
     pos_t nouvelle_pos = detecte_mouv(plateau, pos, perso.equipe, perso.mouv);
     // Déplacer l'entité vers la nouvelle position de l'ennemi le plus proche
@@ -135,10 +135,10 @@ void deplacePlusProche(entite_t plateau[N][N], pos_t pos, entite_t perso) {
 void process_enemy_turn(entite_t plateau_de_combat[N][N], pos_t turn[], int *tour) {
     if (plateau_de_combat[turn[*tour].x][turn[*tour].y].equipe == 1) {
         pos_t enemiepos = detecte_enemie(plateau_de_combat, turn[*tour], 1);
-        if (estAporter( turn[*tour], enemiepos, plateau_de_combat[turn[*tour].x][turn[*tour].y].range) == 1) {
+        if (est_A_porter( turn[*tour], enemiepos, plateau_de_combat[turn[*tour].x][turn[*tour].y].range) == 1) {
             plateau_de_combat[enemiepos.x][enemiepos.y].pv -= plateau_de_combat[turn[*tour].x][turn[*tour].y].attaque;
         } else {
-            deplacePlusProche(plateau_de_combat, turn[*tour], plateau_de_combat[turn[*tour].x][turn[*tour].y]);
+            deplace_Plus_Proche(plateau_de_combat, turn[*tour], plateau_de_combat[turn[*tour].x][turn[*tour].y]);
         }
         (*tour)++;
     }

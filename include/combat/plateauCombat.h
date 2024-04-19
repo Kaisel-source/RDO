@@ -53,7 +53,7 @@ void dessin_plateau(entite_t plateau_de_combat[N][N], int gridX, int gridY, SDL_
  * @param plateau Le plateau de combat contenant les entités
  * @return int 1 si l'équipe gagnante a remporté la victoire, -1 si l'équipe perdante a perdu, 0 sinon (combat en cours)
  */
-int FinDecombat(pos_t turn[N*N], int EquipeGagnante, int EquipePerdant, entite_t plateau[N][N]);
+int Fin_De_combat(pos_t turn[N*N], int EquipeGagnante, int EquipePerdant, entite_t plateau[N][N]);
 
 
 int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* renderer);

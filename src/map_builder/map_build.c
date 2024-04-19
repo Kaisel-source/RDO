@@ -36,7 +36,7 @@ int pose_block(int (*board)[24][24],int key,int x,int y){
         build_board(board,TREE,x,y);
         break;
     case SDLK_8:
-        build_board(board,YOURT,x,y);
+        build_board(board,YURT,x,y);
         printf("Yourt\n");
         break;
     case SDLK_9:

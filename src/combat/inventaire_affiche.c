@@ -1,6 +1,6 @@
 #include "../../include/common/common.h"
 
-void drawInventory(SDL_Renderer *renderer, TTF_Font *font, char *name, char *description, int x, int y, int maxWidth, int maxHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
+void draw_Inventory(SDL_Renderer *renderer, TTF_Font *font, char *name, char *description, int x, int y, int maxWidth, int maxHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
     char statsText[100]; // Pour stocker le texte des statistiques
 
     // Création du texte des statistiques
@@ -43,7 +43,7 @@ void drawInventory(SDL_Renderer *renderer, TTF_Font *font, char *name, char *des
     
 }
 
-void drawButton(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int width, int height, SDL_Color bgColor, SDL_Color textColor) {
+void draw_Button(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int width, int height, SDL_Color bgColor, SDL_Color textColor) {
     // Dessiner le rectangle du bouton
     SDL_Rect buttonRect = { x, y, width, height };
     SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
@@ -62,23 +62,26 @@ void drawButton(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x,
     SDL_DestroyTexture(textTexture);
 }
 
-void showInventory(item_list *inventory, TTF_Font *font, SDL_Renderer *renderer, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
+void show_Inventory(item_list *inventory, TTF_Font *font, SDL_Renderer *renderer, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect,int suite) {
     type_it type;
-    for (int i = 0; i < inventory->nb_item; i++) {
+    draw_Button(renderer,font," -> ",400+300, 100 , 50, 100,bgColor,textColor);
+    for (int i = 0; i < 1; i++) {
         type = inventory->current->item_inv->type;
-        if(type == RESSOURCE)
-            drawInventory(renderer, font, inventory->current->item_inv->item_u->ress->name, inventory->current->item_inv->item_u->ress->desc, 100, 100 + i * 100, 300, 100, textColor, bgColor, boundingRect);
-        else if(type == EQPMT)
-            drawInventory(renderer, font, inventory->current->item_inv->item_u->eqpmt->name, inventory->current->item_inv->item_u->eqpmt->desc, 100, 100 + i * 100, 300, 100, textColor, bgColor, boundingRect);
-        else if(type == CONSUM)
-            drawInventory(renderer, font, inventory->current->item_inv->item_u->conso->name, inventory->current->item_inv->item_u->conso->desc, 100, 100 + i * 100, 300, 100, textColor, bgColor, boundingRect);
+        if(type == RESSOURCE){
+            draw_Inventory(renderer, font, inventory->current->item_inv->item_u->ress->name, inventory->current->item_inv->item_u->ress->desc, 100, 100 + i * 100, 300, 100, textColor, bgColor, boundingRect);
+        }
+        if(type == EQPMT){
+            draw_Inventory(renderer, font, inventory->current->item_inv->item_u->eqpmt->name, inventory->current->item_inv->item_u->eqpmt->desc, 100, 100 + i * 100, 300, 100, textColor, bgColor, boundingRect);
+        }
+        if(type == CONSUM){
+            draw_Inventory(renderer, font, inventory->current->item_inv->item_u->conso->name, inventory->current->item_inv->item_u->conso->desc, 100, 100 + i * 100, 300, 100, textColor, bgColor, boundingRect);
+        }
         
-        
-        drawButton(renderer,font,"miam",100+300, 100 + i * 100, 300, 100,bgColor,textColor);
+        draw_Button(renderer,font,"miam",100+300, 100 + i * 100, 300, 100,bgColor,textColor);
     }
 }
 
-void toggleInventoryVisibility(SDL_Rect *boundingRect, SDL_Renderer *renderer, int *inventoryVisible) {
+void toggle_Inventory_Visibility(SDL_Rect *boundingRect, SDL_Renderer *renderer, int *inventoryVisible) {
     *inventoryVisible = !(*inventoryVisible);
 
     // Effacement de l'inventaire si nécessaire

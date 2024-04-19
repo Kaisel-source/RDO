@@ -1,7 +1,7 @@
 #include "../../include/common/common.h"
 
 // La fonction qui dessine du texte encadré dans un rectangle avec des sauts de ligne
-void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int maxWidth, int maxHeight,SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
+void draw_Text(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int maxWidth, int maxHeight,SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
     // Création de la surface de texte à partir de la police et du texte fournis
     SDL_Surface *textSurface = TTF_RenderText_Blended_Wrapped(font, text, textColor, maxWidth);
     if (textSurface == NULL) {
@@ -38,7 +38,7 @@ void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, i
     SDL_DestroyTexture(textTexture);
 }
 
-void drawTextWithStats(SDL_Renderer *renderer, TTF_Font *font,char *name,char *classe, int pv, int force, int x, int y, int maxWidth, int maxHeight,SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
+void drawText_With_Stats(SDL_Renderer *renderer, TTF_Font *font,char *name,char *classe, int pv, int force, int x, int y, int maxWidth, int maxHeight,SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect) {
     char statsText[100]; // Pour stocker le texte des statistiques
 
     // Création du texte des statistiques

@@ -41,7 +41,7 @@ int interact(game_s *game, int x, int y, SDL_Renderer *renderer, SDL_Window *win
             int initiative = total_agility(*(game->main_perso));
             int mov=total_endurance(*(game->main_perso));
             
-            entite_t perso1 = create_entity("Goblin", "Brigand", 10, 10, 10, 1, 2, 10, 5);
+            entite_t perso1 = create_entity("Goblin", "Brigand", 10, 10, 10, 1, 2, 100, 5);
             entite_t perso2 = create_entity(game->main_perso->name, "Guerrier", pv, pv_max, force, 2, mov, initiative, 5);
 
             SDL_Surface* persoSurface1 = IMG_Load("img/ennemi.png");
@@ -73,6 +73,8 @@ int interact(game_s *game, int x, int y, SDL_Renderer *renderer, SDL_Window *win
 
             int gagnant = combat(plateau_de_combat, window, renderer);
             printf("%d", gagnant);
+            if(gagnant ==1)
+                take_item(game->main_perso, game->item->head);
             if (gagnant == -1) {
                 SDL_RenderCopy(renderer, perdueTexture, NULL, NULL); // Écran game over
             }
@@ -122,6 +124,10 @@ int interact(game_s *game, int x, int y, SDL_Renderer *renderer, SDL_Window *win
             if (game->map->map[num_map_y][num_map_x][y][x] > 0 && game->map->map[num_map_y][num_map_x][y][x] <= game->nb_pers_saved) {
                 printf("Interact with npc\n");
                 npc_interact(game->main_perso, game->npc[game->map->map[num_map_y][num_map_x][y][x] - 1]);
+                if(game->map->map[num_map_y][num_map_x][y][x] == 2){
+                    printf("Accept quest\n");
+                    accept_quest(game->main_perso, game->quest[0]);
+                }
             }
             break;
     }

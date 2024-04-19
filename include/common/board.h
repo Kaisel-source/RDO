@@ -1,3 +1,11 @@
+/**
+ * @file board.h
+ * @author Aymeric MABIRE
+ * @brief 
+ * @version 0.1
+ * @date 2024-04-14
+*/
+
 #ifndef BOARD_C_H
 #define BOARD_C_H
 

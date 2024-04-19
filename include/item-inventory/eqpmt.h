@@ -1,3 +1,11 @@
+/**
+ * @file eqpmt.h
+ * @author Aymeric MABIRE
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
+
 #ifndef EQPMT_H
 #define EQPMT_H
 
@@ -69,6 +77,11 @@ void use_eqpmt(perso *p,item_eqpmt *eqpmt);
  */
 void remove_eqpmt(perso *p, item_t *item);
 
-
+/**
+ * @brief : Check if the personnage has the equipement
+ * 
+ * @param p : Personnage to check
+ * @param item : Equipement to check
+*/
 int is_equip(perso *p, item_t *item);
 #endif

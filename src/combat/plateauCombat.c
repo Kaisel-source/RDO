@@ -21,7 +21,7 @@ int nombre_Entite(entite_t plateau[N][N]){
 void init_plateau(entite_t plateau[N][N]){
     for(int i=0;i<GRID_ROWS;i++){
         for(int j=0;j<GRID_COLUMNS;j++){
-            initialiserEntite(&plateau[i][j]);
+            initialiser_Entite(&plateau[i][j]);
         }
     }
 }
@@ -73,9 +73,9 @@ void dessin_plateau(entite_t plateau_de_combat[N][N],int gridX,int gridY, SDL_Te
             buttonRect.rect.w =  BUTTON_SIZEx;
             buttonRect.rect.h = BUTTON_SIZEy;
             if(plateau_de_combat[row][column].pv>0){
-                setButtonImage(renderer,plateau_de_combat[row][column].img,&buttonRect.rect);
+                set_Button_Image(renderer,plateau_de_combat[row][column].img,&buttonRect.rect);
             }else{
-                setButtonImage(renderer,rien,&buttonRect.rect);
+                set_Button_Image(renderer,rien,&buttonRect.rect);
             }
 
         }
@@ -84,7 +84,7 @@ void dessin_plateau(entite_t plateau_de_combat[N][N],int gridX,int gridY, SDL_Te
 
 
 
-int FinDecombat(pos_t turn[N*N], int EquipeGagnante, int EquipePerdant, entite_t plateau[N][N]) {
+int Fin_De_combat(pos_t turn[N*N], int EquipeGagnante, int EquipePerdant, entite_t plateau[N][N]) {
     int cpt1 = 0, cpt2 = 0;
     for (int i = 0; i < (N*N); i++) {
         // Vérifier que les coordonnées x et y sont dans les limites du plateau
@@ -124,7 +124,7 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
     Button buttonBottom3; 
     Button buttonBottom4;
     //declare les couleur pour sdl ttf 
-    SDL_Color textColor = { 255, 255, 255, 255 };
+    SDL_Color textColor = { 176, 91, 78, 255 };
     SDL_Color bgColor = { 30, 30, 30, 255 };
     SDL_Rect boundingRect;
     SDL_Rect statu;
@@ -142,7 +142,7 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
     int buttonBottomY = WINDOW_HEIGHT - BUTTON_SIZEy - BUTTON_MARGIN;
 
     //charge le fond
-    SDL_Surface* backgroundSurface = IMG_Load("img/fond.jpeg");
+    SDL_Surface* backgroundSurface = IMG_Load("img/fonddesert.jpg");
     if (backgroundSurface == NULL) {
         printf("Erreur de chargement de l'image de fond : %s\n", IMG_GetError());
         return 1;
@@ -168,7 +168,25 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
         return 1;
     }
 
-    SDL_Surface* att = IMG_Load("img/att.png");
+    SDL_Surface* att = IMG_Load("img/bouton_attaque.png");
+    if (att == NULL) {
+        printf("Erreur de l image : %s\n", IMG_GetError());
+        return 1;
+    }
+
+    SDL_Surface* bouton_avancer = IMG_Load("img/bouton_avancer.png");
+    if (att == NULL) {
+        printf("Erreur de l image : %s\n", IMG_GetError());
+        return 1;
+    }
+
+    SDL_Surface* bouton_fin_tour = IMG_Load("img/bouton_fin_tour.png");
+    if (att == NULL) {
+        printf("Erreur de l image : %s\n", IMG_GetError());
+        return 1;
+    }
+
+    SDL_Surface* bouton_sort = IMG_Load("img/bouton_sort.png");
     if (att == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
@@ -195,6 +213,9 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
     SDL_Texture* Text_Fini =SDL_CreateTextureFromSurface(renderer, Fini);
     SDL_Texture* casetTexture = SDL_CreateTextureFromSurface(renderer, Casetab);
     SDL_Texture* attText = SDL_CreateTextureFromSurface(renderer, att);
+    SDL_Texture* bouton_avancerText = SDL_CreateTextureFromSurface(renderer, bouton_avancer);
+    SDL_Texture* bouton_fin_tourText = SDL_CreateTextureFromSurface(renderer, bouton_fin_tour);
+    SDL_Texture* bouton_sortText = SDL_CreateTextureFromSurface(renderer, bouton_sort);
     SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
     //destruction des surface  
     SDL_FreeSurface(Fini);
@@ -243,7 +264,7 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
                                 action=5;
                              }
                              if(action==3 && pl.x!=-1 && pl.y!=-1){
-                                 mouvementJoueur(plateau_de_combat[turn[tour].x][turn[tour].y].mouv,turn[tour],pl,plateau_de_combat);
+                                 mouvement_Joueur(plateau_de_combat[turn[tour].x][turn[tour].y].mouv,turn[tour],pl,plateau_de_combat);
                                 action=5;  
                              }
                         }
@@ -267,42 +288,42 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
         SDL_RenderCopy(renderer, Text_Fini, NULL, &bottomRect);
 
         // Dessiner le rectangle du bouton
-        buttonBottom = initButton(buttonBottomX, buttonBottomY, BUTTON_SIZEx, BUTTON_SIZEy);
-        buttonBottom2 = initButton(buttonBottomX, buttonBottomY - BUTTON_SIZEy, BUTTON_SIZEx, BUTTON_SIZEy);
-        buttonBottom3 = initButton(buttonBottomX - BUTTON_SIZEx, buttonBottomY, BUTTON_SIZEx, BUTTON_SIZEy);
-        buttonBottom4 = initButton(buttonBottomX - BUTTON_SIZEx, buttonBottomY - BUTTON_SIZEy, BUTTON_SIZEx, BUTTON_SIZEy);
+        buttonBottom = init_Button(buttonBottomX, buttonBottomY, BUTTON_SIZEx, BUTTON_SIZEy);
+        buttonBottom2 = init_Button(buttonBottomX, buttonBottomY - BUTTON_SIZEy, BUTTON_SIZEx, BUTTON_SIZEy);
+        buttonBottom3 = init_Button(buttonBottomX - BUTTON_SIZEx, buttonBottomY, BUTTON_SIZEx, BUTTON_SIZEy);
+        buttonBottom4 = init_Button(buttonBottomX - BUTTON_SIZEx, buttonBottomY - BUTTON_SIZEy, BUTTON_SIZEx, BUTTON_SIZEy);
 
         if(action==0){
-            drawText(renderer, font, "   IS YOUR TURN  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
+            draw_Text(renderer, font, "   IS YOUR TURN  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }
         if(action==1){
-            drawText(renderer, font, "   mode attaque  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
+            draw_Text(renderer, font, "   mode attaque  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }
         if(action==2){
-            drawText(renderer, font, "   vous aller utiliser un sort  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
+            draw_Text(renderer, font, "   vous aller utiliser un sort  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }if(action==3){
-            drawText(renderer, font, "   mouvement en  cour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
+            draw_Text(renderer, font, "   mouvement en  cour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
         }if(action!=1 && action!=2 && action!=3 && action!=0){
-            drawText(renderer, font, "   metter Fin a votre tour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
+            draw_Text(renderer, font, "   metter Fin a votre tour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
         }
 
 
 
         // Remplir le rectangle du bouton
-        setButtonImage(renderer, attText, &buttonBottom.rect);
-        setButtonImage(renderer, attText, &buttonBottom2.rect);
-        setButtonImage(renderer, attText, &buttonBottom3.rect);
-        setButtonImage(renderer, attText, &buttonBottom4.rect);
+        set_Button_Image(renderer, attText, &buttonBottom.rect);
+        set_Button_Image(renderer, bouton_sortText, &buttonBottom2.rect);
+        set_Button_Image(renderer, bouton_fin_tourText, &buttonBottom3.rect);
+        set_Button_Image(renderer, bouton_avancerText, &buttonBottom4.rect);
 
         //affiche stat si entite mob cliquer 
         if ((pl.x >= 0 && pl.x < GRID_ROWS) && (pl.y >= 0 && pl.y < GRID_COLUMNS)) {
             if ((action == 0 || action == 5) && (plateau_de_combat[pl.x][pl.y].pv>0)) {
-                drawTextWithStats(renderer, font, plateau_de_combat[pl.x][pl.y].prenom, plateau_de_combat[pl.x][pl.y].classe,plateau_de_combat[pl.x][pl.y].pv,plateau_de_combat[pl.x][pl.y].attaque,0,gridY + gridHeight, 250, 300, textColor, bgColor, &boundingRect);
+                drawText_With_Stats(renderer, font, plateau_de_combat[pl.x][pl.y].prenom, plateau_de_combat[pl.x][pl.y].classe,plateau_de_combat[pl.x][pl.y].pv,plateau_de_combat[pl.x][pl.y].attaque,0,gridY + gridHeight, 250, 300, textColor, bgColor, &boundingRect);
             }
         }
 
         //verifie si une equipe a gagner ou non et renvoi la victoire ou defaite pour le joueur (1 = win 0=combat en cour et -1 pour defaite)
-        FIN=FinDecombat(turn,1,2,plateau_de_combat);
+        FIN=Fin_De_combat(turn,1,2,plateau_de_combat);
 
     
     SDL_RenderPresent(renderer); //affiche 

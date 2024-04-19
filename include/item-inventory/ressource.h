@@ -1,3 +1,11 @@
+/**
+ * @file ressource.h
+ * @author Aymeric MABIRE
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
+
 #ifndef RESSOURCE_H
 #define RESSOURCE_H
 

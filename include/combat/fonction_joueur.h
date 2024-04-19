@@ -14,7 +14,7 @@
  * @param plateau Le plateau de jeu contenant les entités
  * @return int 1 si le déplacement a réussi, 0 sinon
  */
-int mouvementJoueur(int dep, pos_t pos_perso, pos_t pos_cibler, entite_t plateau[N][N]);
+int mouvement_Joueur(int dep, pos_t pos_perso, pos_t pos_cibler, entite_t plateau[N][N]);
 
 /**
  * @brief Fonction pour lancer un sort sur une case ciblée par une entité joueur

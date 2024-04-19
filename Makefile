@@ -14,10 +14,10 @@ all: $(TARGET)
 
 test: $(TEST)
 
-$(TARGET): $(filter-out $(BUILDDIR)/item-inventory/test.o, $(OBJS))
+$(TARGET): $(filter-out $(BUILDDIR)/executable/test.o, $(OBJS))
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-$(TEST): $(filter-out $(BUILDDIR)/mouvement/main_mov.o, $(OBJS))
+$(TEST): $(filter-out $(BUILDDIR)/executable/main_mov.o, $(OBJS))
 	$(CC) -g $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c

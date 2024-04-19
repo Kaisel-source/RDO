@@ -1,5 +1,25 @@
+/**
+ * @file skills.h
+ * @author Aymeric MABIRE
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
+#ifndef SKILLS_H
+#define SKILLS_H
 #include "../common/common.h"
 #include "../common/struct.h"
+
+/**
+ * @brief Structure of the skill
+ * 
+ * id : Id of the skill
+ * name : Name of the skill
+ * desc : Description of the skill
+ * damage : Damage of the skill
+ * mana : Mana cost of the skill
+ * level_min : Level required to use the skill
+*/
 typedef struct skills_t{
     int id;
     char name[50];
@@ -9,12 +29,27 @@ typedef struct skills_t{
     int level_min;
 } skills_s;
 
+
+/**
+ * @brief Structure of the skill list
+ * 
+ * skill : Skill
+ * next : Next skill
+ * prev : Previous skill
+*/
 typedef struct skills_list_t{
     skills_s * skill;
     struct skills_list_t *next;
     struct skills_list_t *prev;
 } skills_list_s;
 
+
+/**
+ * @brief Structure of the skill inventory
+ * 
+ * head : Head of the list
+ * nb_skills : Number of skills in the list
+*/
 typedef struct skills_inventory_t{
     skills_list_s *head;
     int nb_skills;
@@ -68,3 +103,5 @@ void skills_list_add(skills_inventory *list, skills_s *skill);
  * @param skill Skill to display
  */
 int skills_use(skills_s *skill, perso* player); // return > 0 if success, 0 if fail
+
+#endif

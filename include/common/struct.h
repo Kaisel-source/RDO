@@ -10,12 +10,19 @@
 #include <math.h>
 #include <unistd.h>
 
+
+
 #define NB_MAX_QUEST 10
 #define TOTAL_QUEST 10
 #define TOTAL_PERS 10
 
 #define NB_MAP_X 3
 #define NB_MAP_Y 2
+
+#define BUTTON_WIDTH 150
+#define BUTTON_HEIGHT 75
+#define BUTTON_MARGIN_MENU 20
+
 typedef enum eqpmt_type {
     NONE, HEAD, BODY, LEGS, FOOT, RING, WEAPON, SHIELD
 } eqpmt_type;
@@ -82,8 +89,6 @@ typedef union item_inv{
     item_ress *ress;
     item_conso *conso;
 }it_iv;
-
-
 
 
 
@@ -236,6 +241,13 @@ typedef struct npc_t{
 } npc_s;
 
 
+/*-------------- BOUTTON -------------- */
+
+typedef struct {
+    SDL_Rect rect;
+    SDL_Texture *texture;
+} Button;
+
 /*-------------- STRUCTURE DE JEU -------------- */
 
 /**
@@ -260,12 +272,6 @@ typedef struct {
     int initiative;
     int range;
 } entite_t;
-
-// Structure représentant un bouton
-typedef struct {
-    SDL_Rect rect;       // Rectangle définissant la position et la taille du bouton
-    SDL_Texture* texture; // Texture du bouton (à générer avec SDL_CreateTextureFromSurface())
-} Button;
 
 
 typedef struct game_t{

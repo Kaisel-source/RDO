@@ -19,7 +19,7 @@
  * @param bgColor La couleur de fond du rectangle
  * @param boundingRect Le rectangle englobant dans lequel le texte est dessiné
  */
-void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int maxWidth, int maxHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect);
+void draw_Text(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int maxWidth, int maxHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect);
 
 /**
  * @brief Fonction pour dessiner du texte encadré dans un rectangle avec des sauts de ligne et des statistiques supplémentaires
@@ -38,6 +38,6 @@ void drawText(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, i
  * @param bgColor La couleur de fond du rectangle
  * @param boundingRect Le rectangle englobant dans lequel le texte est dessiné
  */
-void drawTextWithStats(SDL_Renderer *renderer, TTF_Font *font, char *name, char *classe, int pv, int force, int x, int y, int maxWidth, int maxHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect);
+void drawText_With_Stats(SDL_Renderer *renderer, TTF_Font *font, char *name, char *classe, int pv, int force, int x, int y, int maxWidth, int maxHeight, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect);
 
 #endif /* TEXT_ECRIRE_H */

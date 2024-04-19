@@ -1,3 +1,14 @@
+/**
+ * @file main_chara.h
+ * @author Aymeric MABIRE
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
+
+#ifndef CONSO_H
+#define CONSO_H
+
 #include "../common/common.h"
 
 /**
@@ -37,3 +48,5 @@ void display_conso(const item_conso conso);
  * @param conso : Consumable to use
  */
 void use_conso(perso* p,item_conso* conso);
+
+#endif

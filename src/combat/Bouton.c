@@ -1,7 +1,7 @@
 #include "../../include/common/common.h"
 
 
-Button initButton(int x, int y, int width, int height) {
+Button init_Button(int x, int y, int width, int height) {
     Button button;
     button.rect.x = x;
     button.rect.y = y;
@@ -17,7 +17,7 @@ Button initButton(int x, int y, int width, int height) {
  * @param bouttony 
  * @return SDL_Rect 
  */
-SDL_Rect getButtonRect(int bouttonx, int bouttony) {
+SDL_Rect get_ButtonRect(int bouttonx, int bouttony) {
     Button buttonRect;
     buttonRect.rect.x = bouttonx;
     buttonRect.rect.y = bouttony;
@@ -35,6 +35,6 @@ SDL_Rect getButtonRect(int bouttonx, int bouttony) {
  * @param imageTexture 
  * @param buttonRect 
  */
-void setButtonImage(SDL_Renderer* renderer, SDL_Texture* imageTexture, SDL_Rect* buttonRect) {
+void set_Button_Image(SDL_Renderer* renderer, SDL_Texture* imageTexture, SDL_Rect* buttonRect) {
     SDL_RenderCopy(renderer, imageTexture, NULL, buttonRect);
 }

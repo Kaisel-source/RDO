@@ -17,7 +17,7 @@ entite_t create_entity(const char *prenom, const char *classe, int pv, int pv_ma
     return perso;
 }
 
-void initialiserEntite(entite_t *entite) {
+void initialiser_Entite(entite_t *entite) {
     entite->prenom[0] = '\0';
     entite->classe[0] = '\0';
     entite->pv = 0;
