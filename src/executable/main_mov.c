@@ -340,6 +340,10 @@ int main() {
 
         if(play==1){
             rending(&renderer,g, font, textColor, bgColor, &boundingRect,inventoryVisible,&settings, saveButton, loadButton, deleteButton, quitButton2);
+            if(inventoryVisible==1){
+                 show_Inventory(g->main_perso->inventory, font, renderer, textColor, bgColor, boundingRect);
+            }
+            SDL_RenderPresent(renderer);
         } 
 
         
