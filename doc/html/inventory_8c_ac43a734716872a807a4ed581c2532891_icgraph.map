@@ -1,0 +1,28 @@
+<map id="erase_item" name="erase_item">
+<area shape="rect" id="Node000001" title="Remove the current item from the list." alt="" coords="1288,79,1383,104"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#abb4ecd6d95d93fe9292d92896f29a3a1" title="Check the inventory of the player and remove the item if the quantity is 0 or less." alt="" coords="1111,79,1240,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1274,94,1240,94,1240,89,1274,89"/>
+<area shape="rect" id="Node000003" href="$common_8c.html#a811a3ecfff1d3eea11bd30c5277f592e" title="Add N item in the inventory." alt="" coords="977,29,1039,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1118,77,1038,53,1040,48,1119,72"/>
+<area shape="rect" id="Node000011" href="$common_8c.html#afccfb25c880a44de78803ef360b9234c" title="Remove N item in the inventory." alt="" coords="965,79,1051,104"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="1097,94,1051,94,1051,89,1097,89"/>
+<area shape="rect" id="Node000012" href="$common_8c.html#aa18e1327ae87d0aa6b0fc4bb3f3ee53e" title=" " alt="" coords="953,128,1063,153"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="1119,111,1053,130,1051,125,1118,105"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="1037,19,1028,11,1008,8,991,10,982,15,980,20,985,28,980,31,974,21,978,11,989,5,1008,3,1031,6,1040,15"/>
+<area shape="rect" id="Node000004" href="$quest_8c.html#aa447097ef350f68a7b824cddfa4e7c1c" title="Update the status of the quest." alt="" coords="748,55,905,80"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="964,51,906,59,905,54,963,45"/>
+<area shape="rect" id="Node000005" href="$quest_8c.html#a551448f751112406bba472fd8b59b27f" title="Accept the quest." alt="" coords="592,55,700,80"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="734,70,700,70,700,65,734,65"/>
+<area shape="rect" id="Node000006" href="$mouvement_8c.html#a676a4edcc97a7052e62201f936dcd715" title="Interaction of the personnage." alt="" coords="108,53,180,79"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="587,54,544,46,440,40,338,44,248,53,180,63,180,57,247,48,338,39,440,35,544,41,588,49"/>
+<area shape="rect" id="Node000008" href="$test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="434,55,489,80"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="578,70,489,70,489,65,578,65"/>
+<area shape="rect" id="Node000009" href="$npc_8c.html#ae96235535ebaed66e74ea1bb9166e116" title="Interaction of the NPC about the quest." alt="" coords="379,104,544,129"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="585,86,511,106,509,101,584,81"/>
+<area shape="rect" id="Node000007" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,53,60,79"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="94,69,60,69,60,63,94,63"/>
+<area shape="rect" id="Node000010" href="$npc_8c.html#a568277cf9f3b856b2b1844fd53bd9540" title="Interaction of the NPC." alt="" coords="228,79,331,104"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="365,106,331,101,331,96,365,101"/>
+<area shape="poly" id="edge11_Node000010_Node000006" title=" " alt="" coords="214,82,180,75,181,70,215,77"/>
+<area shape="poly" id="edge13_Node000011_Node000004" title=" " alt="" coords="951,86,905,80,906,75,951,81"/>
+</map>

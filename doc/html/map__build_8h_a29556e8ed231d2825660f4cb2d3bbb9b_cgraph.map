@@ -1,0 +1,5 @@
+<map id="pose_block" name="pose_block">
+<area shape="rect" id="Node000001" title="Build a block in the board." alt="" coords="5,5,100,31"/>
+<area shape="rect" id="Node000002" href="$map__build_8c.html#ac270eedc7890734b376faca490a8d051" title="Build a change the value of a block in the board." alt="" coords="148,5,247,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,15,134,15,134,21,100,21"/>
+</map>

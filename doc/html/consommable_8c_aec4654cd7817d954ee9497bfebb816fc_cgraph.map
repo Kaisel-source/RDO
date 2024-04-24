@@ -1,0 +1,5 @@
+<map id="use_conso" name="use_conso">
+<area shape="rect" id="Node000001" title=": Use the consumable" alt="" coords="5,5,96,31"/>
+<area shape="rect" id="Node000002" href="$main__chara_8c.html#af5a0f358ee3ef6d031d1135f6ada5e95" title="Check and level up the personnage." alt="" coords="144,5,221,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,15,130,15,130,21,96,21"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="prec_current" name="prec_current">
+<area shape="rect" id="Node000001" title="Change the current item to the previous one." alt="" coords="5,31,108,56"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#a5a8c61ddf5962e94e0f8f3fedfb75ebb" title="Return if the list is empty." alt="" coords="156,5,289,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,33,142,28,143,33,109,38"/>
+<area shape="rect" id="Node000003" href="$inventory_8c.html#a972ecd7a00d59131be36e0fa8d462f42" title="Find the queue item in the list." alt="" coords="176,55,269,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,48,163,56,162,61,108,53"/>
+</map>

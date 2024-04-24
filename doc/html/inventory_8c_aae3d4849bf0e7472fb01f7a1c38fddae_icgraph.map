@@ -1,0 +1,7 @@
+<map id="create_inventory" name="create_inventory">
+<area shape="rect" id="node1" title="Create a inventory object." alt="" coords="269,56,388,83"/>
+<area shape="rect" id="node2" href="$game_8c.html#a2f1b9f0e1afa66efce55b0e766f58857" title="Create a game object." alt="" coords="104,5,221,32"/>
+<area shape="rect" id="node4" href="$main__chara_8c.html#a16efa00a5569f7fa91e5b26f2d382dcd" title="Initialisation of the personnage and attribution of the stat." alt="" coords="123,56,202,83"/>
+<area shape="rect" id="node5" href="$npc_8c.html#a05dee45f14f0e009ead74271dcdcd457" title="Create an NPC." alt="" coords="117,107,208,133"/>
+<area shape="rect" id="node3" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,56,56,83"/>
+</map>

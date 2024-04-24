@@ -1,0 +1,7 @@
+<map id="show_Inventory" name="show_Inventory">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,131,56"/>
+<area shape="rect" id="Node000002" href="$inventaire__affiche_8c.html#a19dd1e41eeb1fab5f854d0728572b126" title=" " alt="" coords="188,5,292,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,31,174,25,175,30,131,37"/>
+<area shape="rect" id="Node000003" href="$inventaire__affiche_8c.html#af2a84ab4ccf9addf8e530dab9b203b09" title=" " alt="" coords="179,55,301,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,49,166,54,165,60,131,55"/>
+</map>

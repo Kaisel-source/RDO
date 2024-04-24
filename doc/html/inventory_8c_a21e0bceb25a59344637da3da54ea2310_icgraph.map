@@ -1,0 +1,14 @@
+<map id="destroy_stockage" name="destroy_stockage">
+<area shape="rect" id="Node000001" title="Destroy the stockage and unallocate the memory." alt="" coords="477,31,613,56"/>
+<area shape="rect" id="Node000002" href="$npc_8c.html#a68dc5da46519dd9da3b196e4caf687b4" title="Destroy the NPC." alt="" coords="321,5,423,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="463,34,422,28,423,23,464,29"/>
+<area shape="rect" id="Node000005" href="$main__chara_8c.html#aa6a59e928f0f5c43e53e56b9cdb9490e" title="Unnallocate the memory of the personnage and destroy it." alt="" coords="315,55,429,80"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="464,57,430,62,429,57,463,52"/>
+<area shape="rect" id="Node000003" href="$game_8c.html#afff6ea414c2eecc8b509181e02e84047" title="Destroy the game." alt="" coords="108,5,267,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="308,21,267,21,267,15,308,15"/>
+<area shape="rect" id="Node000004" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="310,54,235,33,237,28,311,49"/>
+<area shape="rect" id="Node000006" href="$test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="160,55,215,80"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="301,70,215,70,215,65,301,65"/>
+</map>

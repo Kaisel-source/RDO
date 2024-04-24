@@ -1,0 +1,32 @@
+<map id="in_inventory" name="in_inventory">
+<area shape="rect" id="Node000001" title="Check the item and return if it&#39;s in the inventory." alt="" coords="1223,94,1325,119"/>
+<area shape="rect" id="Node000002" href="$common_8c.html#a811a3ecfff1d3eea11bd30c5277f592e" title="Add N item in the inventory." alt="" coords="966,169,1027,194"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1213,126,1028,176,1027,171,1212,121"/>
+<area shape="rect" id="Node000003" href="$quest_8c.html#aa447097ef350f68a7b824cddfa4e7c1c" title="Update the status of the quest." alt="" coords="748,169,905,194"/>
+<area shape="poly" id="edge12_Node000001_Node000003" title=" " alt="" coords="1209,109,1089,116,1021,124,954,136,901,152,856,171,854,166,899,147,953,131,1020,118,1089,110,1208,104"/>
+<area shape="rect" id="Node000007" href="$test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="434,55,489,81"/>
+<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="1240,89,1194,64,1135,38,1068,17,1033,10,998,8,825,8,727,14,632,29,489,63,488,58,631,24,727,9,825,3,998,3,1034,5,1069,11,1137,33,1197,59,1243,85"/>
+<area shape="rect" id="Node000010" href="$common_8c.html#afccfb25c880a44de78803ef360b9234c" title="Remove N item in the inventory." alt="" coords="953,43,1040,69"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="1209,97,1174,91,1040,66,1041,61,1175,85,1210,92"/>
+<area shape="rect" id="Node000011" href="$main__chara_8c.html#aa6b643dd20c70a9fde8e556cfdb26dcd" title="Add the item in the inventory." alt="" coords="1088,219,1175,245"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="1250,131,1149,221,1145,217,1246,127"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="1019,157,1012,150,997,147,983,149,976,154,974,160,978,167,974,170,969,160,972,151,981,144,997,142,1015,145,1023,154"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="952,184,905,184,905,179,952,179"/>
+<area shape="rect" id="Node000004" href="$quest_8c.html#a551448f751112406bba472fd8b59b27f" title="Accept the quest." alt="" coords="592,169,700,194"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="734,184,700,184,700,179,734,179"/>
+<area shape="rect" id="Node000005" href="$mouvement_8c.html#a676a4edcc97a7052e62201f936dcd715" title="Interaction of the personnage." alt="" coords="108,245,180,270"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="586,200,544,209,339,240,180,257,180,252,338,235,544,204,585,195"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="611,164,482,83,485,79,614,159"/>
+<area shape="rect" id="Node000008" href="$npc_8c.html#ae96235535ebaed66e74ea1bb9166e116" title="Interaction of the NPC about the quest." alt="" coords="379,169,544,194"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="578,184,544,184,544,179,578,179"/>
+<area shape="rect" id="Node000006" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,295,60,321"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="104,278,61,298,59,293,102,274"/>
+<area shape="rect" id="Node000009" href="$npc_8c.html#a568277cf9f3b856b2b1844fd53bd9540" title="Interaction of the NPC." alt="" coords="228,169,331,194"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="365,184,331,184,331,179,365,179"/>
+<area shape="poly" id="edge10_Node000009_Node000005" title=" " alt="" coords="245,203,169,247,166,242,242,199"/>
+<area shape="poly" id="edge14_Node000010_Node000003" title=" " alt="" coords="969,79,847,171,843,167,966,75"/>
+<area shape="poly" id="edge16_Node000011_Node000002" title=" " alt="" coords="1083,217,1027,195,1029,190,1085,212"/>
+<area shape="poly" id="edge19_Node000011_Node000003" title=" " alt="" coords="1074,228,953,209,887,197,888,191,954,204,1075,222"/>
+<area shape="poly" id="edge17_Node000011_Node000005" title=" " alt="" coords="1075,250,962,273,895,282,828,285,460,285,303,278,180,265,180,259,304,272,460,280,828,280,895,277,961,268,1074,244"/>
+<area shape="poly" id="edge18_Node000011_Node000006" title=" " alt="" coords="1097,254,1047,279,981,306,906,327,867,334,828,336,278,336,156,328,60,315,61,310,156,323,278,331,828,331,866,328,905,322,979,301,1044,274,1095,249"/>
+</map>

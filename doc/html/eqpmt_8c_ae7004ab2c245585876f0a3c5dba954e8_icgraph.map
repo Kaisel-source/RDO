@@ -1,0 +1,7 @@
+<map id="use_eqpmt" name="use_eqpmt">
+<area shape="rect" id="Node000001" title=": Use the equipement" alt="" coords="163,31,257,56"/>
+<area shape="rect" id="Node000002" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="33,5,87,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,36,87,25,88,20,149,30"/>
+<area shape="rect" id="Node000003" href="$common_8c.html#aa18e1327ae87d0aa6b0fc4bb3f3ee53e" title=" " alt="" coords="5,55,115,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,56,116,61,115,56,149,50"/>
+</map>

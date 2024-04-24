@@ -1,0 +1,7 @@
+<map id="build_board" name="build_board">
+<area shape="rect" id="Node000001" title="Build a change the value of a block in the board." alt="" coords="251,5,349,31"/>
+<area shape="rect" id="Node000002" href="$map__build_8c.html#a29556e8ed231d2825660f4cb2d3bbb9b" title="Build a block in the board." alt="" coords="108,5,203,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,21,203,21,203,15,237,15"/>
+<area shape="rect" id="Node000003" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,21,60,21,60,15,95,15"/>
+</map>

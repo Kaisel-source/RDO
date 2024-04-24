@@ -1,0 +1,7 @@
+<map id="destroy_npc" name="destroy_npc">
+<area shape="rect" id="Node000001" title="Destroy the NPC." alt="" coords="5,31,107,56"/>
+<area shape="rect" id="Node000002" href="$quest_8c.html#a545d89ddae7c84e3e4e97b8cb0f8c104" title="Destroy the quest npc." alt="" coords="155,5,299,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,33,141,28,142,33,107,39"/>
+<area shape="rect" id="Node000003" href="$inventory_8c.html#a21e0bceb25a59344637da3da54ea2310" title="Destroy the stockage and unallocate the memory." alt="" coords="159,55,295,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,48,145,53,144,58,106,53"/>
+</map>

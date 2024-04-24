@@ -1,0 +1,7 @@
+<map id="display_equipement" name="display_equipement">
+<area shape="rect" id="Node000001" title="Display the equipment of the personnage." alt="" coords="5,5,160,31"/>
+<area shape="rect" id="Node000002" href="$eqpmt_8c.html#a2f8186589142bc19876e33367e98b84f" title="display the item information in the console" alt="" coords="208,5,327,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,15,194,15,194,21,160,21"/>
+<area shape="rect" id="Node000003" href="$eqpmt_8c.html#a3998fdaa3013497c94cf8e376395297e" title=": Give the string corresponding to the type of equipement for the enum &quot;eqpmt_type&quot;" alt="" coords="375,5,483,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,15,361,15,361,21,327,21"/>
+</map>

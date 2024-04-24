@@ -1,0 +1,43 @@
+<map id="combat" name="combat">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,329,76,355"/>
+<area shape="rect" id="Node000002" href="$fonction__joueur_8c.html#a75816dd30fac78ae19972507d7e7f1e6" title="Fonction pour effectuer une attaque physique sur une case ciblée par une entité joueur." alt="" coords="138,5,269,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="39,329,40,277,49,199,59,157,74,115,95,75,122,40,126,36,130,40,126,44,99,78,79,117,64,158,54,200,45,277,44,329"/>
+<area shape="rect" id="Node000003" href="$fonction__joueur_8c.html#a816d46428dd80b6c4aaab6f22ec8e5f2" title="Fonction pour lancer un sort sur une case ciblée par une entité joueur." alt="" coords="148,55,259,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="40,329,43,284,55,220,65,185,80,150,98,118,122,89,134,80,137,85,126,93,103,121,84,153,71,187,60,221,49,284,45,329"/>
+<area shape="rect" id="Node000004" href="$plateauCombat_8c.html#a612669d20a0441f4ee16a7237f1ede30" title="fait le dessin d un echequier" alt="" coords="143,104,263,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="41,329,49,294,64,245,87,193,103,169,122,147,141,133,144,137,126,151,108,172,92,196,69,247,54,295,47,330"/>
+<area shape="rect" id="Node000005" href="$Bouton_8c.html#a7bf1c76e63d79f0df547ce27594ec2d3" title="colle une img sur un espace defini" alt="" coords="340,129,480,155"/>
+<area shape="poly" id="edge19_Node000001_Node000005" title=" " alt="" coords="42,328,51,299,67,262,90,223,122,191,171,164,224,148,277,139,326,136,326,141,277,144,225,153,173,169,126,195,94,226,72,264,56,301,48,330"/>
+<area shape="rect" id="Node000006" href="$text__ecrire_8c.html#aa16266c1e28f2178ddcbc05516673bfd" title="Fonction pour dessiner du texte encadré dans un rectangle avec des sauts de ligne." alt="" coords="159,205,247,231"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="47,328,76,285,97,261,123,240,145,228,147,233,125,244,101,264,80,288,51,331"/>
+<area shape="rect" id="Node000007" href="$text__ecrire_8c.html#a21b19a5f336f6ec27ca6d4b7dd80b4e1" title="Fonction pour dessiner du texte encadré dans un rectangle avec des sauts de ligne et des statistiques..." alt="" coords="124,255,283,280"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="59,327,88,308,123,289,140,282,142,287,125,294,91,312,62,331"/>
+<area shape="rect" id="Node000008" href="$plateauCombat_8c.html#a39b73b2de40275f64c54f9913f8ad3d5" title="Fonction pour déterminer si le combat est terminé et qui a gagné" alt="" coords="142,304,265,329"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="76,334,128,326,129,331,77,339"/>
+<area shape="rect" id="Node000009" href="$Bouton_8c.html#a6ad89c6154ee6bc581b73183a3632828" title=" " alt="" coords="157,353,250,379"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="77,345,143,354,142,360,76,350"/>
+<area shape="rect" id="Node000010" href="$turn__order_8c.html#af998d4d3669901b6d922498841baab5e" title="Fonction pour initialiser le turn order." alt="" coords="351,503,469,528"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="51,353,80,395,101,418,125,437,163,454,218,471,339,499,338,504,217,476,161,459,123,442,98,422,76,398,47,356"/>
+<area shape="rect" id="Node000011" href="$fonction__joueur_8c.html#aba29a6ca25052efcf0e8688d896ebe17" title="Fonction pour déplacer une entité joueur sur le plateau de jeu." alt="" coords="129,403,278,428"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="63,353,125,388,145,396,143,401,123,392,60,357"/>
+<area shape="rect" id="Node000013" href="$plateauCombat_8c.html#a568dc97eb47757aa9af91c7263b26ce7" title="Fonction pour compter le nombre d&#39;entités présentes sur le plateau de combat." alt="" coords="145,504,262,529"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="49,354,75,415,97,451,126,483,146,496,143,500,122,487,93,454,70,417,44,356"/>
+<area shape="rect" id="Node000014" href="$plateauCombat_8c.html#a8c0e12e919bd4b32514b080394075ac6" title="Construct a new void object." alt="" coords="149,553,258,579"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="46,354,53,391,67,440,90,493,106,517,126,539,138,547,135,552,122,543,102,521,86,496,62,442,48,392,41,355"/>
+<area shape="rect" id="Node000015" href="$enemie_8c.html#a72d17622caed35bc48fb14b63b71a85f" title=" " alt="" coords="125,652,282,677"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="44,355,45,406,55,482,65,524,80,565,100,603,126,638,132,643,128,647,122,641,95,606,75,567,60,525,50,483,40,407,39,355"/>
+<area shape="rect" id="Node000020" href="$turn__order_8c.html#ad15064138e413e2345c67ddbea386e0e" title="Fonction pour trier les positions dans l&#39;ordre décroissant des entités en fonction de leur stat initi..." alt="" coords="159,603,248,628"/>
+<area shape="poly" id="edge20_Node000001_Node000020" title=" " alt="" coords="45,355,49,399,61,461,85,529,103,560,126,588,147,602,144,606,122,592,99,564,80,531,56,463,44,400,40,355"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="264,121,326,129,326,134,263,127"/>
+<area shape="rect" id="Node000012" href="$entite_8c.html#a3b04a16cd191fa9f13442b2083f5e655" title=" " alt="" coords="346,403,474,428"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="278,413,332,413,332,418,278,418"/>
+<area shape="rect" id="Node000016" href="$enemie_8c.html#a3e9037092a5589329691fe62d31a1f15" title="deplace une entite en fonction de entite.mouv" alt="" coords="331,603,489,628"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="257,649,342,629,343,634,258,655"/>
+<area shape="rect" id="Node000018" href="$enemie_8c.html#a4a2ce6cb934512145384776ba4576131" title="idem que detecte mouv a l exeption ne renvoie juste la pose de l enemie" alt="" coords="347,652,473,677"/>
+<area shape="poly" id="edge17_Node000015_Node000018" title=" " alt="" coords="282,662,333,662,333,667,282,667"/>
+<area shape="rect" id="Node000019" href="$enemie_8c.html#a162dbc155fcf4b6f9bd3c77fa0581b97" title="Retourne si un ennemi est à portée d&#39;un autre ennemi." alt="" coords="358,701,462,727"/>
+<area shape="poly" id="edge18_Node000015_Node000019" title=" " alt="" coords="258,675,345,696,344,701,257,680"/>
+<area shape="rect" id="Node000017" href="$enemie_8c.html#ab493ebfab8d20d91173013aa38a0e2a6" title="retourne la position la plus proche en fonction de se nombre de point de mouvement vers l enemie le p..." alt="" coords="537,603,652,628"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="490,613,524,613,524,618,490,618"/>
+<area shape="poly" id="edge21_Node000020_Node000010" title=" " alt="" coords="247,601,282,588,333,561,378,533,380,538,336,565,284,592,249,606"/>
+</map>

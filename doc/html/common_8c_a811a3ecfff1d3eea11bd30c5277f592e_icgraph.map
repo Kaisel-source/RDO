@@ -1,0 +1,19 @@
+<map id="add_n" name="add_n">
+<area shape="rect" id="Node000001" title="Add N item in the inventory." alt="" coords="953,29,1015,55"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="1011,19,1003,11,984,8,968,10,959,15,957,20,962,28,957,31,952,21,955,11,966,5,984,3,1006,6,1015,15"/>
+<area shape="rect" id="Node000002" href="$quest_8c.html#aa447097ef350f68a7b824cddfa4e7c1c" title="Update the status of the quest." alt="" coords="748,29,905,55"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="940,45,906,45,906,39,940,39"/>
+<area shape="rect" id="Node000003" href="$quest_8c.html#a551448f751112406bba472fd8b59b27f" title="Accept the quest." alt="" coords="592,29,700,55"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="734,45,700,45,700,39,734,39"/>
+<area shape="rect" id="Node000004" href="$mouvement_8c.html#a676a4edcc97a7052e62201f936dcd715" title="Interaction of the personnage." alt="" coords="108,28,180,53"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="590,28,544,19,440,13,338,18,248,27,181,37,180,32,247,22,338,12,440,8,544,14,591,23"/>
+<area shape="rect" id="Node000006" href="$test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="434,29,489,55"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="578,45,489,45,489,39,578,39"/>
+<area shape="rect" id="Node000007" href="$npc_8c.html#ae96235535ebaed66e74ea1bb9166e116" title="Interaction of the NPC about the quest." alt="" coords="379,79,544,104"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="585,61,511,81,509,76,584,56"/>
+<area shape="rect" id="Node000005" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,28,60,53"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="94,43,60,43,60,38,94,38"/>
+<area shape="rect" id="Node000008" href="$npc_8c.html#a568277cf9f3b856b2b1844fd53bd9540" title="Interaction of the NPC." alt="" coords="228,53,331,79"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="365,81,331,76,331,70,365,75"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="214,57,180,50,181,45,215,51"/>
+</map>

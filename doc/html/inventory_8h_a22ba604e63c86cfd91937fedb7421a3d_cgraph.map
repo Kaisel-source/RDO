@@ -1,0 +1,13 @@
+<map id="display_current" name="display_current">
+<area shape="rect" id="Node000001" title="Display the current item in the console." alt="" coords="5,55,128,80"/>
+<area shape="rect" id="Node000002" href="$common_8c.html#ae2948304480ff848fce503c7d899eb7e" title="Display the item by calling the display function associated with the type of the item." alt="" coords="176,55,309,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,65,163,65,163,70,128,70"/>
+<area shape="rect" id="Node000003" href="$consommable_8c.html#a40b77a145341d751b6c51b5e72f7de5a" title=": Display the consumable" alt="" coords="359,5,474,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="287,52,357,32,359,37,289,57"/>
+<area shape="rect" id="Node000004" href="$eqpmt_8c.html#a2f8186589142bc19876e33367e98b84f" title="display the item information in the console" alt="" coords="357,55,476,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="310,65,344,65,344,70,310,70"/>
+<area shape="rect" id="Node000006" href="$ressource_8c.html#acb23bbc29c39fb64001cab917dc4fe17" title="display the ressource information in the console" alt="" coords="365,104,468,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="289,77,359,98,357,103,287,83"/>
+<area shape="rect" id="Node000005" href="$eqpmt_8c.html#a3998fdaa3013497c94cf8e376395297e" title=": Give the string corresponding to the type of equipement for the enum &quot;eqpmt_type&quot;" alt="" coords="524,55,632,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="476,65,510,65,510,70,476,70"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="initialiser_Entite" name="initialiser_Entite">
+<area shape="rect" id="Node000001" title=" " alt="" coords="572,29,700,55"/>
+<area shape="rect" id="Node000002" href="$plateauCombat_8c.html#a7083f7c935bcbae9a110111f53216beb" title="Fonction pour initialiser le plateau de combat en plaçant des entités vides." alt="" coords="228,5,327,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="558,40,327,24,327,19,558,34"/>
+<area shape="rect" id="Node000005" href="$fonction__joueur_8c.html#aba29a6ca25052efcf0e8688d896ebe17" title="Fonction pour déplacer une entité joueur sur le plateau de jeu." alt="" coords="375,55,524,80"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="559,55,525,60,524,55,558,50"/>
+<area shape="rect" id="Node000003" href="$mouvement_8c.html#a676a4edcc97a7052e62201f936dcd715" title="Interaction of the personnage." alt="" coords="108,31,180,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,33,181,39,180,34,214,27"/>
+<area shape="rect" id="Node000004" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+<area shape="rect" id="Node000006" href="$plateauCombat_8c.html#acb22830489a2a7250a51ea8f06b22cb3" title=" " alt="" coords="242,55,313,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="361,70,313,70,313,65,361,65"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="228,61,180,52,181,47,229,56"/>
+</map>

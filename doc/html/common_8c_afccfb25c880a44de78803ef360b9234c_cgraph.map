@@ -1,0 +1,25 @@
+<map id="remove_n" name="remove_n">
+<area shape="rect" id="Node000001" title="Remove N item in the inventory." alt="" coords="5,105,92,131"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#abb4ecd6d95d93fe9292d92896f29a3a1" title="Check the inventory of the player and remove the item if the quantity is 0 or less." alt="" coords="140,68,269,93"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,105,137,94,138,99,93,110"/>
+<area shape="rect" id="Node000007" href="$main__chara_8c.html#aa883d31118f435c2a7360b6d0f017314" title="Check the item and return if it&#39;s in the inventory." alt="" coords="153,129,256,155"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="93,122,140,129,139,135,92,127"/>
+<area shape="rect" id="Node000003" href="$inventory_8c.html#ac43a734716872a807a4ed581c2532891" title="Remove the current item from the list." alt="" coords="337,5,431,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="241,65,333,33,334,38,243,70"/>
+<area shape="rect" id="Node000004" href="$inventory_8c.html#ac3b0d5fd0ae562eb5c50ac9774cf697a" title="Change the current item to the next one." alt="" coords="333,55,435,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="270,73,318,70,319,75,270,79"/>
+<area shape="rect" id="Node000006" href="$inventory_8c.html#a2498dca06a08fb9700ad423dea90d553" title="Calculate the total weight of the inventory." alt="" coords="335,104,433,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="269,91,321,101,320,107,268,96"/>
+<area shape="rect" id="Node000005" href="$inventory_8c.html#a5a8c61ddf5962e94e0f8f3fedfb75ebb" title="Return if the list is empty." alt="" coords="499,55,632,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="436,65,484,65,484,70,436,70"/>
+<area shape="rect" id="Node000008" href="$common_8c.html#ae2948304480ff848fce503c7d899eb7e" title="Display the item by calling the display function associated with the type of the item." alt="" coords="317,153,451,179"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="257,146,304,153,303,158,256,151"/>
+<area shape="rect" id="Node000009" href="$consommable_8c.html#a40b77a145341d751b6c51b5e72f7de5a" title=": Display the consumable" alt="" coords="508,104,623,129"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="431,151,504,130,505,136,432,156"/>
+<area shape="rect" id="Node000010" href="$eqpmt_8c.html#a2f8186589142bc19876e33367e98b84f" title="display the item information in the console" alt="" coords="506,153,625,179"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="451,163,492,163,492,169,451,169"/>
+<area shape="rect" id="Node000012" href="$ressource_8c.html#acb23bbc29c39fb64001cab917dc4fe17" title="display the ressource information in the console" alt="" coords="514,203,617,228"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="432,176,505,196,504,202,431,181"/>
+<area shape="rect" id="Node000011" href="$eqpmt_8c.html#a3998fdaa3013497c94cf8e376395297e" title=": Give the string corresponding to the type of equipement for the enum &quot;eqpmt_type&quot;" alt="" coords="680,153,788,179"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="625,163,666,163,666,169,625,169"/>
+</map>

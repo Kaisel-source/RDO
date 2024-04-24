@@ -1,0 +1,13 @@
+<map id="create_inventory" name="create_inventory">
+<area shape="rect" id="Node000001" title="Create a inventory object." alt="" coords="287,55,419,80"/>
+<area shape="rect" id="Node000002" href="$game_8c.html#a2f1b9f0e1afa66efce55b0e766f58857" title="Create a game object." alt="" coords="108,5,239,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="292,53,220,33,221,28,293,48"/>
+<area shape="rect" id="Node000004" href="$main__chara_8c.html#a16efa00a5569f7fa91e5b26f2d382dcd" title="Initialisation of the personnage and attribution of the stat." alt="" coords="130,55,217,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="273,70,217,70,217,65,273,65"/>
+<area shape="rect" id="Node000005" href="$npc_8c.html#af738db14a3e7dfa2b200c8794982c09c" title="Create an NPC." alt="" coords="124,104,223,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="293,86,221,106,220,101,292,81"/>
+<area shape="rect" id="Node000003" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,38,61,60,59,55,123,33"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="116,70,60,70,60,65,116,65"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="123,102,59,79,61,74,125,97"/>
+</map>

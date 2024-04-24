@@ -1,0 +1,4 @@
+<map id="npc_creator" name="npc_creator">
+<area shape="rect" id="node1" title="Create an NPC." alt="" coords="5,5,96,32"/>
+<area shape="rect" id="node2" href="$inventory_8c.html#aae3d4849bf0e7472fb01f7a1c38fddae" title="Create a inventory object." alt="" coords="144,5,263,32"/>
+</map>

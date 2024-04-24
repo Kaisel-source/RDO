@@ -1,0 +1,5 @@
+<map id="dessin_plateau" name="dessin_plateau">
+<area shape="rect" id="Node000001" title="fait le dessin d un echequier" alt="" coords="5,5,125,31"/>
+<area shape="rect" id="Node000002" href="$Bouton_8c.html#a7bf1c76e63d79f0df547ce27594ec2d3" title="colle une img sur un espace defini" alt="" coords="173,5,313,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,15,160,15,160,21,126,21"/>
+</map>

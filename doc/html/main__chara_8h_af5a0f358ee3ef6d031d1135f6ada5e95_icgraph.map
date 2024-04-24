@@ -1,0 +1,5 @@
+<map id="level_up" name="level_up">
+<area shape="rect" id="Node000001" title="Check and level up the personnage." alt="" coords="144,5,221,31"/>
+<area shape="rect" id="Node000002" href="$consommable_8c.html#aec4654cd7817d954ee9497bfebb816fc" title=": Use the consumable" alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,21,96,21,96,15,130,15"/>
+</map>

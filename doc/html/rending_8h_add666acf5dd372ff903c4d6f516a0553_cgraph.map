@@ -1,0 +1,9 @@
+<map id="rending" name="rending">
+<area shape="rect" id="Node000001" title="make the rendering of the game" alt="" coords="5,31,76,56"/>
+<area shape="rect" id="Node000002" href="$inventaire__affiche_8c.html#a65dc163b9b89d4400ea356d7c3ff1bcd" title=" " alt="" coords="124,31,249,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,41,110,41,110,46,76,46"/>
+<area shape="rect" id="Node000003" href="$inventaire__affiche_8c.html#a19dd1e41eeb1fab5f854d0728572b126" title=" " alt="" coords="307,5,411,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="249,31,293,25,294,30,250,37"/>
+<area shape="rect" id="Node000004" href="$inventaire__affiche_8c.html#af2a84ab4ccf9addf8e530dab9b203b09" title=" " alt="" coords="297,55,420,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="250,49,284,54,284,60,249,55"/>
+</map>

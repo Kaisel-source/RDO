@@ -1,0 +1,5 @@
+<map id="suiv_current" name="suiv_current">
+<area shape="rect" id="Node000001" title="Change the current item to the next one." alt="" coords="5,5,108,31"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#a5a8c61ddf5962e94e0f8f3fedfb75ebb" title="Return if the list is empty." alt="" coords="156,5,289,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,15,142,15,142,21,108,21"/>
+</map>

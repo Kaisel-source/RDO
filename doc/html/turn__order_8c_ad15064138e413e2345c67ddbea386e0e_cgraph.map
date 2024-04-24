@@ -1,0 +1,5 @@
+<map id="turn_order" name="turn_order">
+<area shape="rect" id="Node000001" title="trie les position dans l orde decroissant les entite en fonction de leur stat initiative dans un tabl..." alt="" coords="5,5,95,31"/>
+<area shape="rect" id="Node000002" href="$turn__order_8c.html#af998d4d3669901b6d922498841baab5e" title="Fonction pour initialiser le turn order." alt="" coords="143,5,260,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,15,129,15,129,21,95,21"/>
+</map>

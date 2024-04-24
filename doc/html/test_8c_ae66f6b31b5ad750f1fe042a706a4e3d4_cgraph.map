@@ -1,0 +1,79 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,421,60,446"/>
+<area shape="rect" id="Node000002" href="$quest_8c.html#a551448f751112406bba472fd8b59b27f" title="Accept the quest." alt="" coords="113,238,221,263"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="39,419,67,371,106,313,141,272,145,275,110,316,71,374,43,422"/>
+<area shape="rect" id="Node000010" href="$main__chara_8c.html#aa883d31118f435c2a7360b6d0f017314" title="Check the item and return if it&#39;s in the inventory." alt="" coords="816,118,919,143"/>
+<area shape="poly" id="edge39_Node000001_Node000010" title=" " alt="" coords="34,420,62,325,88,257,123,185,167,116,193,85,221,58,252,35,286,18,323,7,362,3,562,3,603,6,644,14,722,42,789,76,839,108,836,112,786,81,720,47,643,19,602,11,562,8,362,8,324,12,288,23,255,40,225,62,197,89,171,120,128,188,93,259,67,326,39,421"/>
+<area shape="rect" id="Node000016" href="$main__chara_8c.html#aa6b643dd20c70a9fde8e556cfdb26dcd" title="Add the item in the inventory." alt="" coords="668,270,755,295"/>
+<area shape="poly" id="edge45_Node000001_Node000016" title=" " alt="" coords="41,418,67,386,86,370,107,356,153,340,215,326,368,304,527,290,654,282,655,288,528,295,369,309,216,331,154,345,109,361,89,374,71,390,45,422"/>
+<area shape="rect" id="Node000023" href="$main__chara_8c.html#aa6a59e928f0f5c43e53e56b9cdb9490e" title="Unnallocate the memory of the personnage and destroy it." alt="" coords="109,371,224,397"/>
+<area shape="poly" id="edge34_Node000001_Node000023" title=" " alt="" coords="60,421,117,399,119,404,62,426"/>
+<area shape="rect" id="Node000026" href="$quest_8c.html#ac91a468ee78eb5cfa569ebfa221deb4b" title="Destroy the quest." alt="" coords="109,421,224,446"/>
+<area shape="poly" id="edge37_Node000001_Node000026" title=" " alt="" coords="61,431,95,431,95,436,61,436"/>
+<area shape="rect" id="Node000027" href="$eqpmt_8c.html#a9c1b05588cd623444a91a6a2730455d3" title=": Create an item and convert it to an inventory item" alt="" coords="108,470,225,495"/>
+<area shape="poly" id="edge38_Node000001_Node000027" title=" " alt="" coords="62,441,119,463,117,468,60,446"/>
+<area shape="rect" id="Node000028" href="$main__chara_8c.html#a16efa00a5569f7fa91e5b26f2d382dcd" title="Initialisation of the personnage and attribution of the stat." alt="" coords="123,519,210,545"/>
+<area shape="poly" id="edge40_Node000001_Node000028" title=" " alt="" coords="46,444,73,474,110,505,120,511,117,515,106,509,70,478,42,448"/>
+<area shape="rect" id="Node000031" href="$quest_8c.html#aca1a9390eb5b59705c452e470f036958" title="Create the quest." alt="" coords="113,569,220,594"/>
+<area shape="poly" id="edge43_Node000001_Node000031" title=" " alt="" coords="41,445,66,497,85,527,110,554,117,560,114,564,106,558,81,531,61,500,36,447"/>
+<area shape="rect" id="Node000032" href="$ressource_8c.html#ab8b82c4d291f9b52458df7194f0cf3c2" title="Create a ressource object an convert it to an inventory item." alt="" coords="115,618,218,643"/>
+<area shape="poly" id="edge44_Node000001_Node000032" title=" " alt="" coords="39,445,46,477,59,520,80,565,110,605,114,608,110,612,106,608,75,568,54,521,40,478,33,447"/>
+<area shape="rect" id="Node000003" href="$quest_8c.html#aa447097ef350f68a7b824cddfa4e7c1c" title="Update the status of the quest." alt="" coords="285,175,442,201"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="206,235,309,202,310,207,208,241"/>
+<area shape="rect" id="Node000004" href="$common_8c.html#a811a3ecfff1d3eea11bd30c5277f592e" title="Add N item in the inventory." alt="" coords="530,219,591,245"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="422,198,517,220,516,225,420,203"/>
+<area shape="poly" id="edge28_Node000003_Node000010" title=" " alt="" coords="374,173,424,124,460,98,500,79,544,68,589,64,635,65,680,70,761,89,825,110,823,115,760,94,679,75,635,70,590,69,545,73,502,84,463,103,427,128,377,177"/>
+<area shape="poly" id="edge33_Node000003_Node000016" title=" " alt="" coords="386,199,438,227,502,253,581,270,654,278,654,283,580,276,501,259,435,232,384,203"/>
+<area shape="rect" id="Node000021" href="$quest_8c.html#afebee79a2448ce66112b27694e20ac22" title="Manage the quest of the personnage." alt="" coords="501,94,620,119"/>
+<area shape="poly" id="edge29_Node000003_Node000021" title=" " alt="" coords="394,173,515,122,517,127,396,178"/>
+<area shape="rect" id="Node000022" href="$common_8c.html#afccfb25c880a44de78803ef360b9234c" title="Remove N item in the inventory." alt="" coords="668,118,755,143"/>
+<area shape="poly" id="edge30_Node000003_Node000022" title=" " alt="" coords="441,173,654,137,655,143,442,178"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="535,221,530,211,533,201,543,195,561,193,581,196,590,205,586,209,579,201,561,198,545,200,537,205,535,210,540,218"/>
+<area shape="rect" id="Node000005" href="$inventory_8c.html#abb4ecd6d95d93fe9292d92896f29a3a1" title="Check the inventory of the player and remove the item if the quantity is 0 or less." alt="" coords="803,219,932,245"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="592,229,789,229,789,235,592,235"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="591,220,814,145,816,150,593,225"/>
+<area shape="poly" id="edge16_Node000004_Node000016" title=" " alt="" coords="592,240,661,263,659,268,591,245"/>
+<area shape="rect" id="Node000006" href="$inventory_8c.html#ac43a734716872a807a4ed581c2532891" title="Remove the current item from the list." alt="" coords="999,169,1094,194"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="913,217,987,195,988,200,914,222"/>
+<area shape="rect" id="Node000007" href="$inventory_8c.html#ac3b0d5fd0ae562eb5c50ac9774cf697a" title="Change the current item to the next one." alt="" coords="995,218,1098,243"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="932,229,981,228,981,234,932,234"/>
+<area shape="rect" id="Node000009" href="$inventory_8c.html#a2498dca06a08fb9700ad423dea90d553" title="Calculate the total weight of the inventory." alt="" coords="997,267,1096,293"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="916,242,986,261,985,266,915,247"/>
+<area shape="rect" id="Node000008" href="$inventory_8c.html#a5a8c61ddf5962e94e0f8f3fedfb75ebb" title="Return if the list is empty." alt="" coords="1328,343,1461,369"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="1086,241,1281,309,1349,336,1347,341,1279,315,1085,246"/>
+<area shape="rect" id="Node000011" href="$common_8c.html#ae2948304480ff848fce503c7d899eb7e" title="Display the item by calling the display function associated with the type of the item." alt="" coords="980,118,1113,143"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="919,128,966,128,966,133,919,133"/>
+<area shape="rect" id="Node000012" href="$consommable_8c.html#a40b77a145341d751b6c51b5e72f7de5a" title=": Display the consumable" alt="" coords="1163,167,1278,193"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="1093,141,1163,161,1161,166,1091,146"/>
+<area shape="rect" id="Node000013" href="$eqpmt_8c.html#a2f8186589142bc19876e33367e98b84f" title="display the item information in the console" alt="" coords="1161,69,1280,94"/>
+<area shape="poly" id="edge13_Node000011_Node000013" title=" " alt="" coords="1091,115,1161,95,1163,100,1093,121"/>
+<area shape="rect" id="Node000015" href="$ressource_8c.html#acb23bbc29c39fb64001cab917dc4fe17" title="display the ressource information in the console" alt="" coords="1169,118,1272,143"/>
+<area shape="poly" id="edge15_Node000011_Node000015" title=" " alt="" coords="1114,128,1156,128,1156,133,1114,133"/>
+<area shape="rect" id="Node000014" href="$eqpmt_8c.html#a3998fdaa3013497c94cf8e376395297e" title=": Give the string corresponding to the type of equipement for the enum &quot;eqpmt_type&quot;" alt="" coords="1341,69,1449,94"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="1280,79,1327,79,1327,84,1280,84"/>
+<area shape="poly" id="edge27_Node000016_Node000010" title=" " alt="" coords="717,269,750,218,773,188,801,161,820,148,823,152,804,165,777,191,754,221,722,271"/>
+<area shape="poly" id="edge26_Node000016_Node000011" title=" " alt="" coords="723,268,756,236,801,204,842,185,885,168,967,144,969,149,887,173,844,189,804,209,760,240,727,271"/>
+<area shape="rect" id="Node000017" href="$inventory_8c.html#abd5657db0707b5e2236c52c16494cf95" title="Add an item to the list." alt="" coords="844,318,891,343"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="754,293,831,317,830,322,753,298"/>
+<area shape="poly" id="edge24_Node000017_Node000008" title=" " alt="" coords="891,329,1314,350,1314,355,891,334"/>
+<area shape="poly" id="edge25_Node000017_Node000009" title=" " alt="" coords="890,322,987,294,989,299,891,327"/>
+<area shape="rect" id="Node000018" href="$inventory_8c.html#ab9c89fb4928f8a928cc973d051127a09" title="Add an item at the beginning of the list." alt="" coords="1181,469,1260,494"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="881,342,922,384,950,408,981,427,1029,447,1078,460,1168,475,1167,480,1077,466,1027,452,979,432,947,412,918,388,877,345"/>
+<area shape="rect" id="Node000019" href="$inventory_8c.html#ac2596bbadd943b226f4d037f310babca" title="Add an item at the end of the list." alt="" coords="1008,393,1085,418"/>
+<area shape="poly" id="edge20_Node000017_Node000019" title=" " alt="" coords="892,338,1004,385,1002,390,890,342"/>
+<area shape="poly" id="edge19_Node000018_Node000008" title=" " alt="" coords="1255,466,1279,454,1329,415,1370,377,1373,381,1333,419,1281,458,1257,471"/>
+<area shape="poly" id="edge22_Node000019_Node000008" title=" " alt="" coords="1085,397,1314,365,1314,370,1086,403"/>
+<area shape="poly" id="edge21_Node000019_Node000018" title=" " alt="" coords="1077,416,1162,454,1178,461,1176,466,1160,458,1075,421"/>
+<area shape="rect" id="Node000020" href="$inventory_8c.html#a972ecd7a00d59131be36e0fa8d462f42" title="Find the queue item in the list." alt="" coords="1174,419,1267,445"/>
+<area shape="poly" id="edge23_Node000019_Node000020" title=" " alt="" coords="1086,409,1161,420,1160,425,1085,414"/>
+<area shape="poly" id="edge31_Node000022_Node000005" title=" " alt="" coords="734,141,837,210,834,214,731,146"/>
+<area shape="poly" id="edge32_Node000022_Node000010" title=" " alt="" coords="755,128,802,128,802,133,755,133"/>
+<area shape="rect" id="Node000024" href="$inventory_8c.html#a21e0bceb25a59344637da3da54ea2310" title="Destroy the stockage and unallocate the memory." alt="" coords="295,421,431,446"/>
+<area shape="poly" id="edge35_Node000023_Node000024" title=" " alt="" coords="219,394,300,415,298,420,217,399"/>
+<area shape="rect" id="Node000025" href="$main__chara_8c.html#a15fc760e1602be9dc62357d89443d70c" title=" " alt="" coords="273,371,453,397"/>
+<area shape="poly" id="edge36_Node000023_Node000025" title=" " alt="" coords="224,381,259,381,259,387,224,387"/>
+<area shape="rect" id="Node000029" href="$inventory_8c.html#aebb4faae11ae75ef525cebae47a9dc0a" title="Create a inventory object." alt="" coords="297,545,429,570"/>
+<area shape="poly" id="edge41_Node000028_Node000029" title=" " alt="" coords="210,535,284,544,283,550,210,540"/>
+<area shape="rect" id="Node000030" href="$main__chara_8c.html#a061ad6e7b98ce4cfec54eb9a850d9f09" title="Initialisation of the personnage for the render." alt="" coords="276,495,451,521"/>
+<area shape="poly" id="edge42_Node000028_Node000030" title=" " alt="" coords="210,524,262,518,263,523,210,529"/>
+</map>

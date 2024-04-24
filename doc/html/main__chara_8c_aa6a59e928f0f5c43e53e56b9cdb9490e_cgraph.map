@@ -1,0 +1,7 @@
+<map id="destroy_perso" name="destroy_perso">
+<area shape="rect" id="Node000001" title="Unnallocate the memory of the personnage and destroy it." alt="" coords="5,31,120,56"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#a21e0bceb25a59344637da3da54ea2310" title="Destroy the stockage and unallocate the memory." alt="" coords="190,5,326,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,33,176,26,177,31,121,39"/>
+<area shape="rect" id="Node000003" href="$main__chara_8c.html#a15fc760e1602be9dc62357d89443d70c" title=" " alt="" coords="168,55,348,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="121,48,155,52,154,57,120,53"/>
+</map>

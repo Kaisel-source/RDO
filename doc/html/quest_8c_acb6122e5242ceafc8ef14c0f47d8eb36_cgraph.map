@@ -1,0 +1,5 @@
+<map id="quest_list_destructor" name="quest_list_destructor">
+<area shape="rect" id="Node000001" title="Destroy the list of the quest." alt="" coords="5,5,164,31"/>
+<area shape="rect" id="Node000002" href="$quest_8c.html#ac91a468ee78eb5cfa569ebfa221deb4b" title="Destroy the quest." alt="" coords="212,5,327,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,15,198,15,198,21,164,21"/>
+</map>

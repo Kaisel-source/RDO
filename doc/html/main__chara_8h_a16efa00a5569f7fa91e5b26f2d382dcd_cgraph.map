@@ -1,0 +1,7 @@
+<map id="init_perso" name="init_perso">
+<area shape="rect" id="Node000001" title="Initialisation of the personnage and attribution of the stat." alt="" coords="5,31,92,56"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#aebb4faae11ae75ef525cebae47a9dc0a" title="Create a inventory object." alt="" coords="161,5,293,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,35,147,27,148,32,93,40"/>
+<area shape="rect" id="Node000003" href="$main__chara_8c.html#a061ad6e7b98ce4cfec54eb9a850d9f09" title="Initialisation of the personnage for the render." alt="" coords="140,55,315,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="93,46,127,51,126,56,92,52"/>
+</map>

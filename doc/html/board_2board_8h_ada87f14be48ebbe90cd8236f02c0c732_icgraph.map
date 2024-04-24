@@ -1,0 +1,11 @@
+<map id="export_board" name="export_board">
+<area shape="rect" id="Node000001" title=": Export a board to a file" alt="" coords="315,56,423,81"/>
+<area shape="rect" id="Node000002" href="$game_8c.html#afff6ea414c2eecc8b509181e02e84047" title="Destroy the game." alt="" coords="108,5,267,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="309,55,233,33,234,28,310,50"/>
+<area shape="rect" id="Node000003" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,56,60,81"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="301,71,60,71,60,66,301,66"/>
+<area shape="rect" id="Node000004" href="$mouvement_8c.html#a676a4edcc97a7052e62201f936dcd715" title="Interaction of the personnage." alt="" coords="151,107,223,132"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="310,88,224,112,223,107,309,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="135,38,61,62,60,57,134,33"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="137,106,59,80,61,75,139,101"/>
+</map>

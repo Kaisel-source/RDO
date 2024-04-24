@@ -1,0 +1,24 @@
+<map id="/info/etu/l2info/s203585/RDO/include/common" name="/info/etu/l2info/s203585/RDO/include/common">
+<area shape="rect" id="node1" href="dir_03210a3fd00468e055c740ed4bcd3959.html" title="character" alt="" coords="27,125,109,151"/>
+<area shape="rect" id="node2" href="dir_44405442ea8f58dbe5a050fc4d64ab70.html" title="item&#45;inventory" alt="" coords="134,125,253,151"/>
+<area shape="rect" id="node3" href="dir_5105aae70a31fc99d3ddfd4e44a57927.html" title="combat" alt="" coords="277,125,347,151"/>
+<area shape="rect" id="node4" href="dir_6df5e9f2aca48163d471d34ecb855ce6.html" title="build" alt="" coords="371,125,426,151"/>
+<area shape="rect" id="node5" href="dir_904d760e9ed1c7161a0da85d5b6cb77a.html" title="menu" alt="" coords="451,125,509,151"/>
+<area shape="rect" id="node6" href="dir_9666292676a2e63b4a132d1ad19e6e42.html" title="mouvement" alt="" coords="533,125,635,151"/>
+<area shape="rect" id="node7" href="dir_a357080d227c8a836b4697e2d5fdd1cd.html" title="quest" alt="" coords="659,125,717,151"/>
+<area shape="rect" id="node8" href="dir_dad1341139691234650b14e462782774.html" title="board" alt="" coords="741,125,800,151"/>
+<area shape="rect" id="node9" href="dir_dd658477c26a175edc03e146c86fca58.html" title="rending" alt="" coords="825,125,895,151"/>
+<area shape="rect" id="node10" href="dir_e41177460f193d7e165ca53dca752835.html" title="freeing" alt="" coords="919,125,987,151"/>
+<area shape="rect" id="node11" href="dir_0966d06610f72609fd9aa4979c2b5a92.html" title="common" alt="" coords="493,52,571,77"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000007_000003.html" title="2" alt="" coords="124,126,134,140"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000007_000012.html" title="4" alt="" coords="262,123,272,137"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000007_000005.html" title="8" alt="" coords="363,120,372,135"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000007_000002.html" title="1" alt="" coords="436,117,445,131"/>
+<area shape="rect" id="edge5-headlabel" href="dir_000007_000015.html" title="3" alt="" coords="501,108,511,123"/>
+<area shape="rect" id="edge6-headlabel" href="dir_000007_000017.html" title="1" alt="" coords="567,98,576,113"/>
+<area shape="rect" id="edge7-headlabel" href="dir_000007_000019.html" title="1" alt="" coords="645,103,654,117"/>
+<area shape="rect" id="edge8-headlabel" href="dir_000007_000000.html" title="1" alt="" coords="721,107,731,122"/>
+<area shape="rect" id="edge9-headlabel" href="dir_000007_000021.html" title="1" alt="" coords="804,109,813,123"/>
+<area shape="rect" id="edge10-headlabel" href="dir_000007_000009.html" title="1" alt="" coords="898,109,908,123"/>
+<area shape="rect" id="clust1" href="dir_d44c64559bbebec7f509842c48db8b23.html" title="include" alt="" coords="16,16,999,161"/>
+</map>

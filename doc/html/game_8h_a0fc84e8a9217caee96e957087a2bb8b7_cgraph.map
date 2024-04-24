@@ -1,0 +1,14 @@
+<map id="game_item" name="game_item">
+<area shape="rect" id="Node000001" title="Add an item to the game structure game." alt="" coords="5,74,101,99"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#ab9c89fb4928f8a928cc973d051127a09" title="Add an item at the beginning of the list." alt="" coords="282,74,361,99"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,84,268,84,268,89,101,89"/>
+<area shape="rect" id="Node000003" href="$inventory_8c.html#a5a8c61ddf5962e94e0f8f3fedfb75ebb" title="Return if the list is empty." alt="" coords="416,74,549,99"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="102,93,223,109,295,113,368,109,422,100,422,105,368,115,295,118,222,115,101,99"/>
+<area shape="rect" id="Node000004" href="$inventory_8c.html#ac2596bbadd943b226f4d037f310babca" title="Add an item at the end of the list." alt="" coords="149,23,227,49"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="87,71,140,51,142,56,89,76"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="361,84,402,84,402,89,361,89"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="223,46,275,67,273,72,221,51"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="222,21,253,12,290,5,330,3,369,9,395,20,419,33,459,63,456,67,416,38,392,25,367,15,330,9,291,10,255,17,224,26"/>
+<area shape="rect" id="Node000005" href="$inventory_8c.html#a972ecd7a00d59131be36e0fa8d462f42" title="Find the queue item in the list." alt="" coords="275,25,368,50"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="227,34,261,34,261,39,227,39"/>
+</map>

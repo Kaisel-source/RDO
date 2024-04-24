@@ -1,0 +1,5 @@
+<map id="game_init_game" name="game_init_game">
+<area shape="rect" id="Node000001" title="Create a game object." alt="" coords="5,5,136,31"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#aebb4faae11ae75ef525cebae47a9dc0a" title="Create a inventory object." alt="" coords="184,5,316,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,15,170,15,170,21,136,21"/>
+</map>

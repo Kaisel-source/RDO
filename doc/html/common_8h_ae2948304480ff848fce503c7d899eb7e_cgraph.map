@@ -1,0 +1,11 @@
+<map id="display_common" name="display_common">
+<area shape="rect" id="Node000001" title="Display the item by calling the display function associated with the type of the item." alt="" coords="5,55,139,80"/>
+<area shape="rect" id="Node000002" href="$consommable_8c.html#a40b77a145341d751b6c51b5e72f7de5a" title=": Display the consumable" alt="" coords="189,5,303,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,52,186,32,188,37,118,57"/>
+<area shape="rect" id="Node000003" href="$eqpmt_8c.html#a2f8186589142bc19876e33367e98b84f" title="display the item information in the console" alt="" coords="187,55,305,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,65,173,65,173,70,139,70"/>
+<area shape="rect" id="Node000005" href="$ressource_8c.html#acb23bbc29c39fb64001cab917dc4fe17" title="display the ressource information in the console" alt="" coords="195,104,297,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="118,77,188,98,186,103,117,83"/>
+<area shape="rect" id="Node000004" href="$eqpmt_8c.html#a3998fdaa3013497c94cf8e376395297e" title=": Give the string corresponding to the type of equipement for the enum &quot;eqpmt_type&quot;" alt="" coords="353,55,461,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="306,65,340,65,340,70,306,70"/>
+</map>

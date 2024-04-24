@@ -1,0 +1,16 @@
+<map id="add" name="add">
+<area shape="rect" id="Node000001" title="Add an item to the list." alt="" coords="5,132,52,157"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#ab9c89fb4928f8a928cc973d051127a09" title="Add an item at the beginning of the list." alt="" coords="254,5,333,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="39,130,65,105,99,80,171,47,239,27,241,32,173,52,101,84,68,109,43,134"/>
+<area shape="rect" id="Node000003" href="$inventory_8c.html#a5a8c61ddf5962e94e0f8f3fedfb75ebb" title="Return if the list is empty." alt="" coords="388,56,521,81"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="52,146,105,154,177,159,258,157,299,152,339,142,365,132,389,118,428,88,432,93,391,123,367,137,341,147,300,157,259,163,176,165,104,159,52,152"/>
+<area shape="rect" id="Node000004" href="$inventory_8c.html#ac2596bbadd943b226f4d037f310babca" title="Add an item at the end of the list." alt="" coords="111,95,188,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="51,135,97,121,98,126,53,140"/>
+<area shape="rect" id="Node000006" href="$inventory_8c.html#a2498dca06a08fb9700ad423dea90d553" title="Calculate the total weight of the inventory." alt="" coords="100,208,199,233"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="51,155,118,198,115,203,49,160"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="333,28,401,49,399,54,332,33"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="169,92,259,36,262,40,172,97"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="188,99,246,91,374,75,375,81,247,97,188,105"/>
+<area shape="rect" id="Node000005" href="$inventory_8c.html#a972ecd7a00d59131be36e0fa8d462f42" title="Find the queue item in the list." alt="" coords="247,107,340,132"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="188,108,233,112,232,117,188,113"/>
+</map>

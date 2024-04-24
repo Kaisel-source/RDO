@@ -1,0 +1,22 @@
+<map id="name_eqpmt" name="name_eqpmt">
+<area shape="rect" id="node1" title=": Give the string corresponding to the type of equipement for the enum &quot;eqpmt_type&quot;" alt="" coords="1683,77,1780,104"/>
+<area shape="rect" id="node2" href="$eqpmt_8c.html#a2f8186589142bc19876e33367e98b84f" title="display the item information in the console" alt="" coords="1528,77,1635,104"/>
+<area shape="rect" id="node3" href="$common_8c.html#ae2948304480ff848fce503c7d899eb7e" title="Display the item by calling the display function associated with the type of the item." alt="" coords="1351,128,1471,155"/>
+<area shape="rect" id="node20" href="$main__chara_8c.html#aab3c063ec26a9a14c043e7c66ee89a18" title="Display the equipment of the personnage." alt="" coords="1343,27,1480,53"/>
+<area shape="rect" id="node4" href="$inventory_8c.html#a22ba604e63c86cfd91937fedb7421a3d" title="Display the current item in the console." alt="" coords="1178,27,1289,53"/>
+<area shape="rect" id="node5" href="$inventory_8c.html#a615fcd50ea87935bb55049c3aa931bf6" title="Display the head item in the console." alt="" coords="1184,77,1283,104"/>
+<area shape="rect" id="node6" href="$inventory_8c.html#ae3e140a527fdc262451ffc9b99494d91" title="Display the list of items in the console." alt="" coords="1172,128,1295,155"/>
+<area shape="rect" id="node9" href="$inventory_8c.html#af6f3f8103e782933f4c4c81e3336216c" title="Display the queue item in the console." alt="" coords="1181,179,1286,205"/>
+<area shape="rect" id="node10" href="$main__chara_8c.html#aa883d31118f435c2a7360b6d0f017314" title="Check the item and return if it&#39;s in the inventory." alt="" coords="1187,292,1279,319"/>
+<area shape="rect" id="node19" href="$main__chara_8c.html#aa6b643dd20c70a9fde8e556cfdb26dcd" title="Add the item in the inventory." alt="" coords="1033,216,1112,243"/>
+<area shape="rect" id="node7" href="$main__chara_8c.html#ac4b7d9249a79cf92448c1084a09e30e3" title="Display the personnage information in the console." alt="" coords="1021,64,1124,91"/>
+<area shape="rect" id="node8" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,115,56,141"/>
+<area shape="rect" id="node11" href="$common_8c.html#a811a3ecfff1d3eea11bd30c5277f592e" title="Add N item in the inventory." alt="" coords="905,267,963,293"/>
+<area shape="rect" id="node12" href="$quest_8c.html#aa447097ef350f68a7b824cddfa4e7c1c" title="Update the status of the quest." alt="" coords="704,267,847,293"/>
+<area shape="rect" id="node15" href="$test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="408,368,459,395"/>
+<area shape="rect" id="node18" href="$common_8c.html#afccfb25c880a44de78803ef360b9234c" title="Remove N item in the inventory." alt="" coords="895,368,973,395"/>
+<area shape="rect" id="node13" href="$quest_8c.html#a551448f751112406bba472fd8b59b27f" title="Accept the quest." alt="" coords="556,267,656,293"/>
+<area shape="rect" id="node14" href="$mouvement_8c.html#a676a4edcc97a7052e62201f936dcd715" title="Interaction of the personnage." alt="" coords="104,191,169,217"/>
+<area shape="rect" id="node16" href="$npc_8c.html#ae96235535ebaed66e74ea1bb9166e116" title="Interaction of the NPC about the quest." alt="" coords="359,267,508,293"/>
+<area shape="rect" id="node17" href="$npc_8c.html#a568277cf9f3b856b2b1844fd53bd9540" title="Interaction of the NPC." alt="" coords="217,267,311,293"/>
+</map>

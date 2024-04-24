@@ -1,0 +1,9 @@
+<map id="destroy_perso" name="destroy_perso">
+<area shape="rect" id="Node000001" title="Unnallocate the memory of the personnage and destroy it." alt="" coords="315,31,429,56"/>
+<area shape="rect" id="Node000002" href="$game_8c.html#afff6ea414c2eecc8b509181e02e84047" title="Destroy the game." alt="" coords="108,5,267,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="301,36,267,32,267,26,302,31"/>
+<area shape="rect" id="Node000004" href="$test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="160,55,215,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="301,55,215,67,215,61,301,50"/>
+<area shape="rect" id="Node000003" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

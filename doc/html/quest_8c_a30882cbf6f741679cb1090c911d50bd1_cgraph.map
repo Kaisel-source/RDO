@@ -1,0 +1,5 @@
+<map id="quest_list_display" name="quest_list_display">
+<area shape="rect" id="Node000001" title="Display the list of the quest in the console." alt="" coords="5,5,144,31"/>
+<area shape="rect" id="Node000002" href="$quest_8c.html#a533e421d47a3eca3c61cfe8e94c95520" title="Display the quest in the console." alt="" coords="192,5,304,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,15,178,15,178,21,144,21"/>
+</map>

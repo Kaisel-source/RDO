@@ -1,0 +1,9 @@
+<map id="destroy_common_item_stock" name="destroy_common_item_stock">
+<area shape="rect" id="Node000001" title="Destroy the item by calling the destructor associated with the type of the item." alt="" coords="5,47,177,87"/>
+<area shape="rect" id="Node000002" href="$consommable_8c.html#a6530118b51d552ceae324f87f9237fc4" title=": Free the memory of the consumable" alt="" coords="227,5,361,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,45,227,31,228,37,175,50"/>
+<area shape="rect" id="Node000003" href="$eqpmt_8c.html#a67e1b096854b5bccad99f8cd6ae65591" title="Unallocate the memory of the equipement and destroy it." alt="" coords="225,55,363,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,65,212,65,212,70,177,70"/>
+<area shape="rect" id="Node000004" href="$ressource_8c.html#a1337cb964d6aa001adc0ff979cfbc7e4" title="Unnallocate the memory of the ressource and destroy it." alt="" coords="233,104,355,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,85,228,98,227,103,173,90"/>
+</map>

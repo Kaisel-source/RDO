@@ -1,0 +1,10 @@
+<map id="add_last" name="add_last">
+<area shape="rect" id="Node000001" title="Add an item at the end of the list." alt="" coords="5,56,83,81"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#ab9c89fb4928f8a928cc973d051127a09" title="Add an item at the beginning of the list." alt="" coords="138,5,217,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,53,129,33,131,38,79,58"/>
+<area shape="rect" id="Node000003" href="$inventory_8c.html#a5a8c61ddf5962e94e0f8f3fedfb75ebb" title="Return if the list is empty." alt="" coords="272,31,405,56"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="83,63,258,48,258,53,83,68"/>
+<area shape="rect" id="Node000004" href="$inventory_8c.html#a972ecd7a00d59131be36e0fa8d462f42" title="Find the queue item in the list." alt="" coords="131,107,224,132"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="79,79,131,99,129,104,77,84"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="217,21,259,28,258,33,216,27"/>
+</map>

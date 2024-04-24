@@ -1,0 +1,5 @@
+<map id="deplace_Plus_Proche" name="deplace_Plus_Proche">
+<area shape="rect" id="Node000001" title="deplace une entite en fonction de entite.mouv" alt="" coords="5,5,164,31"/>
+<area shape="rect" id="Node000002" href="$enemie_8c.html#ab493ebfab8d20d91173013aa38a0e2a6" title="retourne la position la plus proche en fonction de se nombre de point de mouvement vers l enemie le p..." alt="" coords="212,5,327,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,15,198,15,198,21,164,21"/>
+</map>

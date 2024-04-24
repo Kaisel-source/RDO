@@ -1,0 +1,5 @@
+<map id="import" name="import">
+<area shape="rect" id="Node000001" title="Import the personnage from a file." alt="" coords="5,5,71,31"/>
+<area shape="rect" id="Node000002" href="$inventory_8c.html#a2498dca06a08fb9700ad423dea90d553" title="Calculate the total weight of the inventory." alt="" coords="119,5,217,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,15,105,15,105,21,71,21"/>
+</map>
