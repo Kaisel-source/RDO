@@ -4,7 +4,7 @@ void draw_Inventory(SDL_Renderer *renderer, TTF_Font *font, char *name, char *de
     char statsText[100]; // Pour stocker le texte des statistiques
 
     // Création du texte des statistiques
-    snprintf(statsText, sizeof(statsText), "Nom : %s \n | Description : %s", name, description);
+    snprintf(statsText, sizeof(statsText), "\n    Nom :%s\n    Description : %s", name, description);
 
     // Création de la surface de texte à partir du texte des statistiques
     SDL_Surface *textSurface = TTF_RenderText_Blended_Wrapped(font, statsText, textColor, maxWidth);
@@ -27,9 +27,19 @@ void draw_Inventory(SDL_Renderer *renderer, TTF_Font *font, char *name, char *de
     boundingRect->w = maxWidth;
     boundingRect->h = maxHeight;
 
+    
     // Dessin du rectangle de fond
     SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
     SDL_RenderFillRect(renderer, boundingRect);
+
+    // Dessin de l'image de fond
+    SDL_Surface *backgroundSurface = IMG_Load("img/bouton_vide2.png");
+    if (backgroundSurface == NULL) {
+        printf("Erreur lors du chargement de l'image de fond : %s\n", IMG_GetError());
+        return;
+    }
+    SDL_Texture *backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
+    SDL_RenderCopy(renderer, backgroundTexture, NULL, boundingRect);
 
     // Dessin du texte
     SDL_Rect renderRect = { x, y, 0, 0 };
@@ -39,17 +49,33 @@ void draw_Inventory(SDL_Renderer *renderer, TTF_Font *font, char *name, char *de
     // Libération de la surface et de la texture
     SDL_FreeSurface(textSurface);
     SDL_DestroyTexture(textTexture);
-
-    
 }
 
 void draw_Button(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y, int width, int height, SDL_Color bgColor, SDL_Color textColor) {
-    // Dessiner le rectangle du bouton
-    SDL_Rect buttonRect = { x, y, width, height };
-    SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
-    SDL_RenderFillRect(renderer, &buttonRect);
+    // Charger l'image de fond du bouton
+    SDL_Surface *backgroundSurface = IMG_Load("img/bouton_vide2.png");
+    if (backgroundSurface == NULL) {
+        printf("Erreur lors du chargement de l'image de fond : %s\n", IMG_GetError());
+        return;
+    }
 
-    // Afficher le texte du bouton
+    // Créer la texture de l'image de fond
+    SDL_Texture *backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
+    if (backgroundTexture == NULL) {
+        printf("Erreur lors de la création de la texture de l'image de fond : %s\n", SDL_GetError());
+        SDL_FreeSurface(backgroundSurface);
+        return;
+    }
+
+    // Dessiner l'image de fond du bouton
+    SDL_Rect backgroundRect = { x, y, width, height };
+    SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
+
+    // Libérer la surface de l'image de fond, la texture de l'image de fond
+    SDL_FreeSurface(backgroundSurface);
+    SDL_DestroyTexture(backgroundTexture);
+
+    // Dessiner le texte du bouton
     SDL_Surface *textSurface = TTF_RenderText_Solid(font, text, textColor);
     SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
     int textWidth, textHeight;
@@ -57,7 +83,7 @@ void draw_Button(SDL_Renderer *renderer, TTF_Font *font, const char *text, int x
     SDL_Rect textRect = { x + (width - textWidth) / 2, y + (height - textHeight) / 2, textWidth, textHeight };
     SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
 
-    // Libérer les ressources
+    // Libérer la surface du texte, la texture du texte
     SDL_FreeSurface(textSurface);
     SDL_DestroyTexture(textTexture);
 }
@@ -77,7 +103,7 @@ void show_Inventory(item_list *inventory, TTF_Font *font, SDL_Renderer *renderer
             draw_Inventory(renderer, font, inventory->current->item_inv->item_u->conso->name, inventory->current->item_inv->item_u->conso->desc, 100, 100 + i * 100, 300, 100, textColor, bgColor, boundingRect);
         }
         
-        draw_Button(renderer,font,"miam",100+300, 100 + i * 100, 300, 100,bgColor,textColor);
+        draw_Button(renderer,font,"",100+300, 100 + i * 100, 300, 100,bgColor,textColor);
     }
 }
 
