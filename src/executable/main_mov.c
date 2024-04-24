@@ -172,8 +172,8 @@ int main() {
 
 
 
-    SDL_Color textColor = {255, 255, 255, 255};
-    SDL_Color bgColor = {0, 100, 100, 255};
+    SDL_Color textColor = { 176, 91, 78, 255 };
+    SDL_Color bgColor = { 30, 30, 30, 255 };
     int inventoryVisible = 0;
     SDL_Rect boundingRect;
 
