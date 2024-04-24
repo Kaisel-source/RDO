@@ -113,10 +113,10 @@ void add_n(perso *p,item_t it, int nb)
 }
 void remove_n(perso *p,item_t it, int nb)
 {
-    item_t *item = p->inventory->head;
-    if(in_inventory(p, it.item_inv->type, it.item_inv->item_u->eqpmt->id) >= nb)
+    if(in_inventory(p,  it.item_inv->item_u->eqpmt->id,it.item_inv->type) >= nb)
     {
-        item->item_inv->quantity -= nb;
+        
+        p->inventory->current->item_inv->quantity -= nb;
     }
     else
     {

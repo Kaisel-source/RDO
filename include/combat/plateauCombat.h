@@ -56,16 +56,6 @@ void dessin_plateau(entite_t plateau_de_combat[N][N], int gridX, int gridY, SDL_
 int Fin_De_combat(pos_t turn[N*N], int EquipeGagnante, int EquipePerdant, entite_t plateau[N][N]);
 
 
-
-
-/**
- * @brief affiche tout le combat sur le rendue
- * 
- * @param plateau_de_combat plateau de combat 
- * @param window fenetre
- * @param renderer rendue
- * @return int 
- */
 int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* renderer);
 
 #endif /* PLATEAU_COMBAT_H */

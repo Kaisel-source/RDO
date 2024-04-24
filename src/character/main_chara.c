@@ -131,30 +131,32 @@ void take_item(perso *p,item_t *item){
 
 
 int in_inventory(perso *p, int id, type_it type){
-    item_t *tmp = p->inventory->head;
+    p->inventory->current = p->inventory->head;
+    
     printf("Type:%d\n",type);
     for(int i=0;i<p->inventory->nb_item;i++){
-        display_common(*tmp->item_inv);
-        printf("Type:%d\n",tmp->item_inv->type);
-        if(type==RESSOURCE && tmp->item_inv->type==RESSOURCE){
-            printf("%d == %d\n",tmp->item_inv->item_u->ress->id,id);
-            if(tmp->item_inv->item_u->ress->id == id)
-                return tmp->item_inv->quantity;
-            tmp = tmp->suiv;
+        
+        printf("Type:%d\n",p->inventory->current->item_inv->type);
+        if(type==RESSOURCE && p->inventory->current->item_inv->type==RESSOURCE){
+            printf("RESS : %d == %d\n",p->inventory->current->item_inv->item_u->ress->id,id);
+            display_common(*p->inventory->current->item_inv);
+            if(p->inventory->current->item_inv->item_u->ress->id == id)
+                return p->inventory->current->item_inv->quantity;
+            p->inventory->current = p->inventory->current->suiv;
         }
-        else if (type==EQPMT && tmp->item_inv->type==EQPMT) {
-            printf("%d == %d\n",tmp->item_inv->item_u->eqpmt->id,id);
-            if(tmp->item_inv->item_u->eqpmt->id == id)
-                return tmp->item_inv->quantity;
-            tmp = tmp->suiv;
+        else if (type==EQPMT && p->inventory->current->item_inv->type==EQPMT) {
+            printf("EQPMT : %d == %d\n",p->inventory->current->item_inv->item_u->eqpmt->id,id);
+            if(p->inventory->current->item_inv->item_u->eqpmt->id == id)
+                return p->inventory->current->item_inv->quantity;
+            p->inventory->current = p->inventory->current->suiv;
         }
-        else if (type==CONSUM && tmp->item_inv->type==CONSUM){
-            printf("%d == %d\n",tmp->item_inv->item_u->conso->id,id);
-            if(tmp->item_inv->item_u->conso->id == id)
-                return tmp->item_inv->quantity;
-            tmp = tmp->suiv;
+        else if (type==CONSUM && p->inventory->current->item_inv->type==CONSUM){
+            printf("CONSUM : %d == %d\n",p->inventory->current->item_inv->item_u->conso->id,id);
+            if(p->inventory->current->item_inv->item_u->conso->id == id)
+                return p->inventory->current->item_inv->quantity;
+            p->inventory->current = p->inventory->current->suiv;
         }
-        else tmp = tmp->suiv;
+        else p->inventory->current = p->inventory->current->suiv;
     }
     return 0;
 }
@@ -195,14 +197,21 @@ void display_equipement(const perso p){
 
 void destroy_perso(perso **p){
     if(*p!=NULL){
+        printf("1\n");
         free((*p)->name);
+        printf("2\n");
         (*p)->name=NULL;
         free((*p)->stat);
+        printf("3\n");
         (*p)->stat=NULL;
+        printf("4\n");
         destroy_stockage(&(*p)->inventory);
+        printf("5\n");
         //quest_list_destructor(&(*p)->quest);
         free_personnage_render(p);
+        printf("6\n");
         free(*p);
+        printf("7\n");
 
     }
 }

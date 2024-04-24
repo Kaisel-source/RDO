@@ -1,0 +1,19 @@
+<map id="rending" name="rending">
+<area shape="rect" id="Node000001" title="make the rendering of the game" alt="" coords="5,104,76,129"/>
+<area shape="rect" id="Node000002" href="$option_8c.html#a47614a0628164c4d3c070774b435b122" title=" " alt="" coords="155,79,218,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,108,142,96,142,102,77,113"/>
+<area shape="rect" id="Node000007" href="$inventaire__affiche_8c.html#ab9d779f57416955a1a56669523e2c3b3" title=" " alt="" coords="124,128,249,153"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="77,120,111,125,110,131,76,125"/>
+<area shape="rect" id="Node000003" href="$option_8c.html#a765d95d95728afc38c240db338cc9a5e" title=" " alt="" coords="297,29,469,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="218,81,318,55,320,61,219,86"/>
+<area shape="rect" id="Node000006" href="$button_8c.html#afed1d66112b18a4c8b211830ce05b9fb" title=" " alt="" coords="326,79,441,104"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="218,89,312,89,312,94,218,94"/>
+<area shape="rect" id="Node000004" href="$button_8c.html#ae93329518bb14735787cb5a61a80d748" title="Create a Button object." alt="" coords="517,5,631,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="470,28,503,24,504,29,470,34"/>
+<area shape="rect" id="Node000005" href="$saving_8c.html#a40e0e29c651e16e742a75683fc0dff2b" title="Export the personnage in a file." alt="" coords="542,55,606,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="470,51,529,59,528,64,470,56"/>
+<area shape="rect" id="Node000008" href="$inventaire__affiche_8c.html#a19dd1e41eeb1fab5f854d0728572b126" title=" " alt="" coords="331,128,435,153"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="249,138,317,138,317,143,249,143"/>
+<area shape="rect" id="Node000009" href="$inventaire__affiche_8c.html#af2a84ab4ccf9addf8e530dab9b203b09" title=" " alt="" coords="322,177,445,203"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="239,151,320,171,318,177,237,156"/>
+</map>

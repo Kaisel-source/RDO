@@ -55,7 +55,7 @@ SDL_Texture** load_area(SDL_Renderer **render) {
     return area;
 }
 
-int rending(SDL_Renderer **render,game_s *g,TTF_Font *font, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect,int cpt,int suite){
+int rending(SDL_Renderer **render,game_s *g,TTF_Font *font, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect,int cpt,int *settings_enable, Button saveButton, Button loadButton, Button deleteButton, Button quitButton2){
     SDL_RenderClear(*render);  
     // Effacer le rendu précédent
     // Dessiner le plateau
@@ -83,9 +83,13 @@ int rending(SDL_Renderer **render,game_s *g,TTF_Font *font, SDL_Color textColor,
     g->main_perso->position->y = (g->main_perso->y * (WINDOW_HEIGHT / BOARD_SIZE_Y)) % WINDOW_HEIGHT;
     g->main_perso->position->x = (g->main_perso->x * (WINDOW_WIDTH / BOARD_SIZE_X)) % WINDOW_WIDTH;
     if(cpt==1){
-        show_Inventory(g->main_perso->inventory, font, *render, textColor, bgColor, &boundingRect,suite);
+        show_Inventory(g->main_perso->inventory, font, *render, textColor, bgColor, boundingRect);
     }
     SDL_RenderCopy(*render, g->main_perso->Texture, g->main_perso->sprite_move[g->main_perso->direction]->texture[g->main_perso->sprite_move[g->main_perso->direction]->num_ref], g->main_perso->position);
+    if(*settings_enable == 1){
+        option(*render, saveButton, loadButton, deleteButton, quitButton2, settings_enable,g);
+        
+    }
     SDL_RenderPresent(*render);
     return 0;
 }

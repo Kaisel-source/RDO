@@ -1,0 +1,17 @@
+Nom du personnage: tata
+Statistiques: Intel:1, Str:1, Luck:1, Agi:1, End:1
+HP: 10/10, MP: 10/10, XP: 0/100, Level: 1
+Poids maximal supporté: 10, Argent: 100
+Pos x: 16, y: 23
+Map x: 0, y: 0
+Équipements équipés:
+Emplacement 1: ID de l'équipement: -1
+Emplacement 2: ID de l'équipement: -1
+Emplacement 3: ID de l'équipement: -1
+Emplacement 4: ID de l'équipement: -1
+Emplacement 5: ID de l'équipement: -1
+Emplacement 6: ID de l'équipement: 1
+Emplacement 7: ID de l'équipement: -1
+Nombre d'objets dans l'inventaire: 1
+Inventaire:
+Équipement - ID: 1, Nom: Epee, Type: 6, Type de dégâts: 0, Dégâts: 10, Défense: 10, Force: 100, Agilité: 10, Endurance: 10, Chance: 10, Intelligence: 10, Prix: 10, Poids: 10, Description: une epee, Quantité: 1

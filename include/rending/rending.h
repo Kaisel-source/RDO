@@ -31,7 +31,7 @@ SDL_Texture** load_area(SDL_Renderer **render) ;
  * @param i Index of the area
  * 
  */
-int rending(SDL_Renderer **render,game_s *g,TTF_Font *font, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect,int i,int suite);
+int rending(SDL_Renderer **render,game_s *g,TTF_Font *font, SDL_Color textColor, SDL_Color bgColor, SDL_Rect *boundingRect,int cpt,int *settings_enable, Button saveButton, Button loadButton, Button deleteButton, Button quitButton2);
  
 
 #endif

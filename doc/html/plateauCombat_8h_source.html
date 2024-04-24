@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Royaume des Ombres: l&#39;Eveil des ténèbres: /info/etu/l2info/s203585/RDO/include/combat/plateauCombat.h Source File</title>
+<title>RDO: /info/etu/l2info/s2203089/ProjetL2/RDO/RDO/include/combat/plateauCombat.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,9 +22,8 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="Icone.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Royaume des Ombres: l&#39;Eveil des ténèbres<span id="projectnumber">&#160;0.1</span>
+   <div id="projectname">RDO
    </div>
-   <div id="projectbrief">Le projet consiste en un jeu vidéo de rôle (RPG) se déroulant dans un monde médiéval fantastique en open-zones. Les joueurs sont invités à explorer cet univers, accomplir des quêtes pour révéler ses mystères et améliorer leur personnage en gérant ses niveaux et statistiques. Le jeu intègre une dimension tactique avec un système de combat au tour par tour, des avantages élémentaires et une gestion stratégique des équipements. La trame narrative est enrichie par des quêtes captivantes, offrant des récompenses et contribuant à l&#39;exploration approfondie de l&#39;univers.</div>
   </td>
  </tr>
  </tbody>
@@ -99,16 +98,16 @@ $(function() {
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keywordtype">int</span> <a class="code hl_function" href="plateauCombat_8h.html#acb22830489a2a7250a51ea8f06b22cb3">combat</a>(<a class="code hl_struct" href="structentite__t.html">entite_t</a> plateau_de_combat[<a class="code hl_define" href="common_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="code hl_define" href="common_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>],SDL_Window* window,SDL_Renderer* renderer);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">/* PLATEAU_COMBAT_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="acommon_8h_html_a0240ac851181b84ac374872dc5434ee4"><div class="ttname"><a href="common_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a></div><div class="ttdeci">#define N</div><div class="ttdef"><b>Definition</b> common.h:14</div></div>
+<div class="ttc" id="acommon_8h_html_a0240ac851181b84ac374872dc5434ee4"><div class="ttname"><a href="common_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a></div><div class="ttdeci">#define N</div><div class="ttdef"><b>Definition</b> common.h:7</div></div>
 <div class="ttc" id="aplateauCombat_8h_html_a39b73b2de40275f64c54f9913f8ad3d5"><div class="ttname"><a href="plateauCombat_8h.html#a39b73b2de40275f64c54f9913f8ad3d5">Fin_De_combat</a></div><div class="ttdeci">int Fin_De_combat(pos_t turn[N *N], int EquipeGagnante, int EquipePerdant, entite_t plateau[N][N])</div><div class="ttdoc">Fonction pour déterminer si le combat est terminé et qui a gagné</div><div class="ttdef"><b>Definition</b> plateauCombat.c:87</div></div>
 <div class="ttc" id="aplateauCombat_8h_html_a568dc97eb47757aa9af91c7263b26ce7"><div class="ttname"><a href="plateauCombat_8h.html#a568dc97eb47757aa9af91c7263b26ce7">nombre_Entite</a></div><div class="ttdeci">int nombre_Entite(entite_t plateau[N][N])</div><div class="ttdoc">Fonction pour compter le nombre d'entités présentes sur le plateau de combat.</div><div class="ttdef"><b>Definition</b> plateauCombat.c:4</div></div>
 <div class="ttc" id="aplateauCombat_8h_html_a612669d20a0441f4ee16a7237f1ede30"><div class="ttname"><a href="plateauCombat_8h.html#a612669d20a0441f4ee16a7237f1ede30">dessin_plateau</a></div><div class="ttdeci">void dessin_plateau(entite_t plateau_de_combat[N][N], int gridX, int gridY, SDL_Texture *rien, Button buttonRect, SDL_Renderer *renderer)</div><div class="ttdoc">Fonction pour dessiner le plateau de combat sur l'écran.</div><div class="ttdef"><b>Definition</b> plateauCombat.c:64</div></div>
 <div class="ttc" id="aplateauCombat_8h_html_a7083f7c935bcbae9a110111f53216beb"><div class="ttname"><a href="plateauCombat_8h.html#a7083f7c935bcbae9a110111f53216beb">init_plateau</a></div><div class="ttdeci">void init_plateau(entite_t plateau[N][N])</div><div class="ttdoc">Fonction pour initialiser le plateau de combat en plaçant des entités vides.</div><div class="ttdef"><b>Definition</b> plateauCombat.c:21</div></div>
 <div class="ttc" id="aplateauCombat_8h_html_a8c0e12e919bd4b32514b080394075ac6"><div class="ttname"><a href="plateauCombat_8h.html#a8c0e12e919bd4b32514b080394075ac6">plateau_cible</a></div><div class="ttdeci">pos_t plateau_cible(int mouseX, int mouseY, int gridX, int gridY)</div><div class="ttdoc">Fonction pour déterminer la case ciblée sur le plateau de combat en fonction des coordonnées de la so...</div><div class="ttdef"><b>Definition</b> plateauCombat.c:36</div></div>
 <div class="ttc" id="aplateauCombat_8h_html_acb22830489a2a7250a51ea8f06b22cb3"><div class="ttname"><a href="plateauCombat_8h.html#acb22830489a2a7250a51ea8f06b22cb3">combat</a></div><div class="ttdeci">int combat(entite_t plateau_de_combat[N][N], SDL_Window *window, SDL_Renderer *renderer)</div><div class="ttdef"><b>Definition</b> plateauCombat.c:109</div></div>
-<div class="ttc" id="astructButton_html"><div class="ttname"><a href="structButton.html">Button</a></div><div class="ttdef"><b>Definition</b> struct.h:254</div></div>
-<div class="ttc" id="astructentite__t_html"><div class="ttname"><a href="structentite__t.html">entite_t</a></div><div class="ttdef"><b>Definition</b> struct.h:270</div></div>
-<div class="ttc" id="astructpos__t_html"><div class="ttname"><a href="structpos__t.html">pos_t</a></div><div class="ttdoc">Structure pour représenter une position sur le plateau.</div><div class="ttdef"><b>Definition</b> struct.h:264</div></div>
+<div class="ttc" id="astructButton_html"><div class="ttname"><a href="structButton.html">Button</a></div><div class="ttdoc">Struct for the button.</div><div class="ttdef"><b>Definition</b> struct.h:302</div></div>
+<div class="ttc" id="astructentite__t_html"><div class="ttname"><a href="structentite__t.html">entite_t</a></div><div class="ttdoc">Structure for the entity in the battle.</div><div class="ttdef"><b>Definition</b> struct.h:320</div></div>
+<div class="ttc" id="astructpos__t_html"><div class="ttname"><a href="structpos__t.html">pos_t</a></div><div class="ttdoc">Structur for the position on the battle map.</div><div class="ttdef"><b>Definition</b> struct.h:312</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

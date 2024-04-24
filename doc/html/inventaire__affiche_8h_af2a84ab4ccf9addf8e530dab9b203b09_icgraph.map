@@ -1,8 +1,8 @@
 <map id="draw_Inventory" name="draw_Inventory">
 <area shape="rect" id="Node000001" title=" " alt="" coords="400,5,523,31"/>
-<area shape="rect" id="Node000002" href="$inventaire__affiche_8c.html#a65dc163b9b89d4400ea356d7c3ff1bcd" title=" " alt="" coords="227,5,352,31"/>
+<area shape="rect" id="Node000002" href="$inventaire__affiche_8c.html#ab9d779f57416955a1a56669523e2c3b3" title=" " alt="" coords="227,5,352,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="386,21,352,21,352,15,386,15"/>
-<area shape="rect" id="Node000003" href="$rending_8c.html#a340a0c1a56f37a139220837ea4c5e372" title="make the rendering of the game" alt="" coords="108,5,179,31"/>
+<area shape="rect" id="Node000003" href="$rending_8c.html#ad9f859d89b9c38b5eea387be83f0fc06" title="make the rendering of the game" alt="" coords="108,5,179,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="213,21,179,21,179,15,213,15"/>
 <area shape="rect" id="Node000004" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>

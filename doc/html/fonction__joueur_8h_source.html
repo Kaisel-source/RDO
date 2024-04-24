@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Royaume des Ombres: l&#39;Eveil des ténèbres: /info/etu/l2info/s203585/RDO/include/combat/fonction_joueur.h Source File</title>
+<title>RDO: /info/etu/l2info/s2203089/ProjetL2/RDO/RDO/include/combat/fonction_joueur.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,9 +22,8 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="Icone.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Royaume des Ombres: l&#39;Eveil des ténèbres<span id="projectnumber">&#160;0.1</span>
+   <div id="projectname">RDO
    </div>
-   <div id="projectbrief">Le projet consiste en un jeu vidéo de rôle (RPG) se déroulant dans un monde médiéval fantastique en open-zones. Les joueurs sont invités à explorer cet univers, accomplir des quêtes pour révéler ses mystères et améliorer leur personnage en gérant ses niveaux et statistiques. Le jeu intègre une dimension tactique avec un système de combat au tour par tour, des avantages élémentaires et une gestion stratégique des équipements. La trame narrative est enrichie par des quêtes captivantes, offrant des récompenses et contribuant à l&#39;exploration approfondie de l&#39;univers.</div>
   </td>
  </tr>
  </tbody>
@@ -92,12 +91,12 @@ $(function() {
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">int</span> <a class="code hl_function" href="fonction__joueur_8h.html#a75816dd30fac78ae19972507d7e7f1e6">attaque_physiqe</a>(<span class="keywordtype">int</span> range, <span class="keywordtype">int</span> dmg, <a class="code hl_struct" href="structpos__t.html">pos_t</a> pos_perso, <a class="code hl_struct" href="structpos__t.html">pos_t</a> pos_cibler, <a class="code hl_struct" href="structentite__t.html">entite_t</a> plateau[<a class="code hl_define" href="common_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="code hl_define" href="common_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif </span><span class="comment">/* FONCTION_JOUEUR_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="acommon_8h_html_a0240ac851181b84ac374872dc5434ee4"><div class="ttname"><a href="common_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a></div><div class="ttdeci">#define N</div><div class="ttdef"><b>Definition</b> common.h:14</div></div>
+<div class="ttc" id="acommon_8h_html_a0240ac851181b84ac374872dc5434ee4"><div class="ttname"><a href="common_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a></div><div class="ttdeci">#define N</div><div class="ttdef"><b>Definition</b> common.h:7</div></div>
 <div class="ttc" id="afonction__joueur_8h_html_a75816dd30fac78ae19972507d7e7f1e6"><div class="ttname"><a href="fonction__joueur_8h.html#a75816dd30fac78ae19972507d7e7f1e6">attaque_physiqe</a></div><div class="ttdeci">int attaque_physiqe(int range, int dmg, pos_t pos_perso, pos_t pos_cibler, entite_t plateau[N][N])</div><div class="ttdoc">Fonction pour effectuer une attaque physique sur une case ciblée par une entité joueur.</div><div class="ttdef"><b>Definition</b> fonction_joueur.c:46</div></div>
 <div class="ttc" id="afonction__joueur_8h_html_a816d46428dd80b6c4aaab6f22ec8e5f2"><div class="ttname"><a href="fonction__joueur_8h.html#a816d46428dd80b6c4aaab6f22ec8e5f2">attaque_spell</a></div><div class="ttdeci">int attaque_spell(int range, int dmg, pos_t pos_perso, pos_t pos_cibler, entite_t plateau[N][N])</div><div class="ttdoc">Fonction pour lancer un sort sur une case ciblée par une entité joueur.</div><div class="ttdef"><b>Definition</b> fonction_joueur.c:25</div></div>
 <div class="ttc" id="afonction__joueur_8h_html_aba29a6ca25052efcf0e8688d896ebe17"><div class="ttname"><a href="fonction__joueur_8h.html#aba29a6ca25052efcf0e8688d896ebe17">mouvement_Joueur</a></div><div class="ttdeci">int mouvement_Joueur(int dep, pos_t pos_perso, pos_t pos_cibler, entite_t plateau[N][N])</div><div class="ttdoc">Fonction pour déplacer une entité joueur sur le plateau de jeu.</div><div class="ttdef"><b>Definition</b> fonction_joueur.c:3</div></div>
-<div class="ttc" id="astructentite__t_html"><div class="ttname"><a href="structentite__t.html">entite_t</a></div><div class="ttdef"><b>Definition</b> struct.h:270</div></div>
-<div class="ttc" id="astructpos__t_html"><div class="ttname"><a href="structpos__t.html">pos_t</a></div><div class="ttdoc">Structure pour représenter une position sur le plateau.</div><div class="ttdef"><b>Definition</b> struct.h:264</div></div>
+<div class="ttc" id="astructentite__t_html"><div class="ttname"><a href="structentite__t.html">entite_t</a></div><div class="ttdoc">Structure for the entity in the battle.</div><div class="ttdef"><b>Definition</b> struct.h:320</div></div>
+<div class="ttc" id="astructpos__t_html"><div class="ttname"><a href="structpos__t.html">pos_t</a></div><div class="ttdoc">Structur for the position on the battle map.</div><div class="ttdef"><b>Definition</b> struct.h:312</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

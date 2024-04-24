@@ -1,8 +1,8 @@
 <map id="combat" name="combat">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,329,76,355"/>
-<area shape="rect" id="Node000002" href="$fonction__joueur_8c.html#a75816dd30fac78ae19972507d7e7f1e6" title="Fonction pour effectuer une attaque physique sur une case ciblée par une entité joueur." alt="" coords="138,5,269,31"/>
+<area shape="rect" id="Node000002" href="$fonction__joueur_8c.html#a75816dd30fac78ae19972507d7e7f1e6" title="infige des dommage avec une attaque sur une case cibler et verifie si possible" alt="" coords="138,5,269,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="39,329,40,277,49,199,59,157,74,115,95,75,122,40,126,36,130,40,126,44,99,78,79,117,64,158,54,200,45,277,44,329"/>
-<area shape="rect" id="Node000003" href="$fonction__joueur_8c.html#a816d46428dd80b6c4aaab6f22ec8e5f2" title="Fonction pour lancer un sort sur une case ciblée par une entité joueur." alt="" coords="148,55,259,80"/>
+<area shape="rect" id="Node000003" href="$fonction__joueur_8c.html#a816d46428dd80b6c4aaab6f22ec8e5f2" title="infige des dommage avec un spell sur une case cibler et verifie si possible" alt="" coords="148,55,259,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="40,329,43,284,55,220,65,185,80,150,98,118,122,89,134,80,137,85,126,93,103,121,84,153,71,187,60,221,49,284,45,329"/>
 <area shape="rect" id="Node000004" href="$plateauCombat_8c.html#a612669d20a0441f4ee16a7237f1ede30" title="fait le dessin d un echequier" alt="" coords="143,104,263,129"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="41,329,49,294,64,245,87,193,103,169,122,147,141,133,144,137,126,151,108,172,92,196,69,247,54,295,47,330"/>
@@ -26,7 +26,7 @@
 <area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="46,354,53,391,67,440,90,493,106,517,126,539,138,547,135,552,122,543,102,521,86,496,62,442,48,392,41,355"/>
 <area shape="rect" id="Node000015" href="$enemie_8c.html#a72d17622caed35bc48fb14b63b71a85f" title=" " alt="" coords="125,652,282,677"/>
 <area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="44,355,45,406,55,482,65,524,80,565,100,603,126,638,132,643,128,647,122,641,95,606,75,567,60,525,50,483,40,407,39,355"/>
-<area shape="rect" id="Node000020" href="$turn__order_8c.html#ad15064138e413e2345c67ddbea386e0e" title="Fonction pour trier les positions dans l&#39;ordre décroissant des entités en fonction de leur stat initi..." alt="" coords="159,603,248,628"/>
+<area shape="rect" id="Node000020" href="$turn__order_8c.html#ad15064138e413e2345c67ddbea386e0e" title="trie les position dans l orde decroissant les entite en fonction de leur stat initiative dans un tabl..." alt="" coords="159,603,248,628"/>
 <area shape="poly" id="edge20_Node000001_Node000020" title=" " alt="" coords="45,355,49,399,61,461,85,529,103,560,126,588,147,602,144,606,122,592,99,564,80,531,56,463,44,400,40,355"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="264,121,326,129,326,134,263,127"/>
 <area shape="rect" id="Node000012" href="$entite_8c.html#a3b04a16cd191fa9f13442b2083f5e655" title=" " alt="" coords="346,403,474,428"/>

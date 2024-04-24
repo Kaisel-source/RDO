@@ -87,16 +87,27 @@ int main() {
     item_t *item = malloc(sizeof(item_t));
     item = eqpmt_creator(1, "Epee", WEAPON, PHYSICAL, 10, 10, 10, 10, 100, 10, 10, 10, 10, "une epee",1);
 
+    item_t *item2 = malloc(sizeof(item_t));
+    item2 = eqpmt_creator(2, "Super Epee", WEAPON, PHYSICAL, 10, 10, 10, 10, 10000, 10, 10, 10, 10, "une super epee",1);
+
     quest_t *q;
-    q=quest_create("Un pas a la fois","Tuer 10 Monstres",1,NOT_STARTED,100,10,item,1,ress);
+    q=quest_create("Un pas a la fois","Tuer 10 Monstres",1,NOT_STARTED,100,10,item2,1,ress);
     game_add_quest(g,q);
     
 
 
     /*NPC*/
-    npc_s *npc = npc_creator("toto", "toto", 10, "data/image/perso.png", LEFT, &renderer, 0);
+    npc_s *npc = npc_creator("Thor", "Bienvenue en ces Terres !", 10, "data/image/NPC/NPC1.png", LEFT, &renderer, 0);
     game_add_npc(g,npc);
-    npc = npc_creator("kevin", "Je etre kevin", 10, "data/image/perso.png", LEFT, &renderer, 1,q);
+    npc = npc_creator("kevin", "Je suis kévin et je serai un guerrier plus tard !", 10, "data/image/NPC/NPC2.png", LEFT, &renderer, 0);
+    game_add_npc(g,npc);
+    npc = npc_creator("Briar", "Je meuuurs de faiiim", 10, "data/image/NPC/NPC4.png", LEFT, &renderer, 0);
+    game_add_npc(g,npc);
+    npc = npc_creator("Jinx", "Ma soeur est vraiment une idiote !! ", 10, "data/image/NPC/NPC5.png", LEFT, &renderer, 0);
+    game_add_npc(g,npc);
+    npc = npc_creator("Mackenzie", "Hmmm....", 10, "data/image/NPC/NPC3.png", LEFT, &renderer, 1,1,quest_npc_create("T'es un vrai toi", "Meeeeh heu....", "Depechez vous", "Merci pour votre aide", q));
+    game_add_npc(g,npc);
+    npc = npc_creator("Vi", "J'ai perdu ma petite soeur...", 10, "data/image/NPC/NPC6.png", LEFT, &renderer, 0);
     game_add_npc(g,npc);
 
 
@@ -153,7 +164,7 @@ int main() {
 
     
     
-
+    int settings = 0;
     int suite=0;
 
     if (TTF_Init() != 0) {
@@ -172,8 +183,8 @@ int main() {
 
 
 
-    SDL_Color textColor = { 176, 91, 78, 255 };
-    SDL_Color bgColor = { 30, 30, 30, 255 };
+    SDL_Color textColor = {255, 255, 255, 255};
+    SDL_Color bgColor = {0, 100, 100, 255};
     int inventoryVisible = 0;
     SDL_Rect boundingRect;
 
@@ -182,7 +193,7 @@ int main() {
             play = menu(renderer, playButton, settingsButton, quitButton, &running, &settingsPage); 
            
         }else if(settingsPage==1){
-            option(renderer, saveButton, loadButton, deleteButton, quitButton2, &settingsPage);
+            option(renderer, saveButton, loadButton, deleteButton, quitButton2, &settingsPage,g);
         }
         if (play == 1) {
         while (SDL_PollEvent(&event)) {
@@ -263,15 +274,15 @@ int main() {
                     perso->state = WALK_D;
                 }
                 
-                else if (event.key.keysym.sym == SDLK_e) {
+                else if (map_build && event.key.keysym.sym == SDLK_e) {
                     printf("Exportation du plateau\n");
                     export_board(&map.map[map.y][map.x],map.path[map.y][map.x]);
                 }
-                else if (event.key.keysym.sym == SDLK_r) {
+                else if (map_build && event.key.keysym.sym == SDLK_r) {
                     printf("Reset du plateau\n");
                     import_board(&map.map[map.y][map.x],map.path[map.y][map.x]);
                 }
-                else if (event.key.keysym.sym == SDLK_a) {
+                else if (map_build && event.key.keysym.sym == SDLK_a) {
                     printf("Clear du plateau\n");
                     for(int i=0;i<24;i++){
                         for(int j=0;j<24;j++){
@@ -299,6 +310,17 @@ int main() {
                         interact(g,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window);
 
                 }
+                else if(event.key.keysym.sym == SDLK_p){
+                    if(settings==0){
+                        settings=1;
+                    }
+                    else{
+                        settings=0;
+                    }
+                }
+                else if(event.key.keysym.sym == SDLK_o){
+                    take_item(g->main_perso,ress);
+                }
                 else{
                     if(map_build){
                         if(perso->direction == RIGHT && perso->x+1<BOARD_SIZE_X)
@@ -317,7 +339,7 @@ int main() {
         }
 
         if(play==1){
-            rending(&renderer,g, font, textColor, bgColor, &boundingRect,inventoryVisible,suite);
+            rending(&renderer,g, font, textColor, bgColor, &boundingRect,inventoryVisible,&settings, saveButton, loadButton, deleteButton, quitButton2);
         } 
 
         
@@ -342,6 +364,7 @@ int main() {
     perso->map_x = map.x;
     perso->map_y = map.y;
     export(perso);
+    printf("delete\n");
     game_destroy_game(&g);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

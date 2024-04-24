@@ -1,5 +1,7 @@
 <map id="eqpmt_creator" name="eqpmt_creator">
-<area shape="rect" id="Node000001" title=": Create an item and convert it to an inventory item" alt="" coords="108,5,225,31"/>
-<area shape="rect" id="Node000002" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" id="Node000001" title=": Create an item and convert it to an inventory item" alt="" coords="119,31,236,56"/>
+<area shape="rect" id="Node000002" href="$saving_8c.html#a32e3d4220702725ccfbfa41445ecb83a" title="Import the personnage from a file." alt="" coords="5,5,71,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,33,70,26,71,21,106,28"/>
+<area shape="rect" id="Node000003" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="11,55,65,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,58,66,65,65,60,105,53"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="conso_create" name="conso_create">
+<area shape="rect" id="Node000001" title=": Create a consumable object" alt="" coords="119,5,227,31"/>
+<area shape="rect" id="Node000002" href="$saving_8c.html#a32e3d4220702725ccfbfa41445ecb83a" title="Import the personnage from a file." alt="" coords="5,5,71,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,21,71,21,71,15,105,15"/>
+</map>

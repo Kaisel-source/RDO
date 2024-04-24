@@ -1,5 +1,5 @@
 /**
- * @file freeing.h
+ * @file main_chara.h
  * @author Aymeric MABIRE
  * @brief 
  * @version 0.1

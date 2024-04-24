@@ -1,20 +1,20 @@
 <map id="quest_npc_s" name="quest_npc_s">
-<area shape="rect" id="Node000001" title=" " alt="" coords="122,552,225,577"/>
-<area shape="rect" id="Node000002" href="$structquest__s.html" title=" " alt="" coords="137,464,209,489"/>
+<area shape="rect" id="Node000001" title="Struct for the quest for npc." alt="" coords="122,552,225,577"/>
+<area shape="rect" id="Node000002" href="$structquest__s.html" title="Struct for the quest." alt="" coords="137,464,209,489"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,503,176,551,171,551,171,503"/>
-<area shape="rect" id="Node000003" href="$structitem__s.html" title=" " alt="" coords="140,359,207,385"/>
+<area shape="rect" id="Node000003" href="$structitem__s.html" title="Struct for the an item stockable." alt="" coords="140,359,207,385"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="176,399,176,464,171,464,171,399"/>
 <area shape="poly" id="edge9_Node000003_Node000003" title=" " alt="" coords="222,362,230,365,233,372,225,381,207,383,207,378,223,376,228,372,226,369,220,367"/>
-<area shape="rect" id="Node000004" href="$structinv__item.html" title=" " alt="" coords="134,269,213,295"/>
+<area shape="rect" id="Node000004" href="$structinv__item.html" title="Struct for the an item and their quantity." alt="" coords="134,269,213,295"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="176,308,176,359,171,359,171,308"/>
-<area shape="rect" id="Node000005" href="$unionitem__inv.html" title=" " alt="" coords="134,181,213,207"/>
+<area shape="rect" id="Node000005" href="$unionitem__inv.html" title="Union for the item." alt="" coords="134,181,213,207"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="176,221,176,269,171,269,171,221"/>
-<area shape="rect" id="Node000006" href="$structitem__eqpmt.html" title=" " alt="" coords="5,93,107,119"/>
+<area shape="rect" id="Node000006" href="$structitem__eqpmt.html" title="Struct for the an item equipment." alt="" coords="5,93,107,119"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="83,125,123,155,157,179,154,183,120,159,79,129"/>
-<area shape="rect" id="Node000007" href="$structstat.html" title=" " alt="" coords="33,5,79,31"/>
+<area shape="rect" id="Node000007" href="$structstat.html" title="Struct for the stat of an item." alt="" coords="33,5,79,31"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="59,45,59,93,53,93,53,45"/>
-<area shape="rect" id="Node000008" href="$structressource.html" title=" " alt="" coords="131,93,216,119"/>
+<area shape="rect" id="Node000008" href="$structressource.html" title="Struct for the an item ressource." alt="" coords="131,93,216,119"/>
 <area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="176,133,176,181,171,181,171,133"/>
-<area shape="rect" id="Node000009" href="$structconso.html" title=" " alt="" coords="241,93,301,119"/>
+<area shape="rect" id="Node000009" href="$structconso.html" title="Struct for the an item consumable." alt="" coords="241,93,301,119"/>
 <area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="249,130,189,183,185,179,246,126"/>
 </map>

@@ -1,7 +1,7 @@
 
 #include "../../include/menu/option.h"
 
-void handle_options_events(SDL_Renderer *renderer, SDL_Event event, int *settingsPage) {
+void handle_options_events(SDL_Renderer *renderer, SDL_Event event, int *settingsPage,game_s *g) {
 
     // Chargement des images des boutons
     SDL_Surface *quitSurface = IMG_Load("data/image/menu/bouton_quitter.png");
@@ -40,11 +40,11 @@ void handle_options_events(SDL_Renderer *renderer, SDL_Event event, int *setting
             if (mouseX >= saveButton.rect.x && mouseX <= saveButton.rect.x + BUTTON_WIDTH &&
                 mouseY >= saveButton.rect.y && mouseY <= saveButton.rect.y + BUTTON_HEIGHT) {
                 printf("Sauvegarde du jeu\n");
-                // Inclure la fonction de sauvegarde
+                export(g->main_perso); 
             } else if (mouseX >= loadButton.rect.x && mouseX <= loadButton.rect.x + BUTTON_WIDTH &&
                        mouseY >= loadButton.rect.y && mouseY <= loadButton.rect.y + BUTTON_HEIGHT) {
                 printf("Chargement du jeu\n");
-                // Inclure la fonction de chargement
+                import(&(g->main_perso)); 
             } else if (mouseX >= deleteButton.rect.x && mouseX <= deleteButton.rect.x + BUTTON_WIDTH &&
                        mouseY >= deleteButton.rect.y && mouseY <= deleteButton.rect.y + BUTTON_HEIGHT) {
                 printf("Suppression de la sauvegarde\n");
@@ -57,7 +57,7 @@ void handle_options_events(SDL_Renderer *renderer, SDL_Event event, int *setting
     }
 }
 
-void option(SDL_Renderer *renderer, Button saveButton, Button loadButton, Button deleteButton, Button quitButton2, int *settingsPage) {
+void option(SDL_Renderer *renderer, Button saveButton, Button loadButton, Button deleteButton, Button quitButton2, int *settingsPage,game_s *g) {
     SDL_Event event;
     
     // Chargement de l'image de fond
@@ -65,8 +65,8 @@ void option(SDL_Renderer *renderer, Button saveButton, Button loadButton, Button
     SDL_Texture *backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
     SDL_FreeSurface(backgroundSurface);
 
-    handle_options_events(renderer , event, settingsPage);
-
+    handle_options_events(renderer , event, settingsPage,g);
+    
     // Affichage de l'image de fond et des boutons des options
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);

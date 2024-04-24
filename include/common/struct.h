@@ -1,11 +1,3 @@
-/**
- * @file struct.h
- * @author Aymeric MABIRE
- * @brief 
- * @version 0.1
- * @date 2024-03-10
-*/
-
 #ifndef STRUCT_H
 #define STRUCT_H
 
@@ -44,7 +36,9 @@ typedef enum type_item{
 } type_it;
 
 
-
+/**
+ * @brief Struct for the stat of an item
+*/
 typedef struct stat {
     int damage;
     int defence;
@@ -56,6 +50,10 @@ typedef struct stat {
     int intel;
 } stat_item;
 
+
+/**
+ * @brief Struct for the an item equipment
+*/
 typedef struct item_eqpmt {
     int id;
     char* name;
@@ -68,6 +66,10 @@ typedef struct item_eqpmt {
 
 } item_eqpmt;
 
+
+/**
+ * @brief Struct for the an item ressource
+*/
 typedef struct ressource{
     int id;
     char* name;
@@ -77,6 +79,10 @@ typedef struct ressource{
 
 } item_ress;
 
+
+/**
+ * @brief Struct for the an item consumable
+*/
 typedef struct conso {
     char* name;
     int id;
@@ -92,6 +98,10 @@ typedef struct conso {
     char *desc;
 } item_conso;
 
+
+/**
+ * @brief Union for the item
+*/
 typedef union item_inv{
     item_eqpmt *eqpmt;
     item_ress *ress;
@@ -99,7 +109,9 @@ typedef union item_inv{
 }it_iv;
 
 
-
+/**
+ * @brief Struct for the an item and their quantity
+*/
 typedef struct inv_item{
     type_it type;
     it_iv *item_u;
@@ -107,13 +119,18 @@ typedef struct inv_item{
 }inv_item_s;
 
 
-
+/**
+ * @brief Struct for the an item stockable
+*/
 typedef struct item_s{
     inv_item_s *item_inv;
     struct item_s *prec;
     struct item_s *suiv;
 }item_t;
 
+/**
+ * @brief Struct for the an item list (inventory)
+*/
 typedef struct item_list{
     unsigned int weight;
     item_t *head;
@@ -126,6 +143,9 @@ typedef struct item_list{
 /*-------------- QUETE -------------- */
 typedef enum {ON_GOING, COMPLETED, NOT_STARTED} quest_status;
 
+/**
+ * @brief Struct for the quest
+*/
 typedef struct quest_s{
         char *name;
         char *desc;
@@ -142,6 +162,10 @@ typedef struct quest_s{
 
 }quest_t;
 
+
+/**
+ * @brief Struct for the quest for npc
+*/
 typedef struct quest_npc_s{
     char *accept;
     char *refuse;
@@ -152,12 +176,20 @@ typedef struct quest_npc_s{
 
 
 /*-------------- PERSO -------------- */
+
+/**
+ * @brief Struct for the image for the player
+*/
 typedef struct img_s{
     int nb_sprite;
     int num_ref;
     SDL_Rect **texture;
 }img_t;
 
+
+/**
+ * @brief Struct for the map
+*/
 typedef struct{
     int x;
     int y;
@@ -183,6 +215,10 @@ typedef enum{
     
 }direction_t;
 
+
+/**
+ * @brief Struct for the stat of the player
+*/
 typedef struct stat_p{
     int intel;
     int str;
@@ -193,6 +229,10 @@ typedef struct stat_p{
     int available; //point to spend
 }stat_s;
 
+
+/**
+ * @brief Struct for the player
+*/
 typedef struct pers{
     char *name;
 
@@ -233,6 +273,10 @@ typedef struct pers{
 
 /*-------------- NPC -------------- */
 
+
+/**
+ * @brief Struct for the npc
+*/
 typedef struct npc_t{
     char *name;
     char *dialog;
@@ -251,6 +295,10 @@ typedef struct npc_t{
 
 /*-------------- BOUTTON -------------- */
 
+
+/**
+ * @brief Struct for the button
+*/
 typedef struct {
     SDL_Rect rect;
     SDL_Texture *texture;
@@ -259,14 +307,16 @@ typedef struct {
 /*-------------- STRUCTURE DE JEU -------------- */
 
 /**
- * @brief Structure pour représenter une position sur le plateau
+ * @brief Structur for the position on the battle map
  */
 typedef struct {
     int x; /**< Coordonnée en X */
     int y; /**< Coordonnée en Y */
 } pos_t;
 
-// Structure représentant une entité
+/**
+ * @brief Structure for the entity in the battle
+*/
 typedef struct {
     char prenom[50];
     char classe[50];
@@ -282,6 +332,9 @@ typedef struct {
 } entite_t;
 
 
+/**
+ * @brief Structure for the game
+*/
 typedef struct game_t{
     perso *main_perso;
     npc_s *npc[TOTAL_PERS];

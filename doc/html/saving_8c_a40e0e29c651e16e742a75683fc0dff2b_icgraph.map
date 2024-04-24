@@ -1,5 +1,13 @@
 <map id="export" name="export">
-<area shape="rect" id="Node000001" title="Export the personnage in a file." alt="" coords="108,5,172,31"/>
-<area shape="rect" id="Node000002" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" id="Node000001" title="Export the personnage in a file." alt="" coords="557,46,621,71"/>
+<area shape="rect" id="Node000002" href="$option_8c.html#a765d95d95728afc38c240db338cc9a5e" title=" " alt="" coords="337,20,509,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="543,54,506,48,507,43,544,49"/>
+<area shape="rect" id="Node000004" href="$main__mov_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,20,60,46"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="543,66,461,72,353,76,231,74,107,61,59,47,61,42,109,56,231,69,353,71,461,67,543,61"/>
+<area shape="rect" id="Node000003" href="$option_8c.html#a47614a0628164c4d3c070774b435b122" title=" " alt="" coords="227,20,289,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="324,36,290,36,290,30,324,30"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="213,20,178,12,143,8,108,12,61,25,60,20,108,6,143,3,179,6,214,15"/>
+<area shape="rect" id="Node000005" href="$rending_8c.html#ad9f859d89b9c38b5eea387be83f0fc06" title="make the rendering of the game" alt="" coords="108,20,179,46"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="213,36,179,36,179,30,213,30"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="94,36,60,36,60,30,94,30"/>
 </map>

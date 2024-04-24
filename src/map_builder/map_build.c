@@ -15,7 +15,7 @@ int pose_block(int (*board)[24][24],int key,int x,int y){
         build_board(board,GRASS,x,y);
         break;
     case SDLK_1:
-        build_board(board,STONE,x,y);
+        build_board(board,MONSTER,x,y);
         break;
     case SDLK_2:
         build_board(board,BUSH,x,y);

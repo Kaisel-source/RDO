@@ -67,27 +67,38 @@ void game_destroy_game(game_s **g) {
     }
 
     // Libération de la mémoire pour chaque PNJ sauvegardé
+    printf("NPC\n");
     for (int i = 0; i < (*g)->nb_pers_saved; i++) {
+        printf("NPC %d\n", i);
         destroy_npc(&((*g)->npc[i]));
     }
 
+    printf("Quest\n");
+
     // Libération de la mémoire pour chaque quête sauvegardée
     for (int i = 0; i < (*g)->nb_quest_saved; i++) {
-        destroy_quest(&((*g)->quest[i]));
+        if((*g)->quest[i] != NULL)
+            destroy_quest(&((*g)->quest[i]));
     }
 
+    printf("Item\n");
     // Libération de la mémoire pour l'inventaire du jeu
     destroy_game_stockage(&((*g)->item));
 
+    printf("Perso\n");
     // Libération de la mémoire pour le personnage principal
     destroy_perso(&((*g)->main_perso));
 
+    printf("Area\n");
     // Libération de la mémoire pour la zone de jeu
     free((*g)->area);
 
+    printf("Texture\n");
     // Destruction de la texture SDL
     SDL_DestroyTexture((*g)->TextureOut);
+    SDL_DestroyTexture((*g)->TextureMonster);
 
+    printf("Map\n");
     // Export et libération de la mémoire de la carte
     if ((*g)->map != NULL) {
         int num_map_x = (*g)->map->x;

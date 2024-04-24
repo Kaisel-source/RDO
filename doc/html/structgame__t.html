@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Royaume des Ombres: l&#39;Eveil des ténèbres: game_t Struct Reference</title>
+<title>RDO: game_t Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,9 +22,8 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="Icone.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Royaume des Ombres: l&#39;Eveil des ténèbres<span id="projectnumber">&#160;0.1</span>
+   <div id="projectname">RDO
    </div>
-   <div id="projectbrief">Le projet consiste en un jeu vidéo de rôle (RPG) se déroulant dans un monde médiéval fantastique en open-zones. Les joueurs sont invités à explorer cet univers, accomplir des quêtes pour révéler ses mystères et améliorer leur personnage en gérant ses niveaux et statistiques. Le jeu intègre une dimension tactique avec un système de combat au tour par tour, des avantages élémentaires et une gestion stratégique des équipements. La trame narrative est enrichie par des quêtes captivantes, offrant des récompenses et contribuant à l&#39;exploration approfondie de l&#39;univers.</div>
   </td>
  </tr>
  </tbody>
@@ -77,50 +76,53 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Structure for the game.  
+ <a href="structgame__t.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="struct_8h_source.html">struct.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for game_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structgame__t__coll__graph.png" border="0" usemap="#agame__t_coll__map" alt="Collaboration graph"/></div>
 <map name="agame__t_coll__map" id="agame__t_coll__map">
-<area shape="rect" title=" " alt="" coords="623,747,694,772"/>
-<area shape="rect" href="structpers.html" title=" " alt="" coords="116,659,167,684"/>
+<area shape="rect" title="Structure for the game." alt="" coords="623,747,694,772"/>
+<area shape="rect" href="structpers.html" title="Struct for the player." alt="" coords="116,659,167,684"/>
 <area shape="poly" title=" " alt="" coords="181,676,624,750,623,755,180,682"/>
-<area shape="rect" href="structstat__p.html" title=" " alt="" coords="133,571,195,596"/>
+<area shape="rect" href="structstat__p.html" title="Struct for the stat of the player." alt="" coords="133,571,195,596"/>
 <area shape="poly" title=" " alt="" coords="128,606,114,621,113,630,115,639,129,657,125,660,111,642,107,630,110,619,124,602"/>
-<area shape="rect" href="structitem__eqpmt.html" title=" " alt="" coords="115,93,216,119"/>
+<area shape="rect" href="structitem__eqpmt.html" title="Struct for the an item equipment." alt="" coords="115,93,216,119"/>
 <area shape="poly" title=" " alt="" coords="102,118,68,128,38,143,16,164,10,177,8,193,8,584,11,602,19,616,47,639,83,655,116,663,115,668,81,660,44,644,15,620,6,604,3,585,3,192,5,176,12,161,35,139,66,123,100,113"/>
-<area shape="rect" href="unionitem__inv.html" title=" " alt="" coords="253,181,331,207"/>
+<area shape="rect" href="unionitem__inv.html" title="Union for the item." alt="" coords="253,181,331,207"/>
 <area shape="poly" title=" " alt="" coords="194,124,237,155,275,179,272,183,235,160,190,129"/>
-<area shape="rect" href="structstat.html" title=" " alt="" coords="142,5,189,31"/>
+<area shape="rect" href="structstat.html" title="Struct for the stat of an item." alt="" coords="142,5,189,31"/>
 <area shape="poly" title=" " alt="" coords="168,45,168,93,163,93,163,45"/>
-<area shape="rect" href="structitem__list.html" title=" " alt="" coords="506,571,585,596"/>
+<area shape="rect" href="structitem__list.html" title="Struct for the an item list (inventory)" alt="" coords="506,571,585,596"/>
 <area shape="poly" title=" " alt="" coords="599,599,623,618,643,651,654,687,661,746,656,747,649,688,638,653,619,622,596,603"/>
 <area shape="poly" title=" " alt="" coords="509,604,472,622,446,637,368,657,289,668,167,673,167,668,289,662,367,652,444,632,469,618,506,599"/>
-<area shape="rect" href="structnpc__t.html" title=" " alt="" coords="433,659,490,684"/>
+<area shape="rect" href="structnpc__t.html" title="Struct for the npc." alt="" coords="433,659,490,684"/>
 <area shape="poly" title=" " alt="" coords="552,610,550,623,545,636,534,648,520,657,491,668,489,663,518,652,530,644,540,633,545,622,546,609"/>
-<area shape="rect" href="structitem__s.html" title=" " alt="" coords="369,359,436,385"/>
+<area shape="rect" href="structitem__s.html" title="Struct for the an item stockable." alt="" coords="369,359,436,385"/>
 <area shape="poly" title=" " alt="" coords="450,378,480,389,506,409,520,428,531,450,544,496,548,539,549,570,543,570,543,539,539,497,526,452,516,431,502,413,477,394,449,383"/>
 <area shape="poly" title=" " alt="" coords="451,362,459,365,463,372,454,381,437,383,436,378,452,376,457,372,456,369,449,367"/>
-<area shape="rect" href="structquest__s.html" title=" " alt="" coords="367,473,439,499"/>
+<area shape="rect" href="structquest__s.html" title="Struct for the quest." alt="" coords="367,473,439,499"/>
 <area shape="poly" title=" " alt="" coords="405,398,405,473,400,473,400,398"/>
-<area shape="rect" href="structinv__item.html" title=" " alt="" coords="341,269,419,295"/>
+<area shape="rect" href="structinv__item.html" title="Struct for the an item and their quantity." alt="" coords="341,269,419,295"/>
 <area shape="poly" title=" " alt="" coords="389,307,402,358,397,360,384,309"/>
 <area shape="poly" title=" " alt="" coords="315,214,370,267,366,271,312,218"/>
-<area shape="rect" href="structressource.html" title=" " alt="" coords="241,93,327,119"/>
+<area shape="rect" href="structressource.html" title="Struct for the an item ressource." alt="" coords="241,93,327,119"/>
 <area shape="poly" title=" " alt="" coords="289,132,294,181,288,181,284,133"/>
-<area shape="rect" href="structconso.html" title=" " alt="" coords="351,93,411,119"/>
+<area shape="rect" href="structconso.html" title="Struct for the an item consumable." alt="" coords="351,93,411,119"/>
 <area shape="poly" title=" " alt="" coords="361,130,306,183,303,179,358,126"/>
 <area shape="poly" title=" " alt="" coords="453,496,514,515,584,547,617,568,648,594,674,623,693,658,697,683,692,708,670,747,666,745,687,706,692,683,688,660,669,626,644,597,614,573,581,552,513,520,451,501"/>
 <area shape="poly" title=" " alt="" coords="353,495,280,506,198,522,125,544,98,558,81,572,76,583,75,594,86,617,105,639,126,656,123,661,102,643,81,620,70,595,70,582,77,569,95,553,123,539,197,517,280,501,352,490"/>
-<area shape="rect" href="structquest__npc__s.html" title=" " alt="" coords="351,571,454,596"/>
+<area shape="rect" href="structquest__npc__s.html" title="Struct for the quest for npc." alt="" coords="351,571,454,596"/>
 <area shape="poly" title=" " alt="" coords="405,512,405,570,400,570,400,512"/>
-<area shape="rect" href="structimg__s.html" title=" " alt="" coords="239,571,300,596"/>
+<area shape="rect" href="structimg__s.html" title="Struct for the image for the player." alt="" coords="239,571,300,596"/>
 <area shape="poly" title=" " alt="" coords="226,596,199,607,174,622,158,640,148,660,143,657,154,637,170,618,197,602,224,591"/>
 <area shape="poly" title=" " alt="" coords="285,606,296,620,311,632,341,647,374,657,433,666,432,671,372,662,339,652,308,637,293,624,281,609"/>
 <area shape="poly" title=" " alt="" coords="501,687,633,744,631,749,499,692"/>
 <area shape="poly" title=" " alt="" coords="401,609,406,633,418,647,434,657,431,661,415,651,402,636,396,611"/>
-<area shape="rect" href="structmap__t.html" title=" " alt="" coords="769,659,831,684"/>
+<area shape="rect" href="structmap__t.html" title="Struct for the map." alt="" coords="769,659,831,684"/>
 <area shape="poly" title=" " alt="" coords="783,697,751,725,723,740,695,750,693,745,721,735,748,720,780,693"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -148,7 +150,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a5ed803ce46fc51d774eef65d34c582c4"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgame__t.html#a5ed803ce46fc51d774eef65d34c582c4">TextureMonster</a></td></tr>
 <tr class="separator:a5ed803ce46fc51d774eef65d34c582c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structure for the game. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="a41c86f26fc238c65a6a43388724a6b66" name="a41c86f26fc238c65a6a43388724a6b66"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a41c86f26fc238c65a6a43388724a6b66">&#9670;&#160;</a></span>area</h2>
 
@@ -290,7 +294,7 @@ Data Fields</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/info/etu/l2info/s203585/RDO/include/common/<a class="el" href="struct_8h_source.html">struct.h</a></li>
+<li>/info/etu/l2info/s2203089/ProjetL2/RDO/RDO/include/common/<a class="el" href="struct_8h_source.html">struct.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

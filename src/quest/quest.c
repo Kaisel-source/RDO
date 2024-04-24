@@ -31,14 +31,14 @@ void manage_quest(perso *p){
 quest_status quest_status_update(quest_t *quest, perso *p){
     int id=quest->required_item->item_inv->type==EQPMT?quest->required_item->item_inv->item_u->eqpmt->id:quest->required_item->item_inv->item_u->ress->id;
     printf("Statut update: %d / %d\n",quest->required_item_quant, in_inventory(p, id,quest->required_item->item_inv->type));
-    if(quest->required_item_quant <= in_inventory(p, id,quest->required_item->item_inv->type) && quest->status == ON_GOING){
+    if(quest->status == ON_GOING && quest->required_item_quant <= in_inventory(p, id,quest->required_item->item_inv->type)){
         quest->status = COMPLETED;
         take_item(p, quest->reward_item);
         p->xp += quest->reward_xp;
         p->money += quest->reward_gold;
 
         remove_n(p, *quest->required_item, quest->required_item_quant);
-        add_n(p, *quest->reward_item, 1);
+        
 
         manage_quest(p);
         printf("Quete completee\n");
@@ -63,8 +63,15 @@ void quest_display(const quest_t quest){
 void destroy_quest(quest_t **quest){
     printf("Destruction de la quete\n");
     if(*quest){
+        printf("1\n");
+       
+        printf("2\n");
+        if((*quest)->name)
         free((*quest)->name);
-        free((*quest)->desc);
+        printf("3\n");
+        if((*quest)->desc)
+            free((*quest)->desc);
+        printf("4\n");
         free(*quest);
         *quest = NULL;
     }
@@ -72,7 +79,8 @@ void destroy_quest(quest_t **quest){
 
 void quest_list_destructor(quest_t **quest){
     for(int i=0;i<NB_MAX_QUEST;i++)
-        destroy_quest(&quest[i]);
+
+            destroy_quest(&quest[i]);
 }
 
 void quest_list_display(quest_t * const* quest){
@@ -120,10 +128,17 @@ void quest_npc_display(const quest_npc_t quest_npc){
 }
 
 void destroy_quest_npc(quest_npc_t **quest_npc){
+    printf("1\n");
     free((*quest_npc)->accept);
+    printf("2\n");
     free((*quest_npc)->refuse);
+    printf("3\n");
     free((*quest_npc)->on_going);
+    printf("4\n");
     free((*quest_npc)->completed);
+    printf("5\n");
+    destroy_quest(&(*quest_npc)->quest);
+    printf("6\n");
     free(*quest_npc);
     *quest_npc = NULL;
 }

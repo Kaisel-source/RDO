@@ -62,12 +62,16 @@ void destroy_npc(npc_s ** npc){
     free((*npc)->name);
     free((*npc)->dialog);
     destroy_stockage(&(*npc)->inventory);
-    for(int i=0;i<(*npc)->nb_quest;i++){
+    printf("Inventaire detruit\n");
+    /*for(int i=0;i<(*npc)->nb_quest;i++){
         destroy_quest_npc(&(*npc)->quest[i]);
     }
+    printf("Quetes detruites\n");
     free((*npc)->quest);
+    printf("Quetes free\n"); */
     free(*npc);
     *npc=NULL;
+    printf("Npc free\n");
 }
 
 void display_npc(const npc_s npc){

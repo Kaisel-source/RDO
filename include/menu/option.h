@@ -25,6 +25,6 @@
  * @param quitButton2 
  * @param settingsPage  
  */
-void option(SDL_Renderer *renderer, Button saveButton, Button loadButton, Button deleteButton, Button quitButton2, int *settingsPage);
+void option(SDL_Renderer *renderer, Button saveButton, Button loadButton, Button deleteButton, Button quitButton2, int *settingsPage,game_s *g);
 
 #endif /* OPTION_H */

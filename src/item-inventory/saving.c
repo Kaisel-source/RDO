@@ -10,7 +10,7 @@ int import(perso **p) {
         return 0;
     }
 
-    FILE *fp = fopen("inv.txt", "r");
+    FILE *fp = fopen("data/inv.txt", "r");
     if (!fp) {
         printf("Erreur: Impossible d'ouvrir le fichier.\n");
         return 0;
@@ -66,7 +66,7 @@ int import(perso **p) {
                 ress = malloc(sizeof(item_ress));
                 fscanf(fp, "Ressource - ID: %d, Nom: %[^\n], Prix: %d, Poids: %d, Description: %[^\n], Quantité: %d%*c", &ress->id, ress->name, &ress->price, &ress->poids, ress->desc, &elm->item_inv->quantity);
                 printf("Ressource - ID: %d, Nom: %s, Prix: %d, Poids: %d, Description: %s, Quantité: %d\n", ress->id, ress->name, ress->price, ress->poids, ress->desc, elm->item_inv->quantity);
-                // Ajouter l'objet ressource à l'inventaire du personnage
+                take_item(*p,ress_creator(ress->id, ress->name, ress->price, ress->poids, ress->desc,elm->item_inv->quantity));
                 break;
             case EQPMT:
                 eqpmt = malloc(sizeof(item_eqpmt));
@@ -76,7 +76,7 @@ int import(perso **p) {
                 printf("Équipement - ID: %d, Nom: %s, Type: %d, Type de dégâts: %d, Dégâts: %d, Défense: %d, Force: %d, Agilité: %d, Endurance: %d, Chance: %d, Intelligence: %d, Prix: %d, Poids: %d, Description: %s, Quantité: %d\n",
                     eqpmt->id, eqpmt->name, eqpmt->type, eqpmt->dmg_type, eqpmt->item_stat.damage, eqpmt->item_stat.defence, eqpmt->item_stat.str, eqpmt->item_stat.agi, eqpmt->item_stat.end, eqpmt->item_stat.luck, eqpmt->item_stat.intel,
                     eqpmt->price, eqpmt->poids, eqpmt->desc, elm->item_inv->quantity);
-                // Ajouter l'objet équipement à l'inventaire du personnage
+                take_item(*p,eqpmt_creator(eqpmt->id, eqpmt->name, eqpmt->type, eqpmt->dmg_type, eqpmt->item_stat.damage,eqpmt->item_stat.defence,eqpmt->item_stat.end,eqpmt->item_stat.agi,eqpmt->item_stat.str,eqpmt->item_stat.luck,eqpmt->item_stat.intel, eqpmt->price, eqpmt->poids, eqpmt->desc,elm->item_inv->quantity));
                 break;
             case CONSUM:
                 conso = malloc(sizeof(item_conso));
@@ -84,7 +84,7 @@ int import(perso **p) {
                     &conso->id, conso->name, &conso->poids, &conso->price, &conso->hp, &conso->mp, &conso->exp, &conso->available, conso->desc, &elm->item_inv->quantity);
                 printf("Consommable - ID: %d, Nom: %s, Poids: %d, Prix: %d, HP: %d, MP: %d, Exp: %d, Disponible: %d, Description: %s, Quantité: %d\n",
                     conso->id, conso->name, conso->poids, conso->price, conso->hp, conso->mp, conso->exp, conso->available, conso->desc, elm->item_inv->quantity);
-                // Ajouter l'objet consommable à l'inventaire du personnage
+                take_item(*p,conso_create( conso->name,conso->id, conso->poids, conso->price, conso->hp, conso->mp, conso->exp, conso->available, conso->desc,elm->item_inv->quantity));
                 break;
             case MODIF:
                 break;
@@ -105,13 +105,13 @@ int import(perso **p) {
 
 
 int export(const perso *p) {
-    system("rm inv.txt");
+    system("rm data/inv.txt");
     if (p == NULL) {
         printf("Erreur: Le personnage est NULL.\n");
         return 0;
     }
 
-    FILE *fp = fopen("inv.txt", "w");
+    FILE *fp = fopen("data/inv.txt", "w");
     if (!fp) {
         printf("Erreur: Impossible d'ouvrir ou de créer le fichier.\n");
         return 0;

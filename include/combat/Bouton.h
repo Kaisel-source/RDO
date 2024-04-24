@@ -5,33 +5,14 @@
 
 
 
-/**
- * @brief // Initialiser un bouton avec les coordonnées et dimensions spécifiées
- * 
- * @param x 
- * @param y 
- * @param width 
- * @param height 
- * @return Button 
- */
+
+// Initialiser un bouton avec les coordonnées et dimensions spécifiées
 Button init_Button(int x, int y, int width, int height);
 
-/**
- * @brief // Obtenir le rectangle d'un bouton à partir de ses coordonnées
- * 
- * @param bouttonx 
- * @param bouttony 
- * @return SDL_Rect 
- */
+// Obtenir le rectangle d'un bouton à partir de ses coordonnées
 SDL_Rect get_Button_Rect(int bouttonx, int bouttony);
 
-/**
- * @brief // Coller une image sur un bouton
- * 
- * @param renderer 
- * @param imageTexture 
- * @param buttonRect 
- */
+// Coller une image sur un bouton
 void set_Button_Image(SDL_Renderer* renderer, SDL_Texture* imageTexture, SDL_Rect* buttonRect);
 
 #endif /* BOUTON_H */

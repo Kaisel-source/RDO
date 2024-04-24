@@ -8,7 +8,7 @@ var searchData=
   ['both_5',['BOTH',['../struct_8h.html#a771534b3f86bec0bc5143ca54bbb2805a627abe5a430420baf29ebe1940a7f2fb',1,'struct.h']]],
   ['bouton_2ec_6',['Bouton.c',['../Bouton_8c.html',1,'']]],
   ['bouton_2eh_7',['Bouton.h',['../Bouton_8h.html',1,'']]],
-  ['build_5fboard_8',['build_board',['../map__build_8h.html#ac270eedc7890734b376faca490a8d051',1,'build_board(int(*board)[24][24], int value, int x, int y):&#160;map_build.c'],['../map__build_8c.html#ac270eedc7890734b376faca490a8d051',1,'build_board(int(*board)[24][24], int value, int x, int y):&#160;map_build.c']]],
+  ['build_5fboard_8',['build_board',['../map__build_8c.html#ac270eedc7890734b376faca490a8d051',1,'build_board(int(*board)[24][24], int value, int x, int y):&#160;map_build.c'],['../map__build_8h.html#ac270eedc7890734b376faca490a8d051',1,'build_board(int(*board)[24][24], int value, int x, int y):&#160;map_build.c']]],
   ['bush_9',['BUSH',['../board_2board_8h.html#a4daed8582e02d357562894f42b8efb92',1,'board.h']]],
   ['button_10',['Button',['../structButton.html',1,'']]],
   ['button_2ec_11',['button.c',['../button_8c.html',1,'']]],
