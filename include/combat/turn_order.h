@@ -1,3 +1,10 @@
+/**
+ * @file turn_order.h
+ * @author Mael Gaumont
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
 #ifndef TURN_ORDER_H
 #define TURN_ORDER_H
 
