@@ -1,3 +1,11 @@
+/**
+ * @file dropitem.h
+ * @author Mael Gaumont
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
+
 #ifndef dropitem_H
 #define dropitem_H
 
