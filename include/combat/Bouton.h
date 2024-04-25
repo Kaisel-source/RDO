@@ -1,3 +1,11 @@
+/**
+ * @file Bouton.h
+ * @author Mael Gaumont
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
+
 #ifndef BOUTON_H
 #define BOUTON_H
 
