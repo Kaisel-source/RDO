@@ -90,6 +90,6 @@ int rending(SDL_Renderer **render,game_s *g,TTF_Font *font, SDL_Color textColor,
         option(*render, saveButton, loadButton, deleteButton, quitButton2, settings_enable,g);
         
     }
-    SDL_RenderPresent(*render);
+    
     return 0;
 }

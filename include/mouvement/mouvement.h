@@ -29,6 +29,6 @@ int collision(int (*board)[24][24],int x,int y);
  * @param renderer Renderer
  * @param window Window
 */
-int interact(game_s *game,int x,int y,SDL_Renderer *renderer,SDL_Window *window);
+int interact(game_s *game,int x,int y,SDL_Renderer *renderer,SDL_Window *window,char ** parler);
 
 #endif

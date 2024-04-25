@@ -163,7 +163,8 @@ int main() {
     int play=0;
 
     
-    
+    char * dialogue;
+
     int settings = 0;
     int suite=0;
 
@@ -172,7 +173,7 @@ int main() {
         SDL_Quit();
         return 1;
         }
-    TTF_Font *font = TTF_OpenFont("img/police.ttf", 12);
+    TTF_Font *font = TTF_OpenFont("data/image/combat/police.ttf", 12);
     if (font == NULL) {
         printf("Erreur lors du chargement de la police de caractères : %s\n", TTF_GetError());
         SDL_DestroyRenderer(renderer);
@@ -180,7 +181,6 @@ int main() {
         SDL_Quit();
         return 1;
     }
-
 
 
     SDL_Color textColor = {255, 255, 255, 255};
@@ -293,6 +293,7 @@ int main() {
                                 
                 else if (event.key.keysym.sym == SDLK_i) {
                     // Affichage/masquage de l'inventaire lorsque la touche "i" est enfoncée
+                    g->main_perso->inventory->current = g->main_perso->inventory->head;
                     if(inventoryVisible)
                         inventoryVisible = 0;
                     else
@@ -301,14 +302,13 @@ int main() {
                 }
                 else if (event.key.keysym.sym == SDLK_q) {
                     if(perso->direction == RIGHT && perso->x+1<BOARD_SIZE_X)
-                        interact(g,(perso->x+1)%BOARD_SIZE_X,perso->y,renderer,window);
+                        suite=interact(g,(perso->x+1)%BOARD_SIZE_X,perso->y,renderer,window,&dialogue);
                     else if(perso->direction == LEFT && perso->x-1>=0)
-                        interact(g,(perso->x-1)%BOARD_SIZE_X,perso->y,renderer,window);
+                        suite=interact(g,(perso->x-1)%BOARD_SIZE_X,perso->y,renderer,window,&dialogue);
                     else if(perso->direction == UP && perso->y-1>=0)
-                        interact(g,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window);
+                        suite=interact(g,perso->x,(perso->y-1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window,&dialogue);
                     else if(perso->direction == DOWN && perso->y+1<BOARD_SIZE_Y)
-                        interact(g,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window);
-
+                        suite=interact(g,perso->x,(perso->y+1 + BOARD_SIZE_Y)%BOARD_SIZE_Y,renderer,window,&dialogue);
                 }
                 else if(event.key.keysym.sym == SDLK_p){
                     if(settings==0){
@@ -340,7 +340,16 @@ int main() {
 
         if(play==1){
             rending(&renderer,g, font, textColor, bgColor, &boundingRect,inventoryVisible,&settings, saveButton, loadButton, deleteButton, quitButton2);
-        } 
+            if(inventoryVisible==1){
+                 show_Inventory(g->main_perso->inventory, font, renderer, textColor, bgColor, &boundingRect);
+            }
+            if(suite==1){
+                draw_Button(renderer,font,dialogue,WINDOW_WIDTH-(10*strlen(dialogue)),0,10*strlen(dialogue),100,bgColor,textColor);
+            }
+            SDL_RenderPresent(renderer);
+        }
+
+
 
         
 

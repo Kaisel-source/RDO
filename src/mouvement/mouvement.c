@@ -19,9 +19,11 @@ int collision(int (*board)[24][24],int x,int y){
     }
     
 }
-int interact(game_s *game, int x, int y, SDL_Renderer *renderer, SDL_Window *window) {
+int interact(game_s *game, int x, int y, SDL_Renderer *renderer, SDL_Window *window,char ** parler) {
     int num_map_x = game->map->x;
     int num_map_y = game->map->y;
+    int suite=0;
+
     
     entite_t plateau_de_combat[GRID_ROWS][GRID_COLUMNS]; // Déclaration déplacée ici
     
@@ -44,17 +46,17 @@ int interact(game_s *game, int x, int y, SDL_Renderer *renderer, SDL_Window *win
             entite_t perso1 = create_entity("Goblin", "Brigand", 10, 10, 1, 1, 2, 100, 5);
             entite_t perso2 = create_entity(game->main_perso->name, "Guerrier", pv, pv_max, force, 2, mov, initiative, 5);
 
-            SDL_Surface* persoSurface1 = IMG_Load("img/ennemi.png");
+            SDL_Surface* persoSurface1 = IMG_Load("data/image/combat/GOBELIN.webp");
             if (persoSurface1 == NULL) {
                 printf("Erreur de l'image : %s\n", IMG_GetError());
                 return 1;
             }
-            SDL_Surface* persoSurface2 = IMG_Load("img/allie.png");
+            SDL_Surface* persoSurface2 = IMG_Load("data/image/combat/PERSO_COMBAT.webp");
             if (persoSurface2 == NULL) {
                 printf("Erreur de l'image : %s\n", IMG_GetError());
                 return 1;
             }
-            SDL_Surface* perdue = IMG_Load("img/game_over.jpeg");
+            SDL_Surface* perdue = IMG_Load("data/image/combat/game_over.jpeg");
             if (perdue == NULL) {
                 printf("Erreur de l'image : %s\n", IMG_GetError());
                 return 1;
@@ -126,7 +128,9 @@ int interact(game_s *game, int x, int y, SDL_Renderer *renderer, SDL_Window *win
         default:
             
             if (game->map->map[num_map_y][num_map_x][y][x] > 0 && game->map->map[num_map_y][num_map_x][y][x] <= game->nb_pers_saved) {
-                
+                suite=1;
+                *parler=malloc(strlen(game->npc[game->map->map[num_map_y][num_map_x][y][x] - 1]->dialog)+1 * sizeof(char));
+                strcpy(*parler,game->npc[game->map->map[num_map_y][num_map_x][y][x] - 1]->dialog);
                 npc_interact(game->main_perso, game->npc[game->map->map[num_map_y][num_map_x][y][x] - 1]);
                 if(game->npc[game->map->map[num_map_y][num_map_x][y][x] - 1]->nb_quest>0){
                     
@@ -135,7 +139,7 @@ int interact(game_s *game, int x, int y, SDL_Renderer *renderer, SDL_Window *win
             }
             break;
     }
-    return 0;
+    return suite;
 }
 
     

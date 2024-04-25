@@ -142,51 +142,51 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
     int buttonBottomY = WINDOW_HEIGHT - BUTTON_SIZEy - BUTTON_MARGIN;
 
     //charge le fond
-    SDL_Surface* backgroundSurface = IMG_Load("img/fonddesert.jpg");
+    SDL_Surface* backgroundSurface = IMG_Load("data/image/combat/fonddesert.jpg");
     if (backgroundSurface == NULL) {
         printf("Erreur de chargement de l'image de fond : %s\n", IMG_GetError());
         return 1;
     }
 
     // initialise les image
-    SDL_Surface* Casetab = IMG_Load("img/New Piskel.png");
+    SDL_Surface* Casetab = IMG_Load("data/image/combat/New Piskel.png");
     if (Casetab == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
     }
 
-    SDL_Surface* Fini = IMG_Load("img/rectangle.jpg");
+    SDL_Surface* Fini = IMG_Load("data/image/combat/rectangle.jpg");
     if (Fini == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
     }
 
 
-    SDL_Surface* fondinter= IMG_Load("img/fondinter.png");
+    SDL_Surface* fondinter= IMG_Load("data/image/combat/fondinter.png");
     if (fondinter == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
     }
 
-    SDL_Surface* att = IMG_Load("img/bouton_attaque.png");
+    SDL_Surface* att = IMG_Load("data/image/combat/bouton_attaque.png");
     if (att == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
     }
 
-    SDL_Surface* bouton_avancer = IMG_Load("img/bouton_avancer.png");
+    SDL_Surface* bouton_avancer = IMG_Load("data/image/combat/bouton_avancer.png");
     if (att == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
     }
 
-    SDL_Surface* bouton_fin_tour = IMG_Load("img/bouton_fin_tour.png");
+    SDL_Surface* bouton_fin_tour = IMG_Load("data/image/combat/bouton_fin_tour.png");
     if (att == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
     }
 
-    SDL_Surface* bouton_sort = IMG_Load("img/bouton_sort.png");
+    SDL_Surface* bouton_sort = IMG_Load("data/image/combat/bouton_sort.png");
     if (att == NULL) {
         printf("Erreur de l image : %s\n", IMG_GetError());
         return 1;
@@ -200,7 +200,7 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
     }
 
     // Chargement de la police de caractères
-    TTF_Font *font = TTF_OpenFont("img/police.ttf", 15);
+    TTF_Font *font = TTF_OpenFont("data/image/combat/police.ttf", 15);
     if (font == NULL) {
         printf("Erreur lors du chargement de la police de caractères : %s\n", TTF_GetError());
         SDL_DestroyRenderer(renderer);
@@ -294,17 +294,17 @@ int combat(entite_t plateau_de_combat[N][N],SDL_Window* window,SDL_Renderer* ren
         buttonBottom4 = init_Button(buttonBottomX - BUTTON_SIZEx, buttonBottomY - BUTTON_SIZEy, BUTTON_SIZEx, BUTTON_SIZEy);
 
         if(action==0){
-            draw_Text(renderer, font, "   IS YOUR TURN  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
+            draw_Text(renderer, font, "   C'est votre tour   ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }
         if(action==1){
-            draw_Text(renderer, font, "   mode attaque  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
+            draw_Text(renderer, font, "   attaque un enemie  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }
         if(action==2){
             draw_Text(renderer, font, "   vous aller utiliser un sort  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy,  textColor, bgColor, &statu);
         }if(action==3){
             draw_Text(renderer, font, "   mouvement en  cour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
         }if(action!=1 && action!=2 && action!=3 && action!=0){
-            draw_Text(renderer, font, "   metter Fin a votre tour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
+            draw_Text(renderer, font, "   Metter Fin a votre tour  ",gridHeight-BUTTON_SIZEx,0, 2*BUTTON_SIZEx,2*BUTTON_SIZEy, textColor, bgColor, &statu);
         }
 
 

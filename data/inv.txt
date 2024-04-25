@@ -2,8 +2,8 @@ Nom du personnage: tata
 Statistiques: Intel:1, Str:1, Luck:1, Agi:1, End:1
 HP: 10/10, MP: 10/10, XP: 0/100, Level: 1
 Poids maximal supporté: 10, Argent: 100
-Pos x: 16, y: 23
-Map x: 0, y: 0
+Pos x: 8, y: 16
+Map x: 1, y: 0
 Équipements équipés:
 Emplacement 1: ID de l'équipement: -1
 Emplacement 2: ID de l'équipement: -1
