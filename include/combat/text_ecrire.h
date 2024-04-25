@@ -1,3 +1,10 @@
+/**
+ * @file text_ecrire.h
+ * @author Mael Gaumont
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
 #ifndef TEXT_ECRIRE_H
 #define TEXT_ECRIRE_H
 
