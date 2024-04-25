@@ -1,3 +1,10 @@
+/**
+ * @file plateauCombat.h
+ * @author Mael Gaumont
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
 #ifndef PLATEAU_COMBAT_H
 #define PLATEAU_COMBAT_H
 
