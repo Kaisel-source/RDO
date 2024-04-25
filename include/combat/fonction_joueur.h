@@ -1,3 +1,11 @@
+/**
+ * @file fonction_joueur.h
+ * @author Mael Gaumont
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
+
 #ifndef FONCTION_JOUEUR_H
 #define FONCTION_JOUEUR_H
 
