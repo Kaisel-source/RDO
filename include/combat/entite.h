@@ -1,3 +1,11 @@
+
+/**
+ * @file entite.h
+ * @author Mael Gaumont
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
 #ifndef ENTITE_H
 #define ENTITE_H
 
