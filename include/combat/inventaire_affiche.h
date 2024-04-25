@@ -1,3 +1,10 @@
+/**
+ * @file inventaire_affiche.h
+ * @author Mael Gaumont
+ * @brief 
+ * @version 0.1
+ * @date 2024-03-10
+*/
 #ifndef INVENTORY_D_H
 #define INVENTORY_D_H
 
